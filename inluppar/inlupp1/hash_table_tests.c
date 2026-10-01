@@ -354,6 +354,234 @@ void test_remove_one_value_in_bucket_w_mul_values() {
 // Infoga ta bort och infoga igen med samma nyckel
 // Många nycklar
 
+//Create a hash table and check if it has some key k (it shouldn’t).
+void test_check_if_empty_ht_has_key() {
+
+ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+char *key = "abc";
+
+CU_ASSERT_FALSE(ioopm_hash_table_has_key(ht, key));
+
+ioopm_hash_table_destroy(ht);
+}
+
+//Create a hash table and insert some key k. Check if it has the 
+//key k (it should). Also check if it has some other key k2 
+//(it shouldn’t).
+void test_check_for_existing_and_non_existing_key() {
+    //create ht
+    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+    //initialize parameters
+    char *key = "abc";
+    int value = 123;
+    int result = 0;
+
+    //insert key-value pair and check that the mapping exists
+    ioopm_hash_table_insert(ht, key, value);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, key, &result));
+    CU_ASSERT_EQUAL(result, value);
+
+    //check if key "abc" exist (it should)
+    CU_ASSERT_TRUE(ioopm_hash_table_has_key(ht, key));
+
+    //check if key "xyz" exist (it should not)
+    CU_ASSERT_FALSE(ioopm_hash_table_has_key(ht, "xyz"));
+
+    //destroy ht
+    ioopm_hash_table_destroy(ht);
+}
+
+//Create a hash table and insert keys k1, k2 and k3. Check if all 
+//three keys are present (they should be). Also check if it has 
+//some other key k4 (it shouldn’t).
+void test_check_multiple_existing_and_one_non_existing_key() {
+    //create new ht
+    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+    int result = 0;
+
+    //insert 3 pairs and check that mapping exist and is correct
+    ioopm_hash_table_insert(ht, "a", 1);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "a", &result));
+    CU_ASSERT_EQUAL(result, 1);
+
+    ioopm_hash_table_insert(ht, "b", 2);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "b", &result));
+    CU_ASSERT_EQUAL(result, 2);
+
+    ioopm_hash_table_insert(ht, "c", 3);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "c", &result));
+    CU_ASSERT_EQUAL(result, 3);
+
+    //check that all three keys are present (should be)
+    CU_ASSERT_TRUE(ioopm_hash_table_has_key(ht, "a"));
+    CU_ASSERT_TRUE(ioopm_hash_table_has_key(ht, "b"));
+    CU_ASSERT_TRUE(ioopm_hash_table_has_key(ht, "c"));
+
+    //check if another key is present (should not be)
+    CU_ASSERT_FALSE(ioopm_hash_table_has_key(ht, "d"));
+
+    //destroy ht
+    ioopm_hash_table_destroy(ht);
+}
+
+//Create a hash table and insert key k, and immediately 
+//remove it. Check if has key k (it shouldn’t).
+void test_check_for_removed_key() {
+    //create new ht
+    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+    int result = 0;
+
+    //insert key/value pair and check mapping exist and is correct
+    ioopm_hash_table_insert(ht, "a", 1);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "a", &result));
+    CU_ASSERT_EQUAL(result, 1);
+
+    //remove value at key and check that correct value was removed
+    CU_ASSERT_TRUE(ioopm_hash_table_remove(ht, "a", &result));
+    CU_ASSERT_EQUAL(result, 1);
+
+    //Check that value is no longer in ht
+    CU_ASSERT_FALSE(ioopm_hash_table_lookup(ht, "a", &result));
+
+    //Check that key is not longer in ht
+    CU_ASSERT_FALSE(ioopm_hash_table_has_key(ht, "a"));
+
+    //destroy ht
+    ioopm_hash_table_destroy(ht);
+}
+
+//Create a hash table and insert keys k1, k2 and k3. 
+//Remove key k2. Check if it has keys k1 and k3 (it should). 
+//Check if it has key k2 (it shouldn’t).
+void test_check_for_key_removed_in_the_middle() {
+    //create new ht
+    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+    int result = 0;
+
+    //insert 3 pairs and check that mapping exist and is correct
+    ioopm_hash_table_insert(ht, "a", 1);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "a", &result));
+    CU_ASSERT_EQUAL(result, 1);
+
+    ioopm_hash_table_insert(ht, "b", 2);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "b", &result));
+    CU_ASSERT_EQUAL(result, 2);
+
+    ioopm_hash_table_insert(ht, "c", 3);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "c", &result));
+    CU_ASSERT_EQUAL(result, 3);
+
+    //remove key 2, check taht the right value was removed
+    CU_ASSERT_TRUE(ioopm_hash_table_remove(ht, "b", &result));
+    CU_ASSERT_EQUAL(result, 2);
+
+    //Check that key 1 and 3 still exists (they should)
+    CU_ASSERT_TRUE(ioopm_hash_table_has_key(ht, "a"));
+    CU_ASSERT_TRUE(ioopm_hash_table_has_key(ht, "c"));
+
+    //check if key 2 still exist (it should not)
+    CU_ASSERT_FALSE(ioopm_hash_table_has_key(ht, "b"));
+
+    //destroy ht
+    ioopm_hash_table_destroy(ht);
+}
+
+//can write another test like the one above but testing the same
+//scenario but with the keys being in the same bucket
+
+void test_check_if_empty_ht_is_empty() {
+    //create ht 
+    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+    //check that ht is empty
+    CU_ASSERT_TRUE(ioopm_hash_table_is_empty(ht));
+
+    //destroy ht
+    ioopm_hash_table_destroy(ht);
+}
+
+void test_check_if_non_empty_ht_is_empty() {
+    //create ht
+    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+    int result = 0;
+
+    //insert pair check mapping
+    ioopm_hash_table_insert(ht, "a", 1);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "a", &result));
+    CU_ASSERT_EQUAL(result, 1);
+
+    //check if ht is empty (should not be)
+    CU_ASSERT_FALSE(ioopm_hash_table_is_empty(ht));
+
+    //destroy ht
+    ioopm_hash_table_destroy(ht);
+
+}
+
+void test_remove_entry_and_check_if_empty() {
+    //create ht
+    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+    int result = 0;
+
+    //insert 3 pairs
+    ioopm_hash_table_insert(ht, "a", 1);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "a", &result));
+    CU_ASSERT_EQUAL(result, 1);
+
+    ioopm_hash_table_insert(ht, "b", 2);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "b", &result));
+    CU_ASSERT_EQUAL(result, 2);
+
+    ioopm_hash_table_insert(ht, "c", 3);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "c", &result));
+    CU_ASSERT_EQUAL(result, 3);
+
+    //remove one entry, check that right value was removed
+    CU_ASSERT_TRUE(ioopm_hash_table_remove(ht, "b", &result));
+    CU_ASSERT_EQUAL(result, 2);
+
+    //Check if ht is empty (should not be)
+    CU_ASSERT_FALSE(ioopm_hash_table_is_empty(ht));
+
+    //destroy ht
+    ioopm_hash_table_destroy(ht);
+}
+
+void test_remove_all_entries_and_check_if_empty() {
+    //create ht
+    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+
+    int result = 0;
+
+    //insert 2 pairs
+    ioopm_hash_table_insert(ht, "a", 1);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "a", &result));
+    CU_ASSERT_EQUAL(result, 1);
+
+    ioopm_hash_table_insert(ht, "b", 2);
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "b", &result));
+    CU_ASSERT_EQUAL(result, 2);
+    
+    //remove 2 pairs
+    CU_ASSERT_TRUE(ioopm_hash_table_remove(ht, "a", &result));
+    CU_ASSERT_EQUAL(result, 1);
+    CU_ASSERT_TRUE(ioopm_hash_table_remove(ht, "b", &result));
+    CU_ASSERT_EQUAL(result, 2);
+
+    //check if ht is empty (should be) 
+    CU_ASSERT_TRUE(ioopm_hash_table_is_empty(ht));
+
+    //destroy ht 
+    ioopm_hash_table_destroy(ht);
+}
+
 int main(void) {
     if (CU_initialize_registry() != CUE_SUCCESS) 
         return CU_get_error();
@@ -376,6 +604,15 @@ if (CU_add_test(my_test_suite, "create destroy", test_create_destroy) == NULL ||
     CU_add_test(my_test_suite, "remove same value twice", test_remove_value_twice) == NULL ||
     CU_add_test(my_test_suite, "remove not affecting other pairs", test_removing_one_value_not_affecting_other) == NULL ||
     CU_add_test(my_test_suite, "remove in buckets", test_remove_one_value_in_bucket_w_mul_values) == NULL ||
+    CU_add_test(my_test_suite, "look for non-existing key in empty ht", test_check_if_empty_ht_has_key) == NULL ||
+    CU_add_test(my_test_suite, "look for one existing and one non-existing key in ht", test_check_for_existing_and_non_existing_key) == NULL ||
+    CU_add_test(my_test_suite, "look for multiple existing kes in ht and one non-existing", test_check_multiple_existing_and_one_non_existing_key) == NULL ||
+    CU_add_test(my_test_suite, "look for removed key", test_check_for_removed_key) == NULL ||
+    CU_add_test(my_test_suite, "look for multiple keys and one key removed in the middle", test_check_for_key_removed_in_the_middle) == NULL ||
+    CU_add_test(my_test_suite, "check if empty ht is empty", test_check_if_empty_ht_is_empty) == NULL ||
+    CU_add_test(my_test_suite, "check if non empty ht is empty", test_check_if_non_empty_ht_is_empty) == NULL ||
+    CU_add_test(my_test_suite, "remove on of many entries and check if empty", test_remove_entry_and_check_if_empty) == NULL ||
+    CU_add_test(my_test_suite, "remove all entires and check if empty", test_remove_all_entries_and_check_if_empty) == NULL ||
     0) 
     
     {
