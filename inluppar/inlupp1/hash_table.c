@@ -4,6 +4,8 @@
 #include "hash_table.h"
 #include <string.h>
 
+#define No_buckets 17
+
 typedef struct entry entry_t;
 
 struct entry {
@@ -15,7 +17,7 @@ struct entry {
 struct hash_table {
     //DODGE: hard coding number of buckets as 17
     //NOTE: adressning this dodge is optional
-    entry_t buckets[17];
+    entry_t buckets[No_buckets];
 };
 
 static entry_t *entry_create(char *key, int value, entry_t *next) {
@@ -31,12 +33,12 @@ static void entry_destroy(entry_t *entry) {
 }
 
 ioopm_hash_table_t *ioopm_hash_table_create(void) {
-    //allocate space for an ioopmhash_table_t = 17 pointers to entry_t's and by using calloc initializes each value to NULL
+    //allocate space for an ioopmhash_table_t = value of No_buckets to entry_t's and by using calloc initializes each value to NULL
     return calloc(1, sizeof(ioopm_hash_table_t));
 }
 
 void ioopm_hash_table_destroy(ioopm_hash_table_t *ht) {
-    for (int i = 0; i < 17; ++i) {
+    for (int i = 0; i < No_buckets; ++i) {
         entry_t *current = ht->buckets[i].next;
         while (current != NULL) {
             entry_t *next = current->next; // save before free
@@ -58,7 +60,7 @@ static size_t string_knr_hash(const char *str) {
 
 static entry_t *find_previous_entry(ioopm_hash_table_t *ht, char *key) {
     //find bucket
-    size_t bucket = string_knr_hash(key) % 17;
+    size_t bucket = string_knr_hash(key) % No_buckets;
 
     //create a pointer to the first element in each bucket (sentinel node)
     entry_t *previous = &ht->buckets[bucket];
