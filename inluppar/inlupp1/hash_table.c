@@ -2,23 +2,8 @@
 #include <stdbool.h>
 #include <stddef.h> 
 #include "hash_table.h"
+#include "hash_table_struct.h"
 #include <string.h>
-
-#define No_buckets 17
-
-typedef struct entry entry_t;
-
-struct entry {
-    char *key; //hold the key
-    int value; // holds the value
-    entry_t *next; // points to next entry (Can be NULL)
-};
-
-struct hash_table {
-    //DODGE: hard coding number of buckets as 17
-    //NOTE: adressning this dodge is optional
-    entry_t buckets[No_buckets];
-};
 
 static entry_t *entry_create(char *key, int value, entry_t *next) {
     entry_t *entry = malloc(sizeof(entry_t));
@@ -127,8 +112,10 @@ bool ioopm_hash_table_has_key(ioopm_hash_table_t *ht, char *key) {
 
 static int bucket_size(entry_t *bucket) {
     int i = 0;
-    while (bucket[i].next != NULL) {
+    entry_t *current = bucket;
+    while (current != NULL) {
         ++i;
+        current = current->next;
     } 
     return i; 
 }
