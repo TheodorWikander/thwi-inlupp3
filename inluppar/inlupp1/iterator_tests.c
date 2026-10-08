@@ -1,9 +1,31 @@
 #include "hash_table.h"
 #include "iterator.h"
+#include "common.h"
 #include <stdbool.h>
 #include <CUnit/Basic.h>
 #include <CUnit/CUnit.h>
 #include <stdio.h>
+#include <string.h>
+
+static bool string_eq(elem_t a, elem_t b) {
+    return strcmp(a.s, b.s) == 0;
+}
+
+static size_t string_hash(elem_t key) {
+    size_t result = 0;
+    for (const char *s = key.s; *s != '\0'; ++s) {
+        result = result * 31 + (unsigned char) *s;
+    }
+    return result;
+}
+
+static bool int_eq(elem_t a, elem_t b) {
+    return a.i == b.i;
+}
+
+static size_t int_hash(elem_t key) {
+    return (size_t) key.i;
+}
 
 //Change this function if you want to do something BEFORE you run a test suite 
 int init_suite(void) {
@@ -17,7 +39,7 @@ int clean_suite(void) {
 
 void test_iterate_over_empy_ht() {
     //create ht
-    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+    ioopm_hash_table_t *ht = ioopm_hash_table_create(string_hash, string_eq);
 
     //create iterator
     ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
@@ -32,14 +54,14 @@ void test_iterate_over_empy_ht() {
 
 void test_iterate_over_ht_w_one_entry() {
     //create ht
-    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+    ioopm_hash_table_t *ht = ioopm_hash_table_create(int_hash, int_eq);;
 
-    int result = 0;
+    elem_t result = int_elem(0);
 
     //insert key/value pair and check mapping is correct
-    ioopm_hash_table_insert(ht, "a", 1);
-    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, "a", &result));
-    CU_ASSERT_EQUAL(1, result);
+    ioopm_hash_table_insert(ht, int_elem(123), int_elem(1));
+    CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, int_elem(123), &result));
+    CU_ASSERT_EQUAL(1, result.i);
 
     //create iterator
     ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
@@ -47,10 +69,10 @@ void test_iterate_over_ht_w_one_entry() {
     CU_ASSERT_FALSE(ioopm_hash_table_iterator_at_end(it));
 
     //check that our current key is the same as our iterators current key
-    CU_ASSERT_STRING_EQUAL(ioopm_hash_table_iterator_current_key(it), "a");
+    CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_key(it).i, 123);
 
     //check that our current value is the same as our iterators current value
-    CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_value(it), 1);
+    CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_value(it).i, 1);
 
     //move iterator on step foward
     ioopm_hash_table_iterator_advance(it);
@@ -65,16 +87,16 @@ void test_iterate_over_ht_w_one_entry() {
 
 void test_iterator_several_entries()
 {
-  char *keys[3] = {"abc", "qwe", "asd"};
-  int values[3] = {0, 1, 2};
+  elem_t keys[3] = {string_elem("abc"), string_elem("qwe"), string_elem("asd")};
+  elem_t values[3] = {int_elem(0), int_elem(1), int_elem(2)};
 
-  ioopm_hash_table_t *ht = ioopm_hash_table_create();
-  for (int i = 0; i != 3; ++i)
+  ioopm_hash_table_t *ht = ioopm_hash_table_create(string_hash, string_eq);;
+  for (size_t i = 0; i != 3; ++i)
   {
     ioopm_hash_table_insert(ht, keys[i], values[i]);
   }
 
-  int iteration_count = 0;
+  size_t iteration_count = 0;
 
   ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
   while (!ioopm_hash_table_iterator_at_end(it))
@@ -90,27 +112,27 @@ void test_iterator_several_entries()
 
 void test_iterator_several_entries_once() {
 
-    char *keys[3] = {"a", "b", "c"};
-    int values[3] = {0, 1, 2};
+    elem_t keys[3] = {string_elem("abc"), string_elem("qwe"), string_elem("asd")};
+    elem_t values[3] = {int_elem(1), int_elem(2), int_elem(3)};
 
-    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+    ioopm_hash_table_t *ht = ioopm_hash_table_create(string_hash, string_eq);
 
-    for (int i = 0; i != 3; ++i) {
+    for (size_t i = 0; i != 3; ++i) {
         ioopm_hash_table_insert(ht, keys[i], values[i]);
     }
 
-    int iteration_count = 0;
-    int seen[3] = {0};
+    size_t iteration_count = 0;
+    size_t seen[3] = {0};
 
     ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
     
     while (!ioopm_hash_table_iterator_at_end(it)) {
 
-        char *current_key = ioopm_hash_table_iterator_current_key(it);
+        elem_t current_key = ioopm_hash_table_iterator_current_key(it);
 
         for (int i = 0; i < 3; ++i) {
-            if (strcmp(current_key, keys[i]) == 0) {
-                CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_value(it), values[i]);
+            if (strcmp(current_key.s, keys[i].s) == 0) {
+                CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_value(it).i, values[i].i);
                 ++seen[i];
             }
         }
@@ -134,23 +156,23 @@ void test_iterate_over_mul_entries_same_bucket() {
 
     char keys[N][16];
     //create ht
-    ioopm_hash_table_t *ht = ioopm_hash_table_create();
+    ioopm_hash_table_t *ht = ioopm_hash_table_create(string_hash, string_eq);
 
-    for (int i = 0; i < N; ++i) {
-        sprintf(keys[i], "key%d", i);
-        ioopm_hash_table_insert(ht, keys[i], i);
+    for (size_t i = 0; i < N; ++i) {
+        sprintf(keys[i], "key%ld", i);
+        ioopm_hash_table_insert(ht, string_elem(keys[i]), int_elem(i));
     }
-    int seen[N] = {0};
-    int iteraton_count = 0;
+    size_t seen[N] = {0};
+    size_t iteraton_count = 0;
 
     ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
 
     while (!ioopm_hash_table_iterator_at_end(it)) {
-        char *current_key = ioopm_hash_table_iterator_current_key(it);
+        elem_t current_key = ioopm_hash_table_iterator_current_key(it);
 
-        for (int i = 0; i < N; ++i) {
-            if (strcmp(current_key, keys[i]) == 0) {
-                CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_value(it), i);
+        for (size_t i = 0; i < N; ++i) {
+            if (strcmp(current_key.s, keys[i]) == 0) {
+                CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_value(it).i, i);
                 ++seen[i];
             }
         }
@@ -159,7 +181,7 @@ void test_iterate_over_mul_entries_same_bucket() {
     }
     CU_ASSERT_EQUAL(iteraton_count, N);
 
-    for (int i = 0; i < N; ++i) {
+    for (size_t i = 0; i < N; ++i) {
         CU_ASSERT_EQUAL(seen[i], 1);
     }
 
@@ -189,7 +211,7 @@ if (CU_add_test(my_test_suite, "iterate over empty ht", test_iterate_over_empy_h
     return CU_get_error();
 }
 
-CU_basic_set_mode(CU_BRM_VERBOSE);
+CU_basic_set_mode(CU_BRM_VERBOSE); 
 
 //run tests
 CU_basic_run_tests();

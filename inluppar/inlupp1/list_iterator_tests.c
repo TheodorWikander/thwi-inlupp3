@@ -34,12 +34,12 @@ void test_iterate_over_empty_list(void) {
 void test_iterate_over_list_w_one_element(void) {
     ioopm_list_t *list = ioopm_list_create();
 
-    ioopm_list_append(list, 1);
+    ioopm_list_append(list, int_elem(1));
 
     ioopm_list_iterator_t *it = ioopm_list_iterator_create(list);
 
     CU_ASSERT_FALSE(ioopm_list_iterator_at_end(it));
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 1);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 1);
 
     ioopm_list_iterator_advance(it);
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
@@ -51,18 +51,18 @@ void test_iterate_over_list_w_one_element(void) {
 void test_iterate_all_in_order(void) {
     ioopm_list_t *list = ioopm_list_create();
 
-    ioopm_list_append(list, 1);
-    ioopm_list_append(list, 2);
-    ioopm_list_append(list, 3);
+    ioopm_list_append(list, int_elem(1));
+    ioopm_list_append(list, string_elem("a"));
+    ioopm_list_append(list, bool_elem(true));
 
     ioopm_list_iterator_t *it = ioopm_list_iterator_create(list);
     CU_ASSERT_FALSE(ioopm_list_iterator_at_end(it));
 
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 1);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 1);
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 2);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).s, "a");
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 3);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).b, true);
     CU_ASSERT_FALSE(ioopm_list_iterator_at_end(it));
     ioopm_list_iterator_advance(it);
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
@@ -77,8 +77,8 @@ void test_insert_one_elem_into_empty(void) {
 
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
 
-    ioopm_list_iterator_insert(it, 1);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 1);
+    ioopm_list_iterator_insert(it, int_elem(1));
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 1);
     CU_ASSERT_FALSE(ioopm_list_iterator_at_end(it));
 
     ioopm_list_iterator_advance(it);
@@ -93,16 +93,16 @@ void test_insert_multiple_elem_into_empty(void) {
     ioopm_list_iterator_t *it = ioopm_list_iterator_create(list);
 
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
-    ioopm_list_iterator_insert(it, 1);
-    ioopm_list_iterator_insert(it, 2);
-    ioopm_list_iterator_insert(it, 3);
+    ioopm_list_iterator_insert(it, int_elem(1));
+    ioopm_list_iterator_insert(it, string_elem("a"));
+    ioopm_list_iterator_insert(it, bool_elem(true));
 
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 3);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).b, true);
     CU_ASSERT_FALSE(ioopm_list_iterator_at_end(it));
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 2);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).s, "a");
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 1);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 1);
     ioopm_list_iterator_advance(it);
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
 
@@ -113,22 +113,22 @@ void test_insert_multiple_elem_into_empty(void) {
 void test_insert_one_into_non_empty_list(void) {
     ioopm_list_t *list = ioopm_list_create();
 
-    ioopm_list_append(list,1);
-    ioopm_list_append(list, 3);
+    ioopm_list_append(list,int_elem(1));
+    ioopm_list_append(list, int_elem(3));
 
     ioopm_list_iterator_t *it = ioopm_list_iterator_create(list);
 
     CU_ASSERT_FALSE(ioopm_list_iterator_at_end(it));
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 1);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 1);
 
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 3);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 3);
 
-    ioopm_list_iterator_insert(it, 2);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 2);
+    ioopm_list_iterator_insert(it, int_elem(2));
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 2);
 
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 3);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 3);
 
     ioopm_list_iterator_advance(it);
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
@@ -140,19 +140,19 @@ void test_insert_one_into_non_empty_list(void) {
 void test_insert_at_end_of_non_empty(void) {
     ioopm_list_t *list = ioopm_list_create();
 
-    ioopm_list_append(list, 1);
+    ioopm_list_append(list, int_elem(1));
 
     ioopm_list_iterator_t *it = ioopm_list_iterator_create(list);
     ioopm_list_iterator_advance(it);
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
-    ioopm_list_iterator_insert(it, 2);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 2);
+    ioopm_list_iterator_insert(it, string_elem("a"));
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).s, "a");
     ioopm_list_iterator_advance(it);
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
 
     ioopm_list_iterator_destroy(it);
 
-    CU_ASSERT_EQUAL(ioopm_list_last(list), 2);
+    CU_ASSERT_EQUAL(ioopm_list_last(list).s, "a");
     CU_ASSERT_EQUAL(ioopm_list_size(list), 2);
 
     ioopm_list_destroy(list);
@@ -161,27 +161,27 @@ void test_insert_at_end_of_non_empty(void) {
 void test_inser_mul_into_non_empty(void) {
     ioopm_list_t *list = ioopm_list_create();
 
-    ioopm_list_append(list, 1);
-    ioopm_list_append(list, 3);
-    ioopm_list_append(list, 5);
+    ioopm_list_append(list, int_elem(1));
+    ioopm_list_append(list, int_elem(3));
+    ioopm_list_append(list, int_elem(5));
 
     ioopm_list_iterator_t *it = ioopm_list_iterator_create(list);
     CU_ASSERT_FALSE(ioopm_list_iterator_at_end(it));
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 1);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 1);
 
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 3);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 3);
 
-    ioopm_list_iterator_insert(it, 2);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 2);
+    ioopm_list_iterator_insert(it, string_elem("a"));
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).s, "a");
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 3);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 3);
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 5);
-    ioopm_list_iterator_insert(it, 4);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 4);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 5);
+    ioopm_list_iterator_insert(it, string_elem("b"));
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).s, "b");
     ioopm_list_iterator_advance(it);
-    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it), 5);
+    CU_ASSERT_EQUAL(ioopm_list_iterator_current(it).i, 5);
     ioopm_list_iterator_advance(it);
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
 
@@ -222,5 +222,5 @@ CU_basic_run_tests();
 //Tear down CUnit before exiting
 CU_cleanup_registry();
 return CU_get_error();
-}
+} 
 

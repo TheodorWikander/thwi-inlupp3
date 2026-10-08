@@ -18,7 +18,7 @@ ioopm_list_iterator_t *ioopm_list_iterator_create(ioopm_list_t *list) {
     it->previous = list->first;
 
     return it;
-}
+} 
 
 void ioopm_list_iterator_destroy(ioopm_list_iterator_t *iter) {
         free(iter);
@@ -38,7 +38,7 @@ void ioopm_list_iterator_advance(ioopm_list_iterator_t *iter) {
         iter->previous = iter->previous->next;
 }
 
-int ioopm_list_iterator_current(ioopm_list_iterator_t *iter) {
+elem_t ioopm_list_iterator_current(ioopm_list_iterator_t *iter) {
     assert(!ioopm_list_iterator_at_end(iter));
     return iter->previous->next->value;
    
@@ -48,17 +48,16 @@ int ioopm_list_iterator_current(ioopm_list_iterator_t *iter) {
 /// @brief Remove the current element from the underlying list
 /// @param iter the iterator
 /// @return the removed element
-int ioopm_list_iterator_remove(ioopm_list_iterator_t *iter) {
+elem_t ioopm_list_iterator_remove(ioopm_list_iterator_t *iter) {
     //TODO: Stub
     (void) iter;
-    return -1;
+    return int_elem(-1);
 }
 
-/// NOTE: INSERT IS OPTIONAL TO IMPLEMENT
 /// @brief Insert a new element into the underlying list making the current element it's next
 /// @param iter the iterator
 /// @param element the element to be inserted
-void ioopm_list_iterator_insert(ioopm_list_iterator_t *iter, int element) {
+void ioopm_list_iterator_insert(ioopm_list_iterator_t *iter, elem_t element) {
     link_t *new_link = ioopm_link_create(element, iter->previous->next);
     iter->previous->next = new_link;
 

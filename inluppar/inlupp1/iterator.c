@@ -7,10 +7,12 @@
 
 struct hash_table_iterator {
     ioopm_hash_table_t *ht;
-    int current_bucket;
+    size_t current_bucket;
     entry_t *current_entry;
-};
+}; 
 
+/// @brief advance the iterator one step foward in the ht
+/// @param it the iterator to be advanced
 static void advance_iterator_state(ioopm_hash_table_iterator_t *it) {
     //advnce to the next entry in the bucket
     it->current_entry = it->current_entry->next;
@@ -26,17 +28,18 @@ static void advance_iterator_state(ioopm_hash_table_iterator_t *it) {
     }
 }
 
+/// @brief if it is pointing to a sentinel node and is not at the end of ht, skip to the next node. 
+/// @param it the iterator to be advanced 
 static void skip_sentinel_nodes(ioopm_hash_table_iterator_t *it) {
     while (it->current_bucket != No_buckets &&
     it->current_entry == &it->ht->buckets[it->current_bucket])
     {
         advance_iterator_state(it); 
-    }
+    } 
 }
 
 ioopm_hash_table_iterator_t *ioopm_hash_table_iterator_create(ioopm_hash_table_t *ht) {
-
-    ioopm_hash_table_iterator_t *it = malloc(sizeof(ioopm_hash_table_iterator_t));
+    ioopm_hash_table_iterator_t *it = calloc(1, sizeof(ioopm_hash_table_iterator_t));
     it->ht = ht;
     it->current_bucket = 0;
     it->current_entry = &ht->buckets[0];
@@ -60,15 +63,14 @@ void ioopm_hash_table_iterator_advance(ioopm_hash_table_iterator_t *it) {
         skip_sentinel_nodes(it);
 }
 
-// @precondition function should not be called at the end of it
-char *ioopm_hash_table_iterator_current_key(ioopm_hash_table_iterator_t *it) {
+elem_t ioopm_hash_table_iterator_current_key(ioopm_hash_table_iterator_t *it) {
     //craches program if current_entry == NULL
     assert(it->current_entry != NULL);
 
     return it->current_entry->key;
 }
 
-int ioopm_hash_table_iterator_current_value(ioopm_hash_table_iterator_t *it) {
+elem_t ioopm_hash_table_iterator_current_value(ioopm_hash_table_iterator_t *it) {
     //crashes program if curretn key == NULL
     assert(it->current_entry != NULL);
 
