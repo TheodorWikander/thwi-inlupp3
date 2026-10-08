@@ -18,15 +18,11 @@ int clean_suite(void) {
 }
 
 void test_iterate_over_empty_list(void) {
-    //create list
     ioopm_list_t *list = ioopm_list_create();
 
-    //create iterator
     ioopm_list_iterator_t *it = ioopm_list_iterator_create(list);
-    //check iterator is at end of list
     CU_ASSERT_TRUE(ioopm_list_iterator_at_end(it));
 
-    //destroy iterator and list
     ioopm_list_iterator_destroy(it);
     ioopm_list_destroy(list);
 }

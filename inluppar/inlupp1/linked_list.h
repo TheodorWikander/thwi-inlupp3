@@ -6,11 +6,12 @@
 /**
 * @file linked_list.h
 * @author Nova Edlund
-* @date 5 okt 2026
+* @date 5 oct 2026
 * @brief Simple linked list implementation
+* Violating a precondition will crash the program (assert)
 */
 
-typedef struct list ioopm_list_t; /// Meta: struct definition goes in C file
+typedef struct list ioopm_list_t; 
 
 /// @brief Creates a new empty list
 /// @return an empty linked list
@@ -55,7 +56,7 @@ void ioopm_list_insert(ioopm_list_t *list, size_t index, elem_t value);
 /// @brief Remove an element from a linked list in O(n) time.
 /// The valid values of index are [0,n-1] for a list of n elements,
 /// where 0 means the first element and n-1 means the last element.
-/// @pre 0 <= index < length(list)
+/// @pre index < length(list)
 /// @param list the linked list
 /// @param index the position in the list
 /// @return the value removed
@@ -64,8 +65,8 @@ elem_t ioopm_list_remove(ioopm_list_t *list, size_t index);
 /// @brief Retrieve an element from a linked list in O(n) time.
 /// The valid values of index are [0,n-1] for a list of n elements,
 /// where 0 means the first element and n-1 means the last element.
-/// @pre 0 <= index < length(list)
-/// @param list the linked list that will be extended
+/// @pre index < length(list)
+/// @param list the linked list that will be read from
 /// @param index the position in the list
 /// @return the value at the given position
 elem_t ioopm_list_get(ioopm_list_t *list, size_t index);
@@ -77,5 +78,5 @@ size_t ioopm_list_size(ioopm_list_t *list);
 
 /// @brief Test whether a list is empty or not
 /// @param list the linked list
-/// @return true if the number of elements int the list is 0, else false
+/// @return true if the number of elements in the list is 0, else false
 bool ioopm_list_is_empty(ioopm_list_t *list);

@@ -38,49 +38,37 @@ int clean_suite(void) {
 }
 
 void test_iterate_over_empy_ht() {
-    //create ht
     ioopm_hash_table_t *ht = ioopm_hash_table_create(string_hash, string_eq);
 
-    //create iterator
     ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
 
-    //check that iterator is at end of ht
     CU_ASSERT_TRUE(ioopm_hash_table_iterator_at_end(it));
 
-    //destroy iterator and ht
     ioopm_hash_table_iterator_destroy(it);
     ioopm_hash_table_destroy(ht);
 }
 
 void test_iterate_over_ht_w_one_entry() {
-    //create ht
     ioopm_hash_table_t *ht = ioopm_hash_table_create(int_hash, int_eq);;
 
     elem_t result = int_elem(0);
 
-    //insert key/value pair and check mapping is correct
     ioopm_hash_table_insert(ht, int_elem(123), int_elem(1));
     CU_ASSERT_TRUE(ioopm_hash_table_lookup(ht, int_elem(123), &result));
     CU_ASSERT_EQUAL(1, result.i);
 
-    //create iterator
     ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
-    //check if iterator is at the end of ht (it should not be)
+
     CU_ASSERT_FALSE(ioopm_hash_table_iterator_at_end(it));
 
-    //check that our current key is the same as our iterators current key
     CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_key(it).i, 123);
 
-    //check that our current value is the same as our iterators current value
     CU_ASSERT_EQUAL(ioopm_hash_table_iterator_current_value(it).i, 1);
 
-    //move iterator on step foward
     ioopm_hash_table_iterator_advance(it);
 
-    //check that we are now at the end of ht
     CU_ASSERT_TRUE(ioopm_hash_table_iterator_at_end(it));
 
-    //destroy iterator and ht
     ioopm_hash_table_iterator_destroy(it);
     ioopm_hash_table_destroy(ht);
 }
@@ -148,14 +136,13 @@ void test_iterator_several_entries_once() {
     ioopm_hash_table_destroy(ht);
 }
 
-//om vi infogar fler nycklar än buckets kommer det bli kollisioner och
-//att nycklar delar bucket oavsett hash funktion, Gör detta med hjälp av
-//for loop
+/// By inserting more keys than we have buckets we are forcin collisions to happen no matter the hash function used
+/// By forcing collisions we can check wheter the iterator travels as it should through the ht and buckets in ht
 #define N 50
 void test_iterate_over_mul_entries_same_bucket() {
 
     char keys[N][16];
-    //create ht
+    
     ioopm_hash_table_t *ht = ioopm_hash_table_create(string_hash, string_eq);
 
     for (size_t i = 0; i < N; ++i) {

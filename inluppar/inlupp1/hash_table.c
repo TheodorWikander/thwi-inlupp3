@@ -59,16 +59,7 @@ void ioopm_hash_table_destroy(ioopm_hash_table_t *ht) {
     free(ht);
 }
 
-//not needed since hash_function is now fprovided in function call
-// static size_t string_knr_hash(const char *str) {
-//     size_t result = 0;
-//     while (*str != '\0') {
-//         result = result * 31 + ((unsigned char) *str);
-//         str++;
-//     }
-//     return result;
-// }
-
+/// @return returns the netry before key in ht
 static entry_t *find_previous_entry(ioopm_hash_table_t *ht, elem_t key) {
     //find bucket
     size_t bucket = ht->hash_fn(key) % No_buckets;
@@ -84,9 +75,7 @@ static entry_t *find_previous_entry(ioopm_hash_table_t *ht, elem_t key) {
     return previous;
 }
 
-//@precondition key is not NULL
 void ioopm_hash_table_insert(ioopm_hash_table_t *ht, elem_t key, elem_t value) {
-    
     //find the previous entry, or the last entry if the key does not exist
     entry_t *previous = find_previous_entry(ht, key);
 
@@ -125,7 +114,6 @@ bool ioopm_hash_table_remove(ioopm_hash_table_t *ht, elem_t key, elem_t *result)
 }
 
 bool ioopm_hash_table_has_key(ioopm_hash_table_t *ht, elem_t key) {
-    //will find eother the elemet before the key or the elelemt before NULL
     entry_t *prevoius = find_previous_entry(ht, key);
     //if next element is null, key was not in ht 
      if (prevoius->next == NULL) {
@@ -136,7 +124,6 @@ bool ioopm_hash_table_has_key(ioopm_hash_table_t *ht, elem_t key) {
 }
 
 size_t ioopm_hash_table_size(ioopm_hash_table_t *ht) {
-    // for every bucket, count the number of entries in the bucket and add to size 
     size_t size = 0;
     for (size_t i = 0; i < No_buckets; ++i) {
         size += bucket_size(ht->buckets[i].next);

@@ -44,19 +44,13 @@ elem_t ioopm_list_iterator_current(ioopm_list_iterator_t *iter) {
    
 }
 
-/// NOTE: REMOVE IS OPTIONAL TO IMPLEMENT
-/// @brief Remove the current element from the underlying list
-/// @param iter the iterator
-/// @return the removed element
 elem_t ioopm_list_iterator_remove(ioopm_list_iterator_t *iter) {
-    //TODO: Stub
+    //This is a stub, function might be implemented later, tests needs to be writter for function
+    //TODO: Write tests and implement function
     (void) iter;
     return int_elem(-1);
 }
 
-/// @brief Insert a new element into the underlying list making the current element it's next
-/// @param iter the iterator
-/// @param element the element to be inserted
 void ioopm_list_iterator_insert(ioopm_list_iterator_t *iter, elem_t element) {
     link_t *new_link = ioopm_link_create(element, iter->previous->next);
     iter->previous->next = new_link;

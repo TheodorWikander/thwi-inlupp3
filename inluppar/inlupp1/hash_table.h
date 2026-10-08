@@ -13,12 +13,13 @@
 * Here typically goes a more extensive explanation of what the header
 * defines. Doxygens tags are words preceeded by either a backslash @\
 * or by an at symbol @@.
-*
+* Violating a precondition will crash the program (assert)
 */ 
 
 typedef struct hash_table ioopm_hash_table_t;
 
 /// @brief Create a new hash table
+/// @param hash_fn
 /// @return A new empty hash table
 ioopm_hash_table_t *ioopm_hash_table_create(ioopm_hash_function *hash_fn, ioopm_eq_function *key_eq_fn);
 
@@ -29,6 +30,7 @@ void ioopm_hash_table_destroy(ioopm_hash_table_t *ht);
 /// @brief add key => value entry in hash table ht
 /// @param ht hash table operated upon
 /// @param key key to insert
+/// @pre key is not NULL
 /// @param value value to insert
 void ioopm_hash_table_insert(ioopm_hash_table_t *ht, elem_t key, elem_t value);
 

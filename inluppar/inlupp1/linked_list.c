@@ -37,7 +37,7 @@ void ioopm_list_destroy(ioopm_list_t *list) {
     link_t *current = list->first;
     //free all links first
     while (current != NULL) {
-        link_t *next = current->next; // spara next innan vi frigör current
+        link_t *next = current->next; // save next before currens is freed
         free(current);
         current = next;
     }
@@ -118,7 +118,6 @@ elem_t ioopm_list_remove(ioopm_list_t *list, size_t index) {
 }
 
 elem_t ioopm_list_get(ioopm_list_t *list, size_t index) {
-    //assert to crash the program if precondition is not followed
     assert(index < list->size) ;
     link_t *previous = find_previous_link(list, index);
     return previous->next->value;

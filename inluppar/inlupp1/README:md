@@ -1,0 +1,73 @@
+Inlupp 1
+
+Author: Nova Edlund
+
+Build and run:
+Requires gcc, make and the CUnit library (-lcunit) and optionally valgrind to build and run
+
+
+make            # build all tests and the freq_count program
+make test       # build and run all unit tests
+make memetest   # run all unit tests under valgrind (reports errors and memory leaks)
+make clean      # remove all build products
+
+
+To run freq_count on one or more text files:
+./freq_coount file1.txt file2.txt
+
+
+Overview of models:
+
+Shared:
+- common.h 
+- defines elem_t union used for all key/value types
+
+Hash table:
+- hash_table.h hash_table.c hash_table_struct.h hash_table_tests.c
+- maps elem_t keys to elem_t values
+
+Hash table iterator:
+- iterator.h iterator.c iterator_tests.c
+- Visits every entry in the hash table once
+
+Linked list:
+- linked_list.h linked_list.c linked_list_struct.h linked_list_tests.c
+- list of elem_t's along with functions to use on the list
+
+List iterator:
+- list_iterator.c list iterator.h list_iterator_tests.c
+- Visits every element of the list in order
+
+Application:
+- freq_count.c
+- Counts word frequencys in files using the hash table and hash table iterator
+
+Design choices:
+
+Genereic elements:
+All containers (keys/values) stroes their values in union type elem_t. 
+The user is responsible for reading the same field as was written to, 
+since C has no runtime type information
+(ex. int_elem(2) is read back with .i)
+
+Hash Table:
+The hash table is an array of buckets (No_buckets, currenty 17) each bucket
+is a singly linked list wherre every first element is a sentinel node. 
+The sentinel node removes the special case needed to handle empty buckets
+and makes sure we never have to read from an empty bucket (that would be undefined behavior)
+
+Linked list:
+A singly linked list with a sentinel node first and pointers to the first and last link in the list.
+Makes append, prepend and size O(1). 
+
+Iterators:
+The hash table iterator visits entries in no specific order, so code using the ht_iterator
+must not depend on the order. The linked list iteration however visits the elemets in order
+
+Failiure handling:
+Functions that can not signal failiure through their return values use preconditions in their 
+headers and assert statments in their implementation to crach the program if a precondition is violated
+
+
+
+
