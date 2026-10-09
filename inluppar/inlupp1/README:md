@@ -9,6 +9,7 @@ Requires gcc, make and the CUnit library (-lcunit) and optionally valgrind to bu
 make            # build all tests and the freq_count program
 make test       # build and run all unit tests
 make memetest   # run all unit tests under valgrind (reports errors and memory leaks)
+make coverage   # run all unit tests and produces a coverage report for all the units tests in the terminal
 make clean      # remove all build products
 
 
@@ -68,6 +69,25 @@ Failiure handling:
 Functions that can not signal failiure through their return values use preconditions in their 
 headers and assert statments in their implementation to crach the program if a precondition is violated
 
+Code coverage report:
 
+To obtain coverage metrics, "gcovr" was used along with gcc coverage flags "--coverage" "-O0"
 
+Coverage Breakdown:
 
+|      File      | Line Coverage  | Branch Coverage |
+| `hash_table.c` | 100% (73/73) | 92.0% (26/28) |
+| `linked_list.c` | 100% (68/68) | 75.0% (15/20) |
+| `iterator.c`    | 97.0% (34/35) | 78.0% (11/14) |
+| `list_iterator.c` | 92.0% (26/28) | 75.0% (6/8) |
+
+* **Tool used:** `gcovr`
+* **Test files excluded:** `linked_list_tests.c`, `list_iterator_tests.c`, `hash_table_tests.c`, `iterator_tests.c`
+
+Coverage comment:
+
+At the moment 2026.10.09 the list_iterator_remove function has not yet been implemeted (it was optional). This lowers the coverage percentage of the list_iterator.c file. 
+
+In the iterator.c file, the ioopm_hash_table_iterator_advance function has a precondition that states that we must be positioned at a valid entry. To ensure this precondition is not violated there is an if statement that states if the current entry is equal to NULL, we dont advance the iterator further. This path is never tested in the iterator_tests.c file. Therefore the lower coverage. 
+
+The branches not taken are in all files either assert statements or if statement. In both cases the statements are there to make sure no precondition is violated. 
