@@ -24,14 +24,14 @@ static size_t string_hash(elem_t key) {
 }
 
 /// @brief Process a single word, updating its frequency
-/// @param ht a hash table containing the frequencies of the words found so far
+/// @param ht a hash table containgccing the frequencies of the words found so far
 /// @param word the word to process
-void process_word(elem_t *word, ioopm_hash_table_t *ht)
+void process_word(char *word, ioopm_hash_table_t *ht)
 {
-  size_t freq = 0;
-  if (ioopm_hash_table_lookup(ht, string_elem(word), &freq))
+  elem_t result;
+  if (ioopm_hash_table_lookup(ht, string_elem(word), &result))
   {
-    ioopm_hash_table_insert(ht, string_elem(word), int_elem(freq + 1));
+    ioopm_hash_table_insert(ht, string_elem(word), int_elem(result.i + 1));
   }
   else
   {
@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
 
   for (size_t i = 0; i < size; ++i)
   {
-    printf("%s: %d\n", freq_words[i].word, freq_words[i].freq);
+    printf("%s: %zu\n", freq_words[i].word, freq_words[i].freq);
   }
 
 

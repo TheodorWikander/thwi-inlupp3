@@ -1,8 +1,8 @@
-Inlupp 1
+# Inlupp 1
 
-Author: Nova Edlund
+# Author: Nova Edlund
 
-Build and run:
+# Build and run:
 Requires gcc, make and the CUnit library (-lcunit) and optionally valgrind to build and run
 
 
@@ -17,7 +17,7 @@ To run freq_count on one or more text files:
 ./freq_coount file1.txt file2.txt
 
 
-Overview of models:
+# Overview of models:
 
 Shared:
 - common.h 
@@ -43,7 +43,7 @@ Application:
 - freq_count.c
 - Counts word frequencys in files using the hash table and hash table iterator
 
-Design choices:
+# Design choices:
 
 Genereic elements:
 All containers (keys/values) stroes their values in union type elem_t. 
@@ -69,11 +69,11 @@ Failiure handling:
 Functions that can not signal failiure through their return values use preconditions in their 
 headers and assert statments in their implementation to crach the program if a precondition is violated
 
-Code coverage report:
+# Code coverage report:
 
 To obtain coverage metrics, "gcovr" was used along with gcc coverage flags "--coverage" "-O0"
 
-Coverage Breakdown:
+# Coverage Breakdown:
 
 |      File      | Line Coverage  | Branch Coverage |
 | `hash_table.c` | 100% (73/73) | 92.0% (26/28) |
@@ -81,13 +81,65 @@ Coverage Breakdown:
 | `iterator.c`    | 97.0% (34/35) | 78.0% (11/14) |
 | `list_iterator.c` | 92.0% (26/28) | 75.0% (6/8) |
 
-* **Tool used:** `gcovr`
-* **Test files excluded:** `linked_list_tests.c`, `list_iterator_tests.c`, `hash_table_tests.c`, `iterator_tests.c`
 
-Coverage comment:
+# Coverage comment:
 
 At the moment 2026.10.09 the list_iterator_remove function has not yet been implemeted (it was optional). This lowers the coverage percentage of the list_iterator.c file. 
 
 In the iterator.c file, the ioopm_hash_table_iterator_advance function has a precondition that states that we must be positioned at a valid entry. To ensure this precondition is not violated there is an if statement that states if the current entry is equal to NULL, we dont advance the iterator further. This path is never tested in the iterator_tests.c file. Therefore the lower coverage. 
 
 The branches not taken are in all files either assert statements or if statement. In both cases the statements are there to make sure no precondition is violated. 
+
+# Initial Profiling Results
+Command to run profiling:
+step one:
+    gcc -Wall -Wextra -g -O2 -fno-inline freq_count.c hash_table.c iterator.c -o freq_count_cg
+
+step two:
+    bash profile.sh
+
+# Top 3 functions
+note: based on number of excecuted instuctions, not time. 
+Information form callgrind, build with -O2 -g -fno-inline
+
+    1k long words:
+    string_hash (42%), strcspn (15,1%), strcmp (6,3%)
+
+    10k words:
+    strcmp (25,7%), strcspn (13,2%), find_previous_entry (11,9%)
+
+    16k long words:
+    strcmp (50,3%), find_previous_entry (17,5%), string_eq (13,2%)
+    
+    small text:
+    __tunables_init (14,4%), do_lookup_x (11,6%), _dl_relocate_object (6,9%)
+
+For each input file, the top 3 functions vary. For a very small file, small.txt, the top three functions are all functions used to start upp the program. So the top three are niether our or library functions, but connected to ld. 
+
+For the 1k-long-words file, our function string_hash dominates (42%!) since the words are very long, the hash function becomes expensive. the other two of the top three, strcspn and strcmp are library functions. In the 1k-long-words file, we only have 23 unique words, so what becomes expensive in this file, is looking at every symbol and chechking that none is a delimiter etc. Since we do not have many words, there will not be very many collisions and therefore only a few short chains. Strcmp has to go through every sign in the word until a delimiter is reached. strcmp is called through string_eq when find_previous_entry goes through a chain. Since we have few unique words, the function are called few times, but each call becomes more expensive. String hash still dominates though, since it has to go through the entrie word every time it is called. This cost O(word lenght) every time. 
+
+For 10k words: 
+For the 10k_words file, the library functions strcmp and strcspn dominates. In this file, we have 199 unique words and since we only have 17 buckets, there will be about 12 elements in each chain. For every search there will therefore be more comparisions done and therefore strcmp is the functions mostly used. strcspn seaches for the first occurence ina. string of any od the specified delimiters, and in this file, there are not quite enogh words for the amout of characters to not matter. The more words we have, the bigger percentage of the program lies in hash table. For this file, we are somewhere in the middle, where the wordcount is big enough for strcmp and outehr functions used to hansdle the hash table becomes important, but the hashing is not that much bugger that the tokenising. 
+
+For the 16k_words file, strcmp, find_previous_entry and string_eq are the top three functions. For this file, we have 4370 unique words and only 17 buckets still, therefore there will be a lot of collisions and logn chains in each bucket. This means that every lookup and insert fucntions is oing to cost a lot more. 
+
+# Conclusion:
+For very small files, the startup of the program costs the most. For programs with a small amout of unique word but with very long words, the hashing and looking for where the word ends dominates. Having to go through every element in each word in order to hash it cost a lot. For files with quite long words but also quite many, we find some kind of middle ground. Where going through each word and looking for where the word ends still costs a lot, but the number of unique words is significant enoght that handling the chaining starts to matter a lot more. For even bigger files with even more unique words the chianing matters even more. We then have more unique words but the same amout of buckets. This means that there will be even more collisions and therefor also longer chains to search when using the lookup and insert functions. Here, the cost of going through each symbokl in the eods becomes less that the cost of looking for the right words.
+
+# Quick ansers initial profiling results
+
+For each input, what are the top 3 functions?
+    See table under the #Top 3 functions heading. 
+
+For each input, are the top 3 functions in your code (that you have written), or is it in library functions?
+    Mixed. See discussion above.
+
+Are the top 3 functions in your code consistent across the inputs? Why? Why not?
+    No, see conculsion above
+
+Is there some kind of trend? (Possibly several)
+    Yes, see conclusion above. (Depending on the size of each wor, and the amount of words, and the size of the file, different functions will dominate)
+Do the results correspond with your expectations?
+    Yes. Seems very resonable and exected since we have the fixed number of bucket No_buckets = 17;
+Based on these results, do you see a way to make your program go faster?
+    Yes. For very small files, we can se that program startup dominates, not much to do about this. For files with long words but not many we see that hashing costs the most, this is also difficult to do much about, except perhaps chanching the hash function. But over all, very expected result. However when looking at the bigger files, we can see an intresting pattern where we see that handiling collsions becpmes more and more expensive. Finding where to go in a hash table is O(1), but going through the chain at each bucket is O(n) where n is the amount of elements in the cahin. Therefore the best way to amke the program faster, seems to be to add more buckets, or even better, add functionality for the hash table resizing. 
