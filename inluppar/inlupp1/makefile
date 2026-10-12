@@ -29,10 +29,10 @@ linked_list_test: linked_list_tests
 list_iterator_test: list_iterator_tests
 	./list_iterator_tests
 
-hash_table_test:
+hash_table_test: hash_table_tests
 	./hash_table_tests
 
-iterator_test: 
+iterator_test: iterator_tests
 	./iterator_tests
 
 test: hash_table_test iterator_test linked_list_test list_iterator_test
