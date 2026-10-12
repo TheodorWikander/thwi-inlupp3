@@ -1,0 +1,24 @@
+== 10k-words.txt: 199 unika ord ==
+12,509,974 (100.0%)  PROGRAM TOTALS
+3,216,248 (25.71%)  ./string/../sysdeps/x86_64/multiarch/strcmp-sse4_2.S:__strcmp_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+1,647,238 (13.17%)  ./string/../string/strcspn.c:__strcspn_generic [/usr/lib/x86_64-linux-gnu/libc.so.6]
+1,484,366 (11.87%)  hash_table.c:find_previous_entry [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+
+== 16k-words.txt: 4370 unika ord ==
+132,624,062 (100.0%)  PROGRAM TOTALS
+66,742,284 (50.32%)  ./string/../sysdeps/x86_64/multiarch/strcmp-sse4_2.S:__strcmp_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+23,229,308 (17.52%)  hash_table.c:find_previous_entry [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+17,458,518 (13.16%)  freq_count.c:string_eq [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+
+== 1k-long-words.txt: 23 unika ord ==
+2,420,010 (100.0%)  PROGRAM TOTALS
+1,016,192 (41.99%)  freq_count.c:string_hash [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+  364,564 (15.06%)  ./string/../string/strcspn.c:__strcspn_generic [/usr/lib/x86_64-linux-gnu/libc.so.6]
+  152,776 ( 6.31%)  ./string/../sysdeps/x86_64/multiarch/strcmp-sse4_2.S:__strcmp_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+
+== small.txt: 27 unika ord ==
+236,232 (100.0%)  PROGRAM TOTALS
+33,989 (14.39%)  ./elf/./elf/dl-tunables.c:__GI___tunables_init [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+27,453 (11.62%)  ./elf/./elf/dl-lookup.c:do_lookup_x [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+16,210 ( 6.86%)  ./elf/./elf/dl-reloc.c:_dl_relocate_object [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+
