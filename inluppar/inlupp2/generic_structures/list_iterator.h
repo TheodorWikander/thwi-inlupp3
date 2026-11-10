@@ -26,13 +26,12 @@ void ioopm_list_iterator_advance(ioopm_list_iterator_t *iter);
 /// @return the current element
 elem_t ioopm_list_iterator_current(ioopm_list_iterator_t *iter);
 
-/// NOTE: REMOVE IS OPTIONAL TO IMPLEMENT
+/// NOTE: NOT IMPLEMENTED (optional) (returns int_elem(-1) and does nothing)
 /// @brief Remove the current element from the underlying list
 /// @param iter the iterator
 /// @return the removed element
 elem_t ioopm_list_iterator_remove(ioopm_list_iterator_t *iter);
 
-/// NOTE: INSERT IS OPTIONAL TO IMPLEMENT
 /// @brief Insert a new element into the underlying list making the current element it's next
 /// @param iter the iterator
 /// @param element the element to be inserted

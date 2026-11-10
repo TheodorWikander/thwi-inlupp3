@@ -42,19 +42,6 @@ bool not_empty(char *str)
   return strlen(str) > 0;
 }
 
-bool is_shelf(char *str)
-{
-  if (strlen(str) != 3)
-  {
-    return false;
-  }
-  if (str[0] < 'A' || str[0] > 'Z')
-  {
-    return false;
-  }
-  return isdigit(str[1]) && isdigit(str[2]);
-}
-
 int read_string(char *buf, int buf_siz)
 {
   int i = 0;
@@ -79,8 +66,13 @@ answer_t ask_question(char *question, check_func *check, convert_func *convert)
   char buf[buf_siz];
   do
   {
-    printf("%s\n", question);
+    printf("%s", question);
     read_string(buf, buf_siz);
+    //added check to stop program if there is no more input to read and data is invalid 2026.11.10
+    if (feof(stdin) && !check(buf)) {
+      fprintf(stderr, "Unexpected end of input\n");
+      exit(1);
+    }
   }
   while (!check(buf));
   return convert(buf);
@@ -91,7 +83,7 @@ static answer_t to_int(char *str)
   return (answer_t) { .int_value = atoi(str) };
 }
 
-static answer_t to_string(char *str)
+answer_t to_string(char *str)
 {
   return (answer_t) { .string_value = strdup(str) };
 }
@@ -105,11 +97,6 @@ int ask_question_int(char *question)
 char *ask_question_string(char *question)
 {
   return ask_question(question, not_empty, to_string).string_value;
-}
-
-char *ask_question_shelf(char *question)
-{
-  return ask_question(question, is_shelf, to_string).string_value;
 }
 
 static answer_t to_char(char *str)

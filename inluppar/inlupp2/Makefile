@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g -std=gnu11 --coverage
 LIBS = -lcunit
+SCRIPT = webstoretest.txt
 
 STRUCT_DIR = generic_structures
 UTILS_DIR = generic_utils
@@ -20,7 +21,6 @@ UI = 		$(UI_DIR)/ui.c
 store_app: $(UI_DIR)/main.c $(UI) $(LOGIC) $(GENERIC)
 	$(CC) $(CFLAGS) $^ -o $@
 
-
 tests_bin: $(TEST_DIR)/store_tests.c $(LOGIC) $(GENERIC)
 	$(CC) $(CFLAGS) $^ -o $@ $(LIBS)
 
@@ -33,8 +33,17 @@ memtest: tests_bin
 run: store_app
 	./store_app
 
+stdrun: store_app
+	./store_app < $(SCRIPT)
+
+stdmemtest: store_app
+	valgrind --leak-check=full --show-leak-kinds=all ./store_app < $(SCRIPT)
+
 clean: 
 	rm -f store_app tests_bin
-	find . -name "*.gcda" -o -name "*.gcno" -o -name "*.gcov" | xargs rm -f
+	find . \( -name "*.gcda" -o -name "*.gcno" -o -name "*.gcov" \) -delete
 
-.PHONY: test memtest run clean
+coverage: clean tests_bin
+	./tests_bin > /dev/null
+	@for f in tests_bin-*.gcda; do gcov -b $$f; done | grep -A3 -E "^File '[a-z_]+/[a-z_]+\.c'"
+.PHONY: test memtest run stdrun stdmemtest coverage clean

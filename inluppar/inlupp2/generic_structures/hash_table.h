@@ -8,7 +8,9 @@
 * @file hash_table.h
 * @author Nova Edlund
 * @date 2026.09.28
-* @brief Simple hash table that maps elem_t keys to elem_t values.
+* @brief Generic hash table that maps elem_t keys to elem_t values.
+*        the hash function and key equality function are given at creation
+*        the hash table does not copy or free keys and values, only stores them
 *
 * Violating a precondition will crash the program (assert)
 */ 
@@ -22,11 +24,12 @@ typedef struct hash_table ioopm_hash_table_t;
 /// @return A new empty hash table
 ioopm_hash_table_t *ioopm_hash_table_create(ioopm_hash_function *hash_fn, ioopm_eq_function *key_eq_fn);
 
-/// @brief Delete a hash table and free its memory
+/// @brief Delete a hash table and free its entries, but not the keys or values they point to
 /// @param ht a hash table to be deleted
 void ioopm_hash_table_destroy(ioopm_hash_table_t *ht);
 
-/// @brief add key => value entry in hash table ht
+/// @brief add key => value entry in hash table ht. If key already exist in ht
+///        value is updated and the key is kept unchanged (the new key passed in is NOT stored)
 /// @param ht hash table operated upon
 /// @param key key to insert
 /// @pre key is not NULL
