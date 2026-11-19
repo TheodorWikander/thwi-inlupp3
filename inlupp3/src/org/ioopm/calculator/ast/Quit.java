@@ -1,5 +1,9 @@
 package org.ioopm.calculator.ast;
 
 public class Quit extends Command{
-    private boolean quit;
+    
+    public Quit(SymbolicExpression string) {
+        super(string);
+    }
+    
 }

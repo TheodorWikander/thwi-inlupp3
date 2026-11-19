@@ -1,5 +1,11 @@
 package org.ioopm.calculator.ast;
 
 public class Multiplication extends Binary{
-    //Tom tills vi behöver lägga in en variabel
+    public Multiplication(SymbolicExpression lhs, SymbolicExpression rhs) {
+        super(lhs, rhs);   
+    }
+
+    public String getName() {
+        return "*";
+    }
 }
