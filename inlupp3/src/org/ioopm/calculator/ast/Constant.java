@@ -6,4 +6,9 @@ public class Constant extends Atom{
     public Constant(double value) {
         this.value = value;
     }
+
+    @Override
+    public boolean isConstant(){
+        return true;
+    }
 }
