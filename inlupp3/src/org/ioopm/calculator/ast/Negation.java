@@ -6,6 +6,7 @@ public class Negation extends Unary{
         super(freakyMath);
     }
 
+    @Override 
     public String getName() {
         return "negation";
     }

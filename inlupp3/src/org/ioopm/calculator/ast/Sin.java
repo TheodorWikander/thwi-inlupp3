@@ -6,6 +6,7 @@ public class Sin extends Unary{
         super(freakyMath);
     }
 
+    @Override 
     public String getName() {
         return "sin";
     }

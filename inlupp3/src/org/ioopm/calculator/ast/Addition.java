@@ -9,5 +9,10 @@ public class Addition extends Binary{
     public String getName() {
         return "+";
     }
+
+    @Override 
+    public int getPriority() {
+        return 50;
+    }
 }
 
