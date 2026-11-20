@@ -4,11 +4,16 @@ all:
 run:
 	java -cp classes org.ioopm.calculator.Calculator
 
-comptest:
-	javac -cp classes -d classes Test.java
+test: 
+	javac -sourcepath src Test.java
 
-runtest:
-	java -cp classes Test
+runtest: 
+	java -cp .:src Test
 
+runtest-assert: 
+	java -enableassertions -cp .:src Test
+	
 clean:
-	rm -rf classes
+	find . -name "*.class" -type f -delete
+
+

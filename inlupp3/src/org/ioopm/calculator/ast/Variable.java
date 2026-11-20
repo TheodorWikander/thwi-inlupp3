@@ -6,4 +6,8 @@ public class Variable extends Atom{
     public Variable(String identifier) {
         this.identifier = identifier;
     }
+
+    public String toString() {
+    return identifier;
+    }
 }
