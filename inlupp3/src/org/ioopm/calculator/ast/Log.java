@@ -6,6 +6,7 @@ public class Log extends Unary{
         super(freakyMath);
     }
 
+    @Override
     public String getName() {
         return "log";
     }

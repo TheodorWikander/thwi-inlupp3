@@ -6,6 +6,7 @@ public class Assignment extends Binary {
         super(lhs, rhs);
     }
 
+    @Override
     public String getName() {
         return "assignment";
     }

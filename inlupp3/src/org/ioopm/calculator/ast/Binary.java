@@ -8,4 +8,8 @@ public abstract class Binary extends SymbolicExpression {
         this.lhs = lhs;
         this.rhs = rhs;
     }
+
+    public String toString() {
+        return lhs.getValue() + "" + this.getName() + "" + rhs.getValue();
+    }
 }
