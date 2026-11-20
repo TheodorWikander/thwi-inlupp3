@@ -8,6 +8,6 @@ public class Assignment extends Binary {
 
     @Override
     public String getName() {
-        return "assignment";
+        return "=";
     }
 }

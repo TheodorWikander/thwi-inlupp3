@@ -9,6 +9,7 @@ public abstract class Binary extends SymbolicExpression {
         this.rhs = rhs;
     }
 
+    @Override 
     public String toString() {
         return lhs.getValue() + "" + this.getName() + "" + rhs.getValue();
     }
