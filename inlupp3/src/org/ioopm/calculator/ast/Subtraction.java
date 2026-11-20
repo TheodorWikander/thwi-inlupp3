@@ -5,12 +5,13 @@ public class Subtraction extends Binary{
         super(lhs, rhs);   
     }
 
-    @Override 
+
+    @Override
     public String getName() {
         return "-";
     }
 
-    @Override 
+    @Override
     public int getPriority() {
         return 50;
     }

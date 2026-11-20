@@ -1,5 +1,6 @@
 package org.ioopm.calculator.ast;
 
+
 public class Constant extends Atom{
     private double value;
     
@@ -7,12 +8,17 @@ public class Constant extends Atom{
         this.value = value;
     }
 
-    @Override 
+    
+    public String toString() {
+    return String.valueOf(this.value);
+    }
+
+    @Override
     public boolean isConstant() {
         return true;
     }
 
-    @Override 
+    @Override
     public double getValue() {
         return this.value;
     }

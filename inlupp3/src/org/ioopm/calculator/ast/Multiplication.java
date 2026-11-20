@@ -5,7 +5,8 @@ public class Multiplication extends Binary{
         super(lhs, rhs);   
     }
 
-    @Override 
+
+    @Override
     public String getName() {
         return "*";
     }

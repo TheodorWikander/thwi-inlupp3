@@ -10,7 +10,7 @@ public class Addition extends Binary{
         return "+";
     }
 
-    @Override 
+    @Override
     public int getPriority() {
         return 50;
     }

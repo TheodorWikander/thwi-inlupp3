@@ -5,7 +5,8 @@ public class Division extends Binary{
         super(lhs, rhs);   // anropar Binary(lhs, rhs)
     }
 
-    @Override 
+
+    @Override
     public String getName() {
         return "/";
     }

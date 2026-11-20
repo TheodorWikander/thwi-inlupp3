@@ -6,12 +6,13 @@ public class Exp extends Unary{
         super(freakyMath);
     }
 
-    @Override 
+
+    @Override
     public String getName() {
         return "exp";
     }
 
-    @Override 
+    @Override
     public int getPriority() {
         return 150;
     }

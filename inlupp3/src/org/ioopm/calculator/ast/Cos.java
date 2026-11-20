@@ -6,7 +6,7 @@ public class Cos extends Unary{
         super(freakyMath);
     }
 
-    @Override 
+    @Override
     public String getName() {
         return "cos";
     }
