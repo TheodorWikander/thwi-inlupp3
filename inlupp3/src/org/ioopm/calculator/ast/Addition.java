@@ -5,7 +5,7 @@ public class Addition extends Binary{
         super(lhs, rhs);   // anropar Binary(lhs, rhs)
     }
 
-
+    @Override
     public String getName() {
         return "+";
     }
