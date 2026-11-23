@@ -31,10 +31,10 @@ public class Test{
 
         SymbolicExpression s = new Subtraction(vX, c1);
         SymbolicExpression d = new Division(s, vY);
-        testPrinting("(x -5.0) / y", d);
+        testPrinting("(x - 5.0) / y", d);
 
         SymbolicExpression nestedsub = new Subtraction(vX, new Subtraction(c1, c2));
-        testPrinting("x - (5.0 -2.0)", nestedsub);
+        testPrinting("x - (5.0 - 2.0)", nestedsub);
 
         SymbolicExpression sinExpr = new Sin(vX);
         SymbolicExpression cosExpr = new Cos(new Addition(vX, c1));

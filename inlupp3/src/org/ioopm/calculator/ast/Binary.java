@@ -11,6 +11,21 @@ public abstract class Binary extends SymbolicExpression {
 
     @Override 
     public String toString() {
-        return this.lhs.toString() + "" + this.getName() + "" + this.rhs.toString();
+        String s = "";
+        if (this.lhs.getPriority() < this.getPriority()) {
+            s = "(" + this.lhs.toString() + ")";
+        } else {
+            s = this.lhs.toString();
+        }
+
+        s = s + " " + this.getName() + " ";
+
+        if (this.rhs.getPriority() < this.getPriority()) {
+            s = s + "(" + this.rhs.toString() + ")";
+        } else {
+            s = s + this.rhs.toString();
+        }
+
+        return s.toString();
     }
 }

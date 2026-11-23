@@ -8,7 +8,7 @@ public class Negation extends Unary{
 
     @Override
     public String getName() {
-        return "negation";
+        return "-";
     }
 
     //Kanske sätta en priority för just den här, om det är typ -10 * -10.
