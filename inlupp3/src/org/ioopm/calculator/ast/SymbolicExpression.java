@@ -18,8 +18,6 @@ public abstract class SymbolicExpression {
     public double getValue() {
         throw new RuntimeException("getValue() did not return a constant");
     }
-
-    public SymbolicExpression eval() {
-        throw new RuntimeException("Wow funkar inte");
-    }
+    
+    public abstract SymbolicExpression eval();
 }

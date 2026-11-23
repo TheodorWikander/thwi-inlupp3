@@ -8,6 +8,10 @@ public abstract class Unary extends SymbolicExpression{
        this.argument = argument;
     }
 
+    public SymbolicExpression getArgument() {
+        return this.argument;
+    }
+
     public String toString() {
     /// Note how the call to toString() is not necessary
     return this.getName() + "(" + this.argument + ")";

@@ -13,6 +13,14 @@ public abstract class Binary extends SymbolicExpression {
         return this.lhs.equals(other.lhs) && this.rhs.equals(other.rhs);
     }
 
+    public SymbolicExpression getLeft() {
+        return this.lhs;
+    }
+
+    public SymbolicExpression getRight() {
+        return this.rhs;
+    }
+
     @Override 
     public String toString() {
         String s = "";

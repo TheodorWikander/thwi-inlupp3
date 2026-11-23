@@ -22,4 +22,9 @@ public class Variable extends Atom{
     public boolean equals(Variable other) {
         return this.identifier.equals(other.identifier);
     }
+
+    @Override
+    public SymbolicExpression eval() {
+        return this;   
+    }
 }

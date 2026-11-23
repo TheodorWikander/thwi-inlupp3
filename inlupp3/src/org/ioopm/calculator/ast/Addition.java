@@ -18,6 +18,17 @@ public class Addition extends Binary{
     public boolean equals(Addition other) {
         return this.sameOperands(other);
     }
+
+    @Override 
+    public SymbolicExpression eval() {
+        SymbolicExpression lhs = this.getLeft().eval();
+        SymbolicExpression rhs = this.getRight().eval();
+        if(lhs.isConstant() && rhs.isConstant()) {
+           return new Constant(lhs.getValue() + rhs.getValue());
+        }  else {
+            return new Addition(lhs, rhs);
+        }
+    }
     
 }
 
