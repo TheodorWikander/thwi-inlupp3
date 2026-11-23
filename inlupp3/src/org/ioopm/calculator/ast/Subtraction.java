@@ -15,4 +15,8 @@ public class Subtraction extends Binary{
     public int getPriority() {
         return 50;
     }
+
+    public boolean equals(Subtraction other) {
+        return this.sameOperands(other);
+    }
 }

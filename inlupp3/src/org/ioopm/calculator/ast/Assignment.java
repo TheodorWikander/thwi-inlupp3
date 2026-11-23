@@ -15,4 +15,9 @@ public class Assignment extends Binary {
     public int getPriority() {
         return 25;
     }
+
+
+    public boolean equals(Assignment other) {
+        return this.sameOperands(other);
+    }
 }

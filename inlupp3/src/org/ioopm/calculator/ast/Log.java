@@ -10,4 +10,9 @@ public class Log extends Unary{
     public String getName() {
         return "log";
     }
+
+
+    public boolean equals(Log other) {
+        return this.sameOperands(other);
+    }
 }

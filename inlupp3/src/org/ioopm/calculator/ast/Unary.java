@@ -1,7 +1,7 @@
 package org.ioopm.calculator.ast;
 
 public abstract class Unary extends SymbolicExpression{
-    private SymbolicExpression freakyMath;
+    
     private SymbolicExpression argument;
 
     public Unary(SymbolicExpression argument) {
@@ -11,5 +11,10 @@ public abstract class Unary extends SymbolicExpression{
     public String toString() {
     /// Note how the call to toString() is not necessary
     return this.getName() + "(" + this.argument + ")";
-}
+    }
+
+    protected boolean sameOperands(Unary other) {
+        return this.argument.equals(other.argument);
+    }
+    
 }

@@ -16,4 +16,8 @@ public class Exp extends Unary{
     public int getPriority() {
         return 150;
     }
+
+    public boolean equals(Exp other) {
+        return this.sameOperands(other);
+    }
 }

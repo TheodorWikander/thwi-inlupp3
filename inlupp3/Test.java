@@ -1,3 +1,4 @@
+
 import org.ioopm.calculator.ast.*;
 
 public class Test{
@@ -10,7 +11,18 @@ public class Test{
         System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
         }
         assert expected.equals(actual) : "Expected '" + expected + "'but got '" + actual + "'";
+    }   
+
+
+    public static void testEvaluating(SymbolicExpression expected, SymbolicExpression e) {
+    SymbolicExpression r = e.eval();
+    if (r.equals(expected)) {
+        System.out.println("Passed: " + e);
+    } else {
+        System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
+        }
     }
+
 
     public static void main(String[] args) {
         Constant c1 = new Constant(5);
@@ -54,6 +66,10 @@ public class Test{
             new Negation(new Division(vY, c3))
         );
         testPrinting("sin(2.0 * x) * -(y / 42.0)", complex);
+
+        SymbolicExpression c = new Addition(new Constant(5), new Constant(37));
+        SymbolicExpression b = new Constant(42);
+        testEvaluating(b, c); /// Tests if reducing a returns b (it should!)
 
     }
 

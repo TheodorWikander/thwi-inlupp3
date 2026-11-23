@@ -10,4 +10,8 @@ public class Cos extends Unary{
     public String getName() {
         return "cos";
     }
+
+    public boolean equals(Cos other) {
+        return this.sameOperands(other);
+    }
 }

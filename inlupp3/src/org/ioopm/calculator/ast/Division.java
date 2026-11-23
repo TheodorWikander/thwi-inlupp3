@@ -10,4 +10,8 @@ public class Division extends Binary{
     public String getName() {
         return "/";
     }
+
+    public boolean equals(Division other) {
+        return this.sameOperands(other);
+    }
 }

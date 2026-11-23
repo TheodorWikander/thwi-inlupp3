@@ -15,6 +15,9 @@ public class Addition extends Binary{
         return 50;
     }
 
+    public boolean equals(Addition other) {
+        return this.sameOperands(other);
+    }
     
 }
 
