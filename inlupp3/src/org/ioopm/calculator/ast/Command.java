@@ -6,4 +6,9 @@ public abstract class Command extends SymbolicExpression{
     public Command(SymbolicExpression string) {
         this.string = string;
     }
+
+    @Override 
+    public SymbolicExpression eval(Environment vars) {
+        throw new RuntimeException("Commands cannot be evaluated!");
+    }
 }

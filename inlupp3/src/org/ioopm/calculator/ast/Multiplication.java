@@ -18,9 +18,9 @@ public class Multiplication extends Binary{
     }
 
     @Override
-    public SymbolicExpression eval() {
-        SymbolicExpression lhs = this.getLeft().eval();
-        SymbolicExpression rhs = this.getRight().eval();
+    public SymbolicExpression eval(Environment vars) {
+        SymbolicExpression lhs = this.getLeft().eval(vars);
+        SymbolicExpression rhs = this.getRight().eval(vars);
         if(lhs.isConstant() && rhs.isConstant()) {
            return new Constant(lhs.getValue() * rhs.getValue());
         }  else {

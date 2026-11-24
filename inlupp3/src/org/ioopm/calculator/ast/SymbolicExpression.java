@@ -19,5 +19,5 @@ public abstract class SymbolicExpression {
         throw new RuntimeException("getValue() did not return a constant");
     }
     
-    public abstract SymbolicExpression eval();
+    public abstract SymbolicExpression eval(Environment vars);
 }

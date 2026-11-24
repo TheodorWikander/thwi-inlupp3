@@ -24,7 +24,16 @@ public class Variable extends Atom{
     }
 
     @Override
-    public SymbolicExpression eval() {
-        return this;   
+    public SymbolicExpression eval(Environment vars) {
+        if (vars.containsKey(this)) {
+            return vars.get(this);
+        } else {
+            return this;
+        }
+    }
+
+    @Override 
+    public int hashCode() {
+        return this.identifier.hashCode();
     }
 }
