@@ -16,6 +16,11 @@ public class Division extends Binary{
     }
 
     @Override
+    public int getPriority () {
+    return 75;
+    }
+
+    @Override
     public SymbolicExpression eval(Environment vars) {
         SymbolicExpression lhs = this.getLeft().eval(vars);
         SymbolicExpression rhs = this.getRight().eval(vars);

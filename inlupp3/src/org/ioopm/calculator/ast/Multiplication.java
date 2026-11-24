@@ -17,6 +17,12 @@ public class Multiplication extends Binary{
         return this.sameOperands(other);
     }
 
+    
+    @Override
+    public int getPriority () {
+    return 75;
+    }
+
     @Override
     public SymbolicExpression eval(Environment vars) {
         SymbolicExpression lhs = this.getLeft().eval(vars);
