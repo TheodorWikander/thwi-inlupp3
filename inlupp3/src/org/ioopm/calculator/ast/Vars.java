@@ -7,10 +7,9 @@ public class Vars extends Command{
     public static Vars instance() {
         return theInstance;
     }
-    /// The rest of the code
-    @Override
-    public SymbolicExpression eval() {
-    return null;
-    }
 
+    @Override
+    public boolean isCommand() {
+    return true;
+    }
 }

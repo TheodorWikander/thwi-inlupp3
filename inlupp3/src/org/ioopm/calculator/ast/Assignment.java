@@ -22,13 +22,15 @@ public class Assignment extends Binary {
     }
 
     @Override
-    public SymbolicExpression eval() {
-        SymbolicExpression lhs = this.getLeft().eval();
-        SymbolicExpression rhs = this.getRight().eval();
-        if(lhs.isConstant() && rhs.isConstant()) {
-           return new Constant(lhs.getValue() + rhs.getValue());
-        }  else {
-            return new Assignment(lhs, rhs);
+    public SymbolicExpression eval(Environment vars) {
+        SymbolicExpression lhs = this.getLeft().eval(vars);
+        SymbolicExpression rhs = this.getRight();
+
+        if (rhs instanceof Variable) {
+            vars.put((Variable) rhs, lhs);
+            return lhs;
+        } else {
+            throw new RuntimeException("Right hand side of assignment must be a variable");
         }
     }
 }

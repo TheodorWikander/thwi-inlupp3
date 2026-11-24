@@ -37,7 +37,7 @@ public class Constant extends Atom{
     }
 
     @Override
-    public SymbolicExpression eval() {
+    public SymbolicExpression eval(Environment vars) {
     return this;   // okänt värde, kan inte förenklas
 }
 }

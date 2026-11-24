@@ -9,6 +9,16 @@ public abstract class Binary extends SymbolicExpression {
         this.rhs = rhs;
     }
 
+    @Override 
+    public boolean equals(Object other) {
+        if(other instanceof Binary) {
+            Binary tmp = (Binary) other;
+            return this.getName().equals(tmp.getName()) && this.sameOperands(tmp);
+        } else {
+            return false;
+        }
+    }
+
     protected boolean sameOperands(Binary other) {
         return this.lhs.equals(other.lhs) && this.rhs.equals(other.rhs);
     }
@@ -40,4 +50,5 @@ public abstract class Binary extends SymbolicExpression {
 
         return s.toString();
     }
+
 }

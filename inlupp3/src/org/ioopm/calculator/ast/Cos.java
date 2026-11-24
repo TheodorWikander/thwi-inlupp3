@@ -16,15 +16,14 @@ public class Cos extends Unary{
         return this.sameOperands(other);
     }
 
-     @Override
-    public SymbolicExpression eval() {
-    SymbolicExpression arg = this.getArgument().eval();
+    @Override
+    public SymbolicExpression eval(Environment vars) {
+    SymbolicExpression arg = this.getArgument().eval(vars);
     if (arg.isConstant()) {
         return new Constant(Math.cos(arg.getValue()));
     } else {
         return new Cos(arg);
     }
+    }   
 }
 
-
-}

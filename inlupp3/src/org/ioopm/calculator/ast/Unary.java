@@ -20,5 +20,14 @@ public abstract class Unary extends SymbolicExpression{
     protected boolean sameOperands(Unary other) {
         return this.argument.equals(other.argument);
     }
-    
+
+    @Override 
+    public boolean equals(Object other) {
+        if(other instanceof Unary) {
+            Unary tmp = (Unary) other;
+            return this.getName().equals(tmp.getName()) && this.sameOperands(tmp);
+        } else {
+            return false;
+        }
+    }
 }
