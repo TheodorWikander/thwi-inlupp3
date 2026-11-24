@@ -1,5 +1,6 @@
 package org.ioopm.calculator.ast;
 
+
 public abstract class SymbolicExpression {
     
     public boolean isConstant() {
@@ -17,4 +18,6 @@ public abstract class SymbolicExpression {
     public double getValue() {
         throw new RuntimeException("getValue() did not return a constant");
     }
+    
+    public abstract SymbolicExpression eval();
 }

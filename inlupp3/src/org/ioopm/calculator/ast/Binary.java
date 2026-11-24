@@ -9,6 +9,18 @@ public abstract class Binary extends SymbolicExpression {
         this.rhs = rhs;
     }
 
+    protected boolean sameOperands(Binary other) {
+        return this.lhs.equals(other.lhs) && this.rhs.equals(other.rhs);
+    }
+
+    public SymbolicExpression getLeft() {
+        return this.lhs;
+    }
+
+    public SymbolicExpression getRight() {
+        return this.rhs;
+    }
+
     @Override 
     public String toString() {
         String s = "";

@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
+import javax.swing.plaf.multi.MultiButtonUI;
+
 public class Multiplication extends Binary{
     public Multiplication(SymbolicExpression lhs, SymbolicExpression rhs) {
         super(lhs, rhs);   
@@ -9,5 +11,20 @@ public class Multiplication extends Binary{
     @Override
     public String getName() {
         return "*";
+    }
+
+    public boolean equals(Multiplication other) {
+        return this.sameOperands(other);
+    }
+
+    @Override
+    public SymbolicExpression eval() {
+        SymbolicExpression lhs = this.getLeft().eval();
+        SymbolicExpression rhs = this.getRight().eval();
+        if(lhs.isConstant() && rhs.isConstant()) {
+           return new Constant(lhs.getValue() * rhs.getValue());
+        }  else {
+            return new Multiplication(lhs, rhs);
+        }
     }
 }
