@@ -41,12 +41,11 @@ public abstract class Binary extends SymbolicExpression {
         }
 
         s = s + " " + this.getName() + " ";
-
-        if (this.rhs.getPriority() < this.getPriority()) {
+        if (this.rhs.getPriority() <= this.getPriority()) {
             s = s + "(" + this.rhs.toString() + ")";
         } else {
             s = s + this.rhs.toString();
-        }
+            }
 
         return s.toString();
     }

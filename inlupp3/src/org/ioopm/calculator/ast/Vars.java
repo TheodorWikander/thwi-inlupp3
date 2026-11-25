@@ -7,7 +7,7 @@ public class Vars extends Command{
         return theInstance;
     }
 
-    public Vars(SymbolicExpression string) {
-        super(string);
+    public boolean isCommand() {
+        return true;
     }
 }

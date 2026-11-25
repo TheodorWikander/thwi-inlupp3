@@ -19,8 +19,6 @@ public class Addition extends Binary{
         return this.sameOperands(other);
     }
 
-
-
     @Override 
     public SymbolicExpression eval(Environment vars) {
         SymbolicExpression lhs = this.getLeft().eval(vars);

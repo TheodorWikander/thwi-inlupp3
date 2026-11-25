@@ -26,6 +26,10 @@ public class Assignment extends Binary {
         SymbolicExpression lhs = this.getLeft().eval(vars);
         SymbolicExpression rhs = this.getRight();
 
+        if (rhs instanceof NamedConstant) {
+            throw new IllegalAssignmentException("Named constant cannom be reassigned");
+        }
+
         if (rhs instanceof Variable) {
             vars.put((Variable) rhs, lhs);
             return lhs;

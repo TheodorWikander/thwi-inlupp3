@@ -1,5 +1,6 @@
 package org.ioopm.calculator.ast;
 
+import java.util.HashMap;
 
 public abstract class SymbolicExpression {
     
@@ -20,4 +21,9 @@ public abstract class SymbolicExpression {
     }
     
     public abstract SymbolicExpression eval(Environment vars);
+
+    public boolean isCommand() {
+        return false;
+    }
+
 }

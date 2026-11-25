@@ -5,6 +5,11 @@ public class Division extends Binary{
         super(lhs, rhs);   // anropar Binary(lhs, rhs)
     }
 
+    @Override 
+    public int getPriority() {
+        return 75;
+    }
+
 
     @Override
     public String getName() {

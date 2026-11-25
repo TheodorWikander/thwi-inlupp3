@@ -1,5 +1,6 @@
 
 import org.ioopm.calculator.ast.*;
+import org.ioopm.calculator.parser.CalculatorParser;
 
 public class Test{
 
@@ -20,6 +21,15 @@ public class Test{
         System.out.println("Passed: " + e);
     } else {
         System.out.println("Error: expected '" + expected + "' but got '" + r + "'");
+        }
+    }
+
+    public static void testEvaluatingThrows(SymbolicExpression e, Environment vars) {
+        try {
+            SymbolicExpression r = e.eval(vars);
+            System.out.println("Error: expected IllegalAssignmentException for '" + e + "' but got '" + r + "'");
+        } catch (IllegalAssignmentException ex) {
+            System.out.println("Passed: " + e + " threw IllegalAssignmentException (" + ex.getMessage() + ")");
         }
     }
 
@@ -134,8 +144,96 @@ public class Test{
 
         testEvaluating(new Variable("x"), vX, new Environment());
 
-    }
+        NamedConstant pi = new NamedConstant("pi");
+        NamedConstant answer = new NamedConstant("Answer");
 
+        // Skrivs ut med sitt namn, inte sitt värde
+        testPrinting("pi", pi);
+        testPrinting("Answer", answer);
+
+        // I ett större uttryck
+        testPrinting("Answer + x", new Addition(answer, new Variable("x")));
+
+        // Evalueras till ett tal (om ni låter eval returnera Constant)
+        testEvaluating(new Constant(42), answer, new Environment());
+        testEvaluating(new Constant(Math.PI), pi, new Environment());
+
+        // Svaret på allt: Answer + Answer = 84
+        testEvaluating(new Constant(84), new Addition(answer, answer), new Environment());
+
+        // Delvis reducerbart: Answer + x ska bli 42.0 + x
+        testEvaluating(new Addition(new Constant(42), new Variable("x")),
+                    new Addition(answer, new Variable("x")),
+                    new Environment());
+        
+        
+        if (answer.isConstant() && answer.getValue() == 42) {
+        System.out.println("Passed: NamedConstant isConstant/getValue");
+        } else {
+            System.out.println("Error: NamedConstant isConstant/getValue");
+        }
+        
+        // 43 = Answer  ska kasta IllegalAssignmentException
+        testEvaluatingThrows(
+            new Assignment(new Constant(43), new NamedConstant("Answer")),
+            new Environment());
+
+        // Även pi
+        testEvaluatingThrows(
+            new Assignment(new Constant(3), new NamedConstant("pi")),
+            new Environment());
+
+        // Tilldelning av ett uttryck: x + 1 = Answer
+        testEvaluatingThrows(
+            new Assignment(new Addition(new Variable("x"), new Constant(1)),
+                        new NamedConstant("Answer")),
+            new Environment());
+
+        Environment env1 = new Environment();
+        testEvaluatingThrows(
+            new Assignment(new Constant(43), new NamedConstant("Answer")),
+            env1);
+        if (env1.isEmpty()) {
+            System.out.println("Passed: environment unchanged after illegal assignment");
+        } else {
+            System.out.println("Error: environment was modified: " + env1);
+        }
+
+        // Tilldela till vanlig variabel med namngiven konstant som värde: Answer = x
+        Environment env2 = new Environment();
+        testEvaluating(new Constant(42),
+                    new Assignment(new NamedConstant("Answer"), new Variable("x")),
+                    env2);
+
+        // 3 = x ska fortfarande fungera
+        testEvaluating(new Constant(3),
+                    new Assignment(new Constant(3), new Variable("x")),
+                    new Environment());
+    
+
+        String[] names = {"pi", "e", "Answer", "L"};
+        for (String n : names) {
+            if (Constants.namedConstants.containsKey(n)) {
+                System.out.println("Passed: Constants contains " + n);
+            } else {
+                System.out.println("Error: Constants is missing " + n);
+            }
+        }
+
+        if (Constants.namedConstants.get("Answer") == 42.0) {
+            System.out.println("Passed: Answer == 42");
+        } else {
+            System.out.println("Error: Answer should be 42");
+        }
+
+        if (!Constants.namedConstants.containsKey("x")) {
+            System.out.println("Passed: x is not a named constant");
+        } else {
+            System.out.println("Error: x should not be a named constant");
+        }
+
+        
+    }
 }
 
 

@@ -13,6 +13,11 @@ public class Multiplication extends Binary{
         return "*";
     }
 
+     @Override 
+    public int getPriority() {
+        return 75;
+    }
+
     public boolean equals(Multiplication other) {
         return this.sameOperands(other);
     }
