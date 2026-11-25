@@ -4,8 +4,8 @@ public class Exp extends Unary{
     
 
 
-    public Exp(SymbolicExpression freakyMath) {
-        super(freakyMath);
+    public Exp(SymbolicExpression identfier) {
+        super(identfier);
     }
 
 

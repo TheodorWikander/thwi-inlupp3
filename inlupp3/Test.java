@@ -23,7 +23,6 @@ public class Test{
         }
     }
 
-
     public static void main(String[] args) {
         Constant c1 = new Constant(5);
         Constant c2 = new Constant(2);
@@ -133,6 +132,7 @@ public class Test{
         testEvaluating(new Constant(5), c1, new Environment());
 
         testEvaluating(new Variable("x"), vX, new Environment());
+
 
     }
 
