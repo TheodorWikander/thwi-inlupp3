@@ -4,8 +4,8 @@ public class Log extends Unary{
 
 
     
-    public Log(SymbolicExpression freakyMath) {
-        super(freakyMath);
+    public Log(SymbolicExpression identifier) {
+        super(identifier);
     }
 
     @Override

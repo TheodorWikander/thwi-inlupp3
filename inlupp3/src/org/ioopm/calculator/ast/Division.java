@@ -5,11 +5,6 @@ public class Division extends Binary{
         super(lhs, rhs);   // anropar Binary(lhs, rhs)
     }
 
-    @Override 
-    public int getPriority() {
-        return 75;
-    }
-
 
     @Override
     public String getName() {
@@ -18,6 +13,11 @@ public class Division extends Binary{
 
     public boolean equals(Division other) {
         return this.sameOperands(other);
+    }
+
+    @Override
+    public int getPriority () {
+    return 75;
     }
 
     @Override

@@ -4,7 +4,7 @@ public abstract class Command extends SymbolicExpression{
     private SymbolicExpression string = null;
 
     public Command() {
-        this.string = string;
+        
     }
 
     @Override 

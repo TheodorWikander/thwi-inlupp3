@@ -7,7 +7,8 @@ public class Constants {
 
     static {
         Constants.namedConstants.put("pi", Math.PI);
-        Constants.namedConstants.put("e", Math.E);
+        Constants.namedConstants.put("e",  Math.E);
         Constants.namedConstants.put("Answer", 42.0);
+        Constants.namedConstants.put("L", 602214085700000000000000.0);
     }
 }

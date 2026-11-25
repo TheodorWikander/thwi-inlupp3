@@ -3,6 +3,7 @@ package org.ioopm.calculator.ast;
 public class Assignment extends Binary {
     
     public Assignment(SymbolicExpression lhs, SymbolicExpression rhs) {
+
         super(lhs, rhs);
     }
 
@@ -26,9 +27,9 @@ public class Assignment extends Binary {
         SymbolicExpression lhs = this.getLeft().eval(vars);
         SymbolicExpression rhs = this.getRight();
 
-        if (rhs instanceof NamedConstant) {
-            throw new IllegalAssignmentException("Named constant cannom be reassigned");
-        }
+        if (rhs instanceof NamedConstants) {
+        throw new IllegalAssignmentException("Error: cannot redefine named constant '" + rhs + "'");
+    }
 
         if (rhs instanceof Variable) {
             vars.put((Variable) rhs, lhs);
@@ -36,5 +37,6 @@ public class Assignment extends Binary {
         } else {
             throw new RuntimeException("Right hand side of assignment must be a variable");
         }
+        
     }
 }

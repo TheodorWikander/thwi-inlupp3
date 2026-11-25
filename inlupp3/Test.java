@@ -24,16 +24,6 @@ public class Test{
         }
     }
 
-    public static void testEvaluatingThrows(SymbolicExpression e, Environment vars) {
-        try {
-            SymbolicExpression r = e.eval(vars);
-            System.out.println("Error: expected IllegalAssignmentException for '" + e + "' but got '" + r + "'");
-        } catch (IllegalAssignmentException ex) {
-            System.out.println("Passed: " + e + " threw IllegalAssignmentException (" + ex.getMessage() + ")");
-        }
-    }
-
-
     public static void main(String[] args) {
         Constant c1 = new Constant(5);
         Constant c2 = new Constant(2);
@@ -146,6 +136,8 @@ public class Test{
 
         NamedConstant pi = new NamedConstant("pi");
         NamedConstant answer = new NamedConstant("Answer");
+
+    }
 
         // Skrivs ut med sitt namn, inte sitt värde
         testPrinting("pi", pi);

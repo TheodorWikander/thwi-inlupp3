@@ -47,7 +47,8 @@ public abstract class Binary extends SymbolicExpression {
             s = s + this.rhs.toString();
             }
 
-        return s.toString();
+        return s;
     }
-
 }
+
+
