@@ -1,8 +1,10 @@
 package org.ioopm.calculator;
 
 import java.io.IOException;
-import org.ioopm.calculator.ast.Clear;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
+import org.ioopm.calculator.ast.Clear;
 import org.ioopm.calculator.ast.Environment;
 import org.ioopm.calculator.ast.SymbolicExpression;
 import org.ioopm.calculator.ast.SyntaxErrorException;
@@ -18,7 +20,7 @@ import org.ioopm.calculator.ast.Quit;
 public class Calculator {
     static boolean run = true;
 
-public static void main(String [] args) {
+    public static void main(String [] args) {
         final CalculatorParser parser = new CalculatorParser();
         final Environment e = new Environment();
 
