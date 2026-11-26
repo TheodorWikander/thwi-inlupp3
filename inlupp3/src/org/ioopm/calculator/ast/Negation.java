@@ -14,8 +14,8 @@ public class Negation extends Unary{
     }
     }  
     
-    public Negation(SymbolicExpression freakyMath) {
-        super(freakyMath);
+    public Negation(SymbolicExpression identifier) {
+        super(identifier);
     }
 
     @Override
