@@ -1,0 +1,25 @@
+\doxysection{list\+\_\+iterator.\+h}
+\hypertarget{list__iterator_8h_source}{}\label{list__iterator_8h_source}\index{generic\_structures/list\_iterator.h@{generic\_structures/list\_iterator.h}}
+\mbox{\hyperlink{list__iterator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{linked__list_8h}{linked\_list.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist__iterator}{list\_iterator}}\ \mbox{\hyperlink{structlist__iterator}{ioopm\_list\_iterator\_t}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00009\ \mbox{\hyperlink{structlist__iterator}{ioopm\_list\_iterator\_t}}\ *\mbox{\hyperlink{list__iterator_8h_a2bb40f93016ab6d32536e6b27ad2dcb6}{ioopm\_list\_iterator\_create}}(\mbox{\hyperlink{structlist}{ioopm\_list\_t}}\ *\mbox{\hyperlink{structlist}{list}});}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{list__iterator_8h_a20f42cef9506c2680f38131a4cca0b88}{ioopm\_list\_iterator\_destroy}}(\mbox{\hyperlink{structlist__iterator}{ioopm\_list\_iterator\_t}}\ *iter);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{list__iterator_8h_a2219f778212efaaf0dfae5e7206df06e}{ioopm\_list\_iterator\_at\_end}}(\mbox{\hyperlink{structlist__iterator}{ioopm\_list\_iterator\_t}}\ *iter);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{list__iterator_8h_ae68cd4befeca5c2edb9cb66a2219b72d}{ioopm\_list\_iterator\_advance}}(\mbox{\hyperlink{structlist__iterator}{ioopm\_list\_iterator\_t}}\ *iter);}
+\DoxyCodeLine{00023\ \ }
+\DoxyCodeLine{00027\ \mbox{\hyperlink{unionelem}{elem\_t}}\ \mbox{\hyperlink{list__iterator_8h_addd8cabf55caac85ccb44ac027268aa2}{ioopm\_list\_iterator\_current}}(\mbox{\hyperlink{structlist__iterator}{ioopm\_list\_iterator\_t}}\ *iter);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \mbox{\hyperlink{unionelem}{elem\_t}}\ \mbox{\hyperlink{list__iterator_8h_a828c67489fc0e776be531c51e5a84f5f}{ioopm\_list\_iterator\_remove}}(\mbox{\hyperlink{structlist__iterator}{ioopm\_list\_iterator\_t}}\ *iter);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{list__iterator_8h_afc08f6717414286159badd042291b756}{ioopm\_list\_iterator\_insert}}(\mbox{\hyperlink{structlist__iterator}{ioopm\_list\_iterator\_t}}\ *iter,\ \mbox{\hyperlink{unionelem}{elem\_t}}\ element);}
+
+\end{DoxyCode}

@@ -1,0 +1,25 @@
+\doxysection{linked\+\_\+list\+\_\+struct.\+h}
+\hypertarget{linked__list__struct_8h_source}{}\label{linked__list__struct_8h_source}\index{generic\_structures/linked\_list\_struct.h@{generic\_structures/linked\_list\_struct.h}}
+\mbox{\hyperlink{linked__list__struct_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{common_8h}{common.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlink}{link}}\ \mbox{\hyperlink{structlink}{link\_t}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlink}{link}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{unionelem}{elem\_t}}\ \mbox{\hyperlink{structlink_a7759f9c007d38f8e4365b6fa75954701}{value}};\ \textcolor{comment}{//\ the\ value\ stored\ in\ the\ link}}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{structlink}{link\_t}}\ *\mbox{\hyperlink{structlink_a5e51af3becfae77d89502036a8e508c2}{next}};\ \textcolor{comment}{//\ a\ pointer\ to\ the\ next\ link\ in\ the\ list\ or\ NULL\ if\ end\ of\ list}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist}{list}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{structlink}{link\_t}}\ *\mbox{\hyperlink{structlist_a8b3138e762449dc038dfa560f02f5f96}{first}};\ \textcolor{comment}{//pointer\ to\ sentinel\ node}}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{structlink}{link\_t}}\ *\mbox{\hyperlink{structlist_a05a1dc6800f93b4e20b872a397ab396f}{last}};\ \textcolor{comment}{//\ pointer\ to\ last\ link\ in\ list,\ or\ sentinel\ is\ list\ is\ empty}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structlist_ae581be90bd8eb7051528b61ad216de88}{size}};\ \textcolor{comment}{//\ number\ of\ element\ in\ list,\ excluding\ sentinel\ node,\ gives\ size\ in\ O(1)}}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \mbox{\hyperlink{structlink}{link\_t}}\ *\mbox{\hyperlink{linked__list__struct_8h_abe0100601f8bbea26ef08f02f9f85334}{ioopm\_link\_create}}(\mbox{\hyperlink{unionelem}{elem\_t}}\ value,\ \mbox{\hyperlink{structlink}{link\_t}}\ *next);}
+
+\end{DoxyCode}

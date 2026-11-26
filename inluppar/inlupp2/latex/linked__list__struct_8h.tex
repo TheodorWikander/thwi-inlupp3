@@ -1,0 +1,74 @@
+\doxysection{generic\+\_\+structures/linked\+\_\+list\+\_\+struct.h File Reference}
+\hypertarget{linked__list__struct_8h}{}\label{linked__list__struct_8h}\index{generic\_structures/linked\_list\_struct.h@{generic\_structures/linked\_list\_struct.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}common.\+h"{}}\newline
+Include dependency graph for linked\+\_\+list\+\_\+struct.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{linked__list__struct_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{linked__list__struct_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlink}{link}}
+\begin{DoxyCompactList}\small\item\em structure of the linked list nodes (links) holding an elem\+\_\+t value \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structlist}{list}}
+\begin{DoxyCompactList}\small\item\em A linked list with one sentinel node and a tail pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structlink}{link}} \mbox{\hyperlink{linked__list__struct_8h_ab1a5f2fcda4f00dce92c82ebc30c4b3d}{link\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Represents a single link in the liked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{linked__list__struct_8h_ab1a5f2fcda4f00dce92c82ebc30c4b3d}{link\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{linked__list__struct_8h_abe0100601f8bbea26ef08f02f9f85334}{ioopm\+\_\+link\+\_\+create}} (\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} value, \mbox{\hyperlink{linked__list__struct_8h_ab1a5f2fcda4f00dce92c82ebc30c4b3d}{link\+\_\+t}} \texorpdfstring{$\ast$}{*}next)
+\begin{DoxyCompactList}\small\item\em Allocates and initialises a new link. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{linked__list__struct_8h_ab1a5f2fcda4f00dce92c82ebc30c4b3d}\label{linked__list__struct_8h_ab1a5f2fcda4f00dce92c82ebc30c4b3d} 
+\index{linked\_list\_struct.h@{linked\_list\_struct.h}!link\_t@{link\_t}}
+\index{link\_t@{link\_t}!linked\_list\_struct.h@{linked\_list\_struct.h}}
+\doxysubsubsection{\texorpdfstring{link\_t}{link\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structlink}{link}} \mbox{\hyperlink{linked__list__struct_8h_ab1a5f2fcda4f00dce92c82ebc30c4b3d}{link\+\_\+t}}}
+
+
+
+Represents a single link in the liked list. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{linked__list__struct_8h_abe0100601f8bbea26ef08f02f9f85334}\label{linked__list__struct_8h_abe0100601f8bbea26ef08f02f9f85334} 
+\index{linked\_list\_struct.h@{linked\_list\_struct.h}!ioopm\_link\_create@{ioopm\_link\_create}}
+\index{ioopm\_link\_create@{ioopm\_link\_create}!linked\_list\_struct.h@{linked\_list\_struct.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_link\_create()}{ioopm\_link\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{linked__list__struct_8h_ab1a5f2fcda4f00dce92c82ebc30c4b3d}{link\+\_\+t}} \texorpdfstring{$\ast$}{*} ioopm\+\_\+link\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}}]{value,  }\item[{\mbox{\hyperlink{linked__list__struct_8h_ab1a5f2fcda4f00dce92c82ebc30c4b3d}{link\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{next }\end{DoxyParamCaption})}
+
+
+
+Allocates and initialises a new link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value stored in the link \\
+\hline
+{\em next} & pointer to the next link in the list or NULL if end of list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the link we just created ~\newline
+ 
+\end{DoxyReturn}

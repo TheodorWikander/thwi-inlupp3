@@ -1,0 +1,31 @@
+\doxysection{common.\+h}
+\hypertarget{common_8h_source}{}\label{common_8h_source}\index{generic\_structures/common.h@{generic\_structures/common.h}}
+\mbox{\hyperlink{common_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ int\_elem(x)\ ((elem\_t)\ \{\ .i\ =\ (x)\})}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ bool\_elem(x)\ ((elem\_t)\ \{\ .b\ =\ (x)\})}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ptr\_elem(x)\ ((elem\_t)\ \{\ .p\ =\ (x)\})}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ string\_elem(x)\ ((elem\_t)\ \{\ .s\ =\ (x)\})}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ unsigned\_elem(x)\ ((elem\_t)\ \{\ .u\ =\ (x)\})}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\mbox{\hyperlink{unionelem}{elem}}\ \mbox{\hyperlink{unionelem}{elem\_t}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{union\ }\mbox{\hyperlink{unionelem}{elem}}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{unionelem_a7c15caee0d28cddb6d42bc18ea93d0d1}{i}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{unionelem_a0465123258cd1d3e6251307b6de96d74}{u}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{unionelem_afce91ce03d07dc3695b458454b6eccfd}{b}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{unionelem_aa770b23534e88eba21bfd2d8d5f1bc41}{f}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{unionelem_a3dfd3ac0d4142eb0653956718219d48d}{p}};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{unionelem_a80e70f0dbf24a06ca391c5af77cb7518}{s}};}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{common_8h_afb1f6281cd1e403d010f433002b9d72f}{ioopm\_eq\_function}}(\mbox{\hyperlink{unionelem}{elem\_t}}\ a,\ \mbox{\hyperlink{unionelem}{elem\_t}}\ b);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{common_8h_a1a54ba10b899b068bfc47c57d50fec62}{ioopm\_hash\_function}}(\mbox{\hyperlink{unionelem}{elem\_t}}\ key);}
+
+\end{DoxyCode}

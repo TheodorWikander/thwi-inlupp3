@@ -1,5 +1,12 @@
 package org.ioopm.calculator.ast;
 
 public class Assignment extends Binary {
-    //Tom tills vi behöver lägga in en variabel
+    
+    public Assignment(SymbolicExpression lhs, SymbolicExpression rhs) {
+        super(lhs, rhs);
+    }
+
+    public String getName() {
+        return "assignment";
+    }
 }

@@ -1,0 +1,67 @@
+\doxysection{utils.\+h}
+\hypertarget{utils_8h_source}{}\label{utils_8h_source}\index{generic\_utils/utils.h@{generic\_utils/utils.h}}
+\mbox{\hyperlink{utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../generic\_structures/common.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ \_\_UTILS\_H\_\_}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ \_\_UTILS\_H\_\_}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{unionanswer__t_aa8ec4a02684f8894d9a996497f5c4522}{int\_value}};}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{unionanswer__t_a4746ca4b821d32287c79da0e488933fa}{float\_value}};}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{unionanswer__t_a46bf31538724d946cb38462ef97eb0b4}{string\_value}};}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{unionanswer__t_a5aee80ce97c53008a5ed8134a8960a3b}{char\_value}};}
+\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{unionanswer__t}{answer\_t}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_a2235909df03e3eb655e7a0627d8e2565}{check\_func}}(\textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{unionanswer__t}{answer\_t}}\ \mbox{\hyperlink{utils_8h_ac473788ca6748aada197469bac85aad8}{convert\_func}}(\textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{utils_8h_a18f59995e71d037e1fcef19531f6b840}{strdup}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00038\ \mbox{\hyperlink{unionanswer__t}{answer\_t}}\ \mbox{\hyperlink{utils_8h_a07a5ba49ed7796956c431de4821eb9d4}{to\_string}}(\textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ I\ N\ P\ U\ T\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{utils_8h_ac1a1309d385acff44647a826db4d2f75}{read\_string}}(\textcolor{keywordtype}{char}\ *buf,\ \textcolor{keywordtype}{int}\ buf\_siz);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_acb036bd509f16309b2d3ee1201d006cd}{is\_number}}(\textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_a11e7ddc1e420c97fc11f830222914d55}{not\_empty}}(\textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00069\ \mbox{\hyperlink{unionanswer__t}{answer\_t}}\ \mbox{\hyperlink{utils_8h_a01fa008446fa390b5703c7c09516fad1}{ask\_question}}(\textcolor{keywordtype}{char}\ *question,\ \mbox{\hyperlink{utils_8h_a2235909df03e3eb655e7a0627d8e2565}{check\_func}}\ *check,\ \mbox{\hyperlink{utils_8h_ac473788ca6748aada197469bac85aad8}{convert\_func}}\ *convert);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{utils_8h_a968d3e8120a7d81ccac4e0ae50478446}{ask\_question\_int}}(\textcolor{keywordtype}{char}\ *question);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{utils_8h_a7e5974e35756c854a37cfe581384651e}{ask\_question\_string}}(\textcolor{keywordtype}{char}\ *question);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{utils_8h_a26eb7e479c5f80c6610079d22c26cfe7}{ask\_question\_char}}(\textcolor{keywordtype}{char}\ *question,\ \mbox{\hyperlink{utils_8h_a2235909df03e3eb655e7a0627d8e2565}{check\_func}}\ *check);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/\ O\ U\ T\ P\ U\ T\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_a7be975aa8720af6b652eaef5c574a2b0}{print}}(\textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_a4af5e92939d8f40e2b8e78719de70035}{println}}(\textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ H\ A\ S\ H\ \ \&.\ E\ Q\ A\ L\ I\ T\ Y\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{utils_8h_ae886ca897dc818f3eb146350901b29ca}{string\_hash}}(\mbox{\hyperlink{unionelem}{elem\_t}}\ key);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00111\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_a9f7c24e35a0ed6a2a6111e8c61fba40f}{string\_eq}}(\mbox{\hyperlink{unionelem}{elem\_t}}\ a,\ \mbox{\hyperlink{unionelem}{elem\_t}}\ b);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{utils_8h_abf0c8c547c77d56c93740176fdb852de}{int\_hash}}(\mbox{\hyperlink{unionelem}{elem\_t}}\ key);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_affac546882d32492858bee2a78dd4f00}{int\_eq}}(\mbox{\hyperlink{unionelem}{elem\_t}}\ a,\ \mbox{\hyperlink{unionelem}{elem\_t}}\ b);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

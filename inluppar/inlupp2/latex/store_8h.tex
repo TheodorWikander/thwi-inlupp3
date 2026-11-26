@@ -1,0 +1,513 @@
+\doxysection{store/store.h File Reference}
+\hypertarget{store_8h}{}\label{store_8h}\index{store/store.h@{store/store.h}}
+
+
+Bussiness logic of the webstore backend\+: merchandise, stock on shelves and carts. Contains no user interface code.  
+
+
+{\ttfamily \#include "{}../generic\+\_\+utils/utils.\+h"{}}\newline
+{\ttfamily \#include "{}../generic\+\_\+structures/all\+\_\+generic\+\_\+structures.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for store.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{store_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{store_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structmerch}{merch}} \mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structlocation}{location}} \mbox{\hyperlink{store_8h_a08b218b4da91f44517a7e53143fcdc3e}{location\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structcarts}{carts}} \mbox{\hyperlink{store_8h_a9c0247680850147815e3ab909bcbbe52}{carts\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structstore}{store}} \mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{store_8h_a2e11dd9994bd7a00df6b62e46317973e}{ioopm\+\_\+store\+\_\+create}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a new empty store. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{store_8h_afb216ca904606fadd5844cad91fb40a3}{ioopm\+\_\+store\+\_\+destroy}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}})
+\begin{DoxyCompactList}\small\item\em Destroys a store and frees all the merch, shelves and carts in the store. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{store_8h_a5ba0dffac72f0a4d5687ffcafed238aa}{ioopm\+\_\+merch\+\_\+name}} (\mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structmerch}{merch}})
+\begin{DoxyCompactList}\small\item\em get the name of a merch, valid until merch is edited or removed (do not free) \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{store_8h_ac8195ca06d44c911c124400e22af83e3}{ioopm\+\_\+merch\+\_\+description}} (\mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structmerch}{merch}})
+\begin{DoxyCompactList}\small\item\em get the description of a merch, valid until merch is edited or removed (do not free) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{store_8h_a08f904f4993b80d57adaf28f1b4b48f9}{ioopm\+\_\+merch\+\_\+price}} (\mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structmerch}{merch}})
+\begin{DoxyCompactList}\small\item\em get the price of a merch \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_a59b109e9a92a229f5c959344f77e393d}{ioopm\+\_\+store\+\_\+add\+\_\+merch}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}name, char \texorpdfstring{$\ast$}{*}desc, int price)
+\begin{DoxyCompactList}\small\item\em adds new merch to the store with a name (string), describtion (string), and a price (int) A newly added merch is not in stock. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_ab3854fdd21899499124e2e4135762664}{ioopm\+\_\+store\+\_\+has\+\_\+merch}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em checks if there is any merch with the name, "{}name"{} in store \end{DoxyCompactList}\item 
+\mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{store_8h_a2e6e04c31c07d41bfddf7e273163fd1a}{ioopm\+\_\+store\+\_\+get\+\_\+merch}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em get the merch item with the name "{}name"{} if it exists \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_abe32accb29c489dbb8e2f6e8278c050a}{ioopm\+\_\+store\+\_\+remove\+\_\+merch}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em removes merch item with name "{}name"{}, including its stock, shelves (who becomes free for other merch) and all of its items in every cart \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_a52d65d35df55a003d9748e0c16a6f0b6}{ioopm\+\_\+store\+\_\+edit\+\_\+merch}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}old\+\_\+name, char \texorpdfstring{$\ast$}{*}new\+\_\+name, char \texorpdfstring{$\ast$}{*}new\+\_\+desc, int new\+\_\+price)
+\begin{DoxyCompactList}\small\item\em editds merch with name "{}old\+\_\+name"{} and updated it with new\+\_\+name, new\+\_\+desc and new\+\_\+price Stock and cart contents are kept the same (renamed merch is renamed in carts as well) \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{store_8h_a7a6fa8bf009b36d00d7b6dd43e3c1c34}{ioopm\+\_\+store\+\_\+merch\+\_\+count}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}})
+\begin{DoxyCompactList}\small\item\em returns the total count of all merch items in store \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{store_8h_a99ccf157db3b3cf452ca0271ef1338fd}{ioopm\+\_\+store\+\_\+merch\+\_\+name\+\_\+at}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, int index)
+\begin{DoxyCompactList}\small\item\em Name of the index\+:th merch in alphabetical order. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_a4d6db4ca8a51d7382c0d460bac63aacd}{ioopm\+\_\+store\+\_\+replenish}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}shelf, char \texorpdfstring{$\ast$}{*}name, int amount)
+\begin{DoxyCompactList}\small\item\em Adds items of a merch to a shelf. Creates the shelf location if needed. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{store_8h_a34edbedf29e981745381a49872850362}{ioopm\+\_\+store\+\_\+merch\+\_\+stock}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Total stock of a merch, summed over all shelves. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{store_8h_ac4f74608384b938ed747a35d308c79df}{ioopm\+\_\+store\+\_\+shelf\+\_\+count}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Number of shelves that holds a merch item. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{store_8h_acf3850e697daa799dfbb4397d2113d48}{ioopm\+\_\+store\+\_\+shelf\+\_\+name}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}name, int index)
+\begin{DoxyCompactList}\small\item\em Name of the index\+:th shelf holding the merch (name) in alphabethical order. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{store_8h_a8a8f71daa673919dd11861fb2218607c}{ioopm\+\_\+store\+\_\+shelf\+\_\+quantity}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, char \texorpdfstring{$\ast$}{*}name, int index)
+\begin{DoxyCompactList}\small\item\em Quantity on the index\+\_\+th shelf sorted in alphabethical order. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{store_8h_aa3f4f2814a03c584428a0c0ba6203d24}{ioopm\+\_\+store\+\_\+cart\+\_\+create}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}})
+\begin{DoxyCompactList}\small\item\em Creates a new empty cart. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_ab3c139cfbf21ecdcf1439cae2271b536}{ioopm\+\_\+store\+\_\+cart\+\_\+remove}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, int cart\+\_\+id)
+\begin{DoxyCompactList}\small\item\em removes a cart (Stock of merches in cart unchanged) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_a0bd2e6362bef4da2a2920d4c6e0985c1}{ioopm\+\_\+store\+\_\+has\+\_\+cart}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, int cart\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Checks if cart with cart id exist i store. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_a38b328daa9017abbf1ee6a5e957db7db}{ioopm\+\_\+store\+\_\+cart\+\_\+add}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, int cart\+\_\+id, char \texorpdfstring{$\ast$}{*}name, int amount)
+\begin{DoxyCompactList}\small\item\em adds an amount of a merch item (name) to a cart (cart\+\_\+id). All carts together can never hold a bigger amount of a merch than its stock (so every cart can be checked out) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_acf0210c37d1bb38b984752b9884ebc5c}{ioopm\+\_\+store\+\_\+cart\+\_\+remove\+\_\+item}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, int cart\+\_\+id, char \texorpdfstring{$\ast$}{*}name, int amount)
+\begin{DoxyCompactList}\small\item\em Removes amount items of a merch from a cart. An item that reaches 0 disappears from the cart. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{store_8h_ad2ef036c004b0c029daf3b1dfdd4f4dd}{ioopm\+\_\+store\+\_\+cart\+\_\+item\+\_\+count}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, int cart\+\_\+id, char \texorpdfstring{$\ast$}{*}name)
+\item 
+int \mbox{\hyperlink{store_8h_a7bc04fe9752b089945338972ed168d86}{ioopm\+\_\+store\+\_\+cart\+\_\+cost}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, int cart\+\_\+id)
+\begin{DoxyCompactList}\small\item\em sums the price of all items in a cart \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{store_8h_a32f8e9a6ddbcb2d9b5d1d0916a0c8545}{ioopm\+\_\+store\+\_\+checkout}} (\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structstore}{store}}, int cart\+\_\+id)
+\begin{DoxyCompactList}\small\item\em buys everything in a cart. Decreases stock(taking form shelves in alphabetical order, empty shelves are removed) and removes the cart \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bussiness logic of the webstore backend\+: merchandise, stock on shelves and carts. Contains no user interface code. 
+
+Ownership\+: The store owns everything it holds. All strings passed into the store are copied, so the callers may free their own strings right after a call. Pointers returned by the store belongs to the store and must never be freed by the caller.
+
+Failiures that depend on user input (invalid merch names, carts etc...) leaves the store unchanged
+
+Violating a \begin{DoxyPrecond}{Precondition}
+will crash the program (assert) 
+\end{DoxyPrecond}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{store_8h_a9c0247680850147815e3ab909bcbbe52}\label{store_8h_a9c0247680850147815e3ab909bcbbe52} 
+\index{store.h@{store.h}!carts\_t@{carts\_t}}
+\index{carts\_t@{carts\_t}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{carts\_t}{carts\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcarts}{carts}} \mbox{\hyperlink{store_8h_a9c0247680850147815e3ab909bcbbe52}{carts\+\_\+t}}}
+
+\Hypertarget{store_8h_a08b218b4da91f44517a7e53143fcdc3e}\label{store_8h_a08b218b4da91f44517a7e53143fcdc3e} 
+\index{store.h@{store.h}!location\_t@{location\_t}}
+\index{location\_t@{location\_t}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{location\_t}{location\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structlocation}{location}} \mbox{\hyperlink{store_8h_a08b218b4da91f44517a7e53143fcdc3e}{location\+\_\+t}}}
+
+\Hypertarget{store_8h_a4f67b0f8da13af149a81190c5220cdd8}\label{store_8h_a4f67b0f8da13af149a81190c5220cdd8} 
+\index{store.h@{store.h}!merch\_t@{merch\_t}}
+\index{merch\_t@{merch\_t}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{merch\_t}{merch\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structmerch}{merch}} \mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}}}
+
+\Hypertarget{store_8h_a63fc0750651c75c8500542523901f06f}\label{store_8h_a63fc0750651c75c8500542523901f06f} 
+\index{store.h@{store.h}!store\_t@{store\_t}}
+\index{store\_t@{store\_t}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{store\_t}{store\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structstore}{store}} \mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{store_8h_ac8195ca06d44c911c124400e22af83e3}\label{store_8h_ac8195ca06d44c911c124400e22af83e3} 
+\index{store.h@{store.h}!ioopm\_merch\_description@{ioopm\_merch\_description}}
+\index{ioopm\_merch\_description@{ioopm\_merch\_description}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_merch\_description()}{ioopm\_merch\_description()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} ioopm\+\_\+merch\+\_\+description (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{merch }\end{DoxyParamCaption})}
+
+
+
+get the description of a merch, valid until merch is edited or removed (do not free) 
+
+\Hypertarget{store_8h_a5ba0dffac72f0a4d5687ffcafed238aa}\label{store_8h_a5ba0dffac72f0a4d5687ffcafed238aa} 
+\index{store.h@{store.h}!ioopm\_merch\_name@{ioopm\_merch\_name}}
+\index{ioopm\_merch\_name@{ioopm\_merch\_name}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_merch\_name()}{ioopm\_merch\_name()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} ioopm\+\_\+merch\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{merch }\end{DoxyParamCaption})}
+
+
+
+get the name of a merch, valid until merch is edited or removed (do not free) 
+
+\Hypertarget{store_8h_a08f904f4993b80d57adaf28f1b4b48f9}\label{store_8h_a08f904f4993b80d57adaf28f1b4b48f9} 
+\index{store.h@{store.h}!ioopm\_merch\_price@{ioopm\_merch\_price}}
+\index{ioopm\_merch\_price@{ioopm\_merch\_price}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_merch\_price()}{ioopm\_merch\_price()}}
+{\footnotesize\ttfamily int ioopm\+\_\+merch\+\_\+price (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{merch }\end{DoxyParamCaption})}
+
+
+
+get the price of a merch 
+
+\Hypertarget{store_8h_a59b109e9a92a229f5c959344f77e393d}\label{store_8h_a59b109e9a92a229f5c959344f77e393d} 
+\index{store.h@{store.h}!ioopm\_store\_add\_merch@{ioopm\_store\_add\_merch}}
+\index{ioopm\_store\_add\_merch@{ioopm\_store\_add\_merch}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_add\_merch()}{ioopm\_store\_add\_merch()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+add\+\_\+merch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{desc,  }\item[{int}]{price }\end{DoxyParamCaption})}
+
+
+
+adds new merch to the store with a name (string), describtion (string), and a price (int) A newly added merch is not in stock. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & the warehouse the merch will be added into \\
+\hline
+{\em name} & the unique name of the new merch \\
+\hline
+{\em desc} & the description of what the new merch is \\
+\hline
+{\em price} & the price of the new merch, must be \texorpdfstring{$>$}{>}= 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the action succeded, false (store unchanged) if name already exists in store or price is negative 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a38b328daa9017abbf1ee6a5e957db7db}\label{store_8h_a38b328daa9017abbf1ee6a5e957db7db} 
+\index{store.h@{store.h}!ioopm\_store\_cart\_add@{ioopm\_store\_cart\_add}}
+\index{ioopm\_store\_cart\_add@{ioopm\_store\_cart\_add}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_cart\_add()}{ioopm\_store\_cart\_add()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+cart\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{int}]{cart\+\_\+id,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{amount }\end{DoxyParamCaption})}
+
+
+
+adds an amount of a merch item (name) to a cart (cart\+\_\+id). All carts together can never hold a bigger amount of a merch than its stock (so every cart can be checked out) 
+
+\begin{DoxyReturn}{Returns}
+true if succesfully added, false if amount \texorpdfstring{$<$}{<} 1, invalid item name or invalid cart\+\_\+id or if the carts would hold more than the stock 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a7bc04fe9752b089945338972ed168d86}\label{store_8h_a7bc04fe9752b089945338972ed168d86} 
+\index{store.h@{store.h}!ioopm\_store\_cart\_cost@{ioopm\_store\_cart\_cost}}
+\index{ioopm\_store\_cart\_cost@{ioopm\_store\_cart\_cost}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_cart\_cost()}{ioopm\_store\_cart\_cost()}}
+{\footnotesize\ttfamily int ioopm\+\_\+store\+\_\+cart\+\_\+cost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{int}]{cart\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+sums the price of all items in a cart 
+
+\begin{DoxyReturn}{Returns}
+the price of all items in a cart. 0 for an empty cart and (-\/1) if the cart does not exist 
+\end{DoxyReturn}
+\Hypertarget{store_8h_aa3f4f2814a03c584428a0c0ba6203d24}\label{store_8h_aa3f4f2814a03c584428a0c0ba6203d24} 
+\index{store.h@{store.h}!ioopm\_store\_cart\_create@{ioopm\_store\_cart\_create}}
+\index{ioopm\_store\_cart\_create@{ioopm\_store\_cart\_create}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_cart\_create()}{ioopm\_store\_cart\_create()}}
+{\footnotesize\ttfamily int ioopm\+\_\+store\+\_\+cart\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store }\end{DoxyParamCaption})}
+
+
+
+Creates a new empty cart. 
+
+\begin{DoxyReturn}{Returns}
+the cart id\+: 1 for the first cart, then 2, 3, ... (id\textquotesingle{}s are never reused!) 
+\end{DoxyReturn}
+\Hypertarget{store_8h_ad2ef036c004b0c029daf3b1dfdd4f4dd}\label{store_8h_ad2ef036c004b0c029daf3b1dfdd4f4dd} 
+\index{store.h@{store.h}!ioopm\_store\_cart\_item\_count@{ioopm\_store\_cart\_item\_count}}
+\index{ioopm\_store\_cart\_item\_count@{ioopm\_store\_cart\_item\_count}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_cart\_item\_count()}{ioopm\_store\_cart\_item\_count()}}
+{\footnotesize\ttfamily int ioopm\+\_\+store\+\_\+cart\+\_\+item\+\_\+count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{int}]{cart\+\_\+id,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+amount of items (name) in cart (cart\+\_\+id). 0 if the cart does not exist or does not hold the merch item(name) 
+\end{DoxyReturn}
+\Hypertarget{store_8h_ab3c139cfbf21ecdcf1439cae2271b536}\label{store_8h_ab3c139cfbf21ecdcf1439cae2271b536} 
+\index{store.h@{store.h}!ioopm\_store\_cart\_remove@{ioopm\_store\_cart\_remove}}
+\index{ioopm\_store\_cart\_remove@{ioopm\_store\_cart\_remove}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_cart\_remove()}{ioopm\_store\_cart\_remove()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+cart\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{int}]{cart\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+removes a cart (Stock of merches in cart unchanged) 
+
+\begin{DoxyReturn}{Returns}
+true if removal succeded. False if the cart does not exist 
+\end{DoxyReturn}
+\Hypertarget{store_8h_acf0210c37d1bb38b984752b9884ebc5c}\label{store_8h_acf0210c37d1bb38b984752b9884ebc5c} 
+\index{store.h@{store.h}!ioopm\_store\_cart\_remove\_item@{ioopm\_store\_cart\_remove\_item}}
+\index{ioopm\_store\_cart\_remove\_item@{ioopm\_store\_cart\_remove\_item}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_cart\_remove\_item()}{ioopm\_store\_cart\_remove\_item()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+cart\+\_\+remove\+\_\+item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{int}]{cart\+\_\+id,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{amount }\end{DoxyParamCaption})}
+
+
+
+Removes amount items of a merch from a cart. An item that reaches 0 disappears from the cart. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & number of items to remove\+: 0 does nothing, otherwise at most the amount the cart holds \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if removed (or amount is 0). false (store unchanged) if the cart does not exist, amount is negative or larger than what the cart holds 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a32f8e9a6ddbcb2d9b5d1d0916a0c8545}\label{store_8h_a32f8e9a6ddbcb2d9b5d1d0916a0c8545} 
+\index{store.h@{store.h}!ioopm\_store\_checkout@{ioopm\_store\_checkout}}
+\index{ioopm\_store\_checkout@{ioopm\_store\_checkout}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_checkout()}{ioopm\_store\_checkout()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+checkout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{int}]{cart\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+buys everything in a cart. Decreases stock(taking form shelves in alphabetical order, empty shelves are removed) and removes the cart 
+
+\begin{DoxyReturn}{Returns}
+true if it succeeds, false if the cart does not exist 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a2e11dd9994bd7a00df6b62e46317973e}\label{store_8h_a2e11dd9994bd7a00df6b62e46317973e} 
+\index{store.h@{store.h}!ioopm\_store\_create@{ioopm\_store\_create}}
+\index{ioopm\_store\_create@{ioopm\_store\_create}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_create()}{ioopm\_store\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*} ioopm\+\_\+store\+\_\+create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new empty store. 
+
+\begin{DoxyReturn}{Returns}
+a new store. The fist cart created gets id 1. ~\newline
+ 
+\end{DoxyReturn}
+\Hypertarget{store_8h_afb216ca904606fadd5844cad91fb40a3}\label{store_8h_afb216ca904606fadd5844cad91fb40a3} 
+\index{store.h@{store.h}!ioopm\_store\_destroy@{ioopm\_store\_destroy}}
+\index{ioopm\_store\_destroy@{ioopm\_store\_destroy}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_destroy()}{ioopm\_store\_destroy()}}
+{\footnotesize\ttfamily void ioopm\+\_\+store\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store }\end{DoxyParamCaption})}
+
+
+
+Destroys a store and frees all the merch, shelves and carts in the store. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & the store to destroy \\
+\hline
+\end{DoxyParams}
+\Hypertarget{store_8h_a52d65d35df55a003d9748e0c16a6f0b6}\label{store_8h_a52d65d35df55a003d9748e0c16a6f0b6} 
+\index{store.h@{store.h}!ioopm\_store\_edit\_merch@{ioopm\_store\_edit\_merch}}
+\index{ioopm\_store\_edit\_merch@{ioopm\_store\_edit\_merch}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_edit\_merch()}{ioopm\_store\_edit\_merch()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+edit\+\_\+merch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{old\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{new\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{new\+\_\+desc,  }\item[{int}]{new\+\_\+price }\end{DoxyParamCaption})}
+
+
+
+editds merch with name "{}old\+\_\+name"{} and updated it with new\+\_\+name, new\+\_\+desc and new\+\_\+price Stock and cart contents are kept the same (renamed merch is renamed in carts as well) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & the store merch is in \\
+\hline
+{\em old\+\_\+name} & the old name to identify the merch to be edited \\
+\hline
+{\em new\+\_\+name} & the new name to give the merch \\
+\hline
+{\em new\+\_\+desc} & the new description of the merch \\
+\hline
+{\em new\+\_\+price} & the new peice of the merch \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if edit was succesfull, false (store unchanged) otherwise (i.\+e. if new\+\_\+price is negative, old\+\_\+name does not exist or new\+\_\+name is used by another merchandise ) 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a2e6e04c31c07d41bfddf7e273163fd1a}\label{store_8h_a2e6e04c31c07d41bfddf7e273163fd1a} 
+\index{store.h@{store.h}!ioopm\_store\_get\_merch@{ioopm\_store\_get\_merch}}
+\index{ioopm\_store\_get\_merch@{ioopm\_store\_get\_merch}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_get\_merch()}{ioopm\_store\_get\_merch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{store_8h_a4f67b0f8da13af149a81190c5220cdd8}{merch\+\_\+t}} \texorpdfstring{$\ast$}{*} ioopm\+\_\+store\+\_\+get\+\_\+merch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+get the merch item with the name "{}name"{} if it exists 
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & the store we look for the merch in \\
+\hline
+{\em name} & the name of the merch we are looking for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+merch item with name as its name of NULL if merch is not in store, Owned by the store; valid until that merchandise is removed. 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a0bd2e6362bef4da2a2920d4c6e0985c1}\label{store_8h_a0bd2e6362bef4da2a2920d4c6e0985c1} 
+\index{store.h@{store.h}!ioopm\_store\_has\_cart@{ioopm\_store\_has\_cart}}
+\index{ioopm\_store\_has\_cart@{ioopm\_store\_has\_cart}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_has\_cart()}{ioopm\_store\_has\_cart()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+has\+\_\+cart (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{int}]{cart\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Checks if cart with cart id exist i store. 
+
+\begin{DoxyReturn}{Returns}
+true if the cart exists, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{store_8h_ab3854fdd21899499124e2e4135762664}\label{store_8h_ab3854fdd21899499124e2e4135762664} 
+\index{store.h@{store.h}!ioopm\_store\_has\_merch@{ioopm\_store\_has\_merch}}
+\index{ioopm\_store\_has\_merch@{ioopm\_store\_has\_merch}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_has\_merch()}{ioopm\_store\_has\_merch()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+has\+\_\+merch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+checks if there is any merch with the name, "{}name"{} in store 
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & the store we look for the merch in \\
+\hline
+{\em name} & the name of the merch we are looking for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if store has a merch item with name "{}name"{}, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a7a6fa8bf009b36d00d7b6dd43e3c1c34}\label{store_8h_a7a6fa8bf009b36d00d7b6dd43e3c1c34} 
+\index{store.h@{store.h}!ioopm\_store\_merch\_count@{ioopm\_store\_merch\_count}}
+\index{ioopm\_store\_merch\_count@{ioopm\_store\_merch\_count}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_merch\_count()}{ioopm\_store\_merch\_count()}}
+{\footnotesize\ttfamily size\+\_\+t ioopm\+\_\+store\+\_\+merch\+\_\+count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store }\end{DoxyParamCaption})}
+
+
+
+returns the total count of all merch items in store 
+
+\Hypertarget{store_8h_a99ccf157db3b3cf452ca0271ef1338fd}\label{store_8h_a99ccf157db3b3cf452ca0271ef1338fd} 
+\index{store.h@{store.h}!ioopm\_store\_merch\_name\_at@{ioopm\_store\_merch\_name\_at}}
+\index{ioopm\_store\_merch\_name\_at@{ioopm\_store\_merch\_name\_at}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_merch\_name\_at()}{ioopm\_store\_merch\_name\_at()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} ioopm\+\_\+store\+\_\+merch\+\_\+name\+\_\+at (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Name of the index\+:th merch in alphabetical order. 
+
+\begin{DoxyPrecond}{Precondition}
+0 \texorpdfstring{$<$}{<}= index \texorpdfstring{$<$}{<} ioopm\+\_\+store\+\_\+merch\+\_\+count(store) 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+the name of the merch at index. Owned by the store; valid until that merchandise is edited or removed. 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a34edbedf29e981745381a49872850362}\label{store_8h_a34edbedf29e981745381a49872850362} 
+\index{store.h@{store.h}!ioopm\_store\_merch\_stock@{ioopm\_store\_merch\_stock}}
+\index{ioopm\_store\_merch\_stock@{ioopm\_store\_merch\_stock}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_merch\_stock()}{ioopm\_store\_merch\_stock()}}
+{\footnotesize\ttfamily int ioopm\+\_\+store\+\_\+merch\+\_\+stock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Total stock of a merch, summed over all shelves. 
+
+\begin{DoxyReturn}{Returns}
+the stock, or 0 if the merch does not exist 
+\end{DoxyReturn}
+\Hypertarget{store_8h_abe32accb29c489dbb8e2f6e8278c050a}\label{store_8h_abe32accb29c489dbb8e2f6e8278c050a} 
+\index{store.h@{store.h}!ioopm\_store\_remove\_merch@{ioopm\_store\_remove\_merch}}
+\index{ioopm\_store\_remove\_merch@{ioopm\_store\_remove\_merch}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_remove\_merch()}{ioopm\_store\_remove\_merch()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+remove\+\_\+merch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+removes merch item with name "{}name"{}, including its stock, shelves (who becomes free for other merch) and all of its items in every cart 
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & the store to look for merch in \\
+\hline
+{\em name} & the name of the merch we are looking for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if merch is succesfully removed from store, false otherwise (no such merch) 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a4d6db4ca8a51d7382c0d460bac63aacd}\label{store_8h_a4d6db4ca8a51d7382c0d460bac63aacd} 
+\index{store.h@{store.h}!ioopm\_store\_replenish@{ioopm\_store\_replenish}}
+\index{ioopm\_store\_replenish@{ioopm\_store\_replenish}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_replenish()}{ioopm\_store\_replenish()}}
+{\footnotesize\ttfamily bool ioopm\+\_\+store\+\_\+replenish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{shelf,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{amount }\end{DoxyParamCaption})}
+
+
+
+Adds items of a merch to a shelf. Creates the shelf location if needed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shelf} & shelf id\+: one capital letter A-\/Z followed by two digits (e.\+g. "{}\+A25"{}) \\
+\hline
+{\em name} & name of an existing merch \\
+\hline
+{\em amount} & number of items to add, must be \texorpdfstring{$>$}{>}= 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added. false (store unchanged) if the merch does not exist, the shelf name is invalid, amount \texorpdfstring{$<$}{<} 1, or the shelf already holds a different merch 
+\end{DoxyReturn}
+\Hypertarget{store_8h_ac4f74608384b938ed747a35d308c79df}\label{store_8h_ac4f74608384b938ed747a35d308c79df} 
+\index{store.h@{store.h}!ioopm\_store\_shelf\_count@{ioopm\_store\_shelf\_count}}
+\index{ioopm\_store\_shelf\_count@{ioopm\_store\_shelf\_count}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_shelf\_count()}{ioopm\_store\_shelf\_count()}}
+{\footnotesize\ttfamily int ioopm\+\_\+store\+\_\+shelf\+\_\+count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Number of shelves that holds a merch item. 
+
+\begin{DoxyReturn}{Returns}
+the number of shelves, or 0 if the merch does not exist or has no stock 
+\end{DoxyReturn}
+\Hypertarget{store_8h_acf3850e697daa799dfbb4397d2113d48}\label{store_8h_acf3850e697daa799dfbb4397d2113d48} 
+\index{store.h@{store.h}!ioopm\_store\_shelf\_name@{ioopm\_store\_shelf\_name}}
+\index{ioopm\_store\_shelf\_name@{ioopm\_store\_shelf\_name}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_shelf\_name()}{ioopm\_store\_shelf\_name()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} ioopm\+\_\+store\+\_\+shelf\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Name of the index\+:th shelf holding the merch (name) in alphabethical order. 
+
+\begin{DoxyPrecond}{Precondition}
+0 \texorpdfstring{$<$}{<}= index \texorpdfstring{$<$}{<} ioopm\+\_\+store\+\_\+shelf\+\_\+count(store, name) 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+the shelf name. Owned by the store; valid until the shelf is emptied (by checkout) or the merchandise is removed. 
+\end{DoxyReturn}
+\Hypertarget{store_8h_a8a8f71daa673919dd11861fb2218607c}\label{store_8h_a8a8f71daa673919dd11861fb2218607c} 
+\index{store.h@{store.h}!ioopm\_store\_shelf\_quantity@{ioopm\_store\_shelf\_quantity}}
+\index{ioopm\_store\_shelf\_quantity@{ioopm\_store\_shelf\_quantity}!store.h@{store.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_store\_shelf\_quantity()}{ioopm\_store\_shelf\_quantity()}}
+{\footnotesize\ttfamily int ioopm\+\_\+store\+\_\+shelf\+\_\+quantity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{store_8h_a63fc0750651c75c8500542523901f06f}{store\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{store,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Quantity on the index\+\_\+th shelf sorted in alphabethical order. 
+
+\begin{DoxyPrecond}{Precondition}
+0 \texorpdfstring{$<$}{<}= index \texorpdfstring{$<$}{<} ioopm\+\_\+store\+\_\+shelf\+\_\+count(store, name) 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+the qunatity on the index\+:th shelf. ~\newline
+ 
+\end{DoxyReturn}

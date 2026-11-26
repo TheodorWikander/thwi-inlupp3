@@ -1,0 +1,128 @@
+\doxysection{generic\+\_\+structures/common.h File Reference}
+\hypertarget{common_8h}{}\label{common_8h}\index{generic\_structures/common.h@{generic\_structures/common.h}}
+
+
+Types shared by the linked list and the hash table.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+Include dependency graph for common.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{common_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionelem}{elem}}
+\begin{DoxyCompactList}\small\item\em A value of one or several types. User must keep track of which field is being used and should be read from. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{common_8h_adb83363c7ab3edd06ac84ef11f7162ae}{int\+\_\+elem}}(x)~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .i = (x)\})
+\begin{DoxyCompactList}\small\item\em helpers for constructing an elem\+\_\+t and how to read it back \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{common_8h_a6127d6dcc2af2f3baf84bd8b5aa17a8b}{bool\+\_\+elem}}(x)~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .b = (x)\})
+\item 
+\#define \mbox{\hyperlink{common_8h_a46ec5bd5546d86200acde79671ff130b}{ptr\+\_\+elem}}(x)~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .p = (x)\})
+\item 
+\#define \mbox{\hyperlink{common_8h_a2a65bf6bbd9c2af58f9f89f09c773d3a}{string\+\_\+elem}}(x)~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .s = (x)\})
+\item 
+\#define \mbox{\hyperlink{common_8h_a69ce03f1340d40df72b932d7ab295318}{unsigned\+\_\+elem}}(x)~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .u = (x)\})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef union \mbox{\hyperlink{unionelem}{elem}} \mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}
+\item 
+typedef bool \mbox{\hyperlink{common_8h_afb1f6281cd1e403d010f433002b9d72f}{ioopm\+\_\+eq\+\_\+function}}(\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} a, \mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} b)
+\begin{DoxyCompactList}\small\item\em Equality function for keys. \end{DoxyCompactList}\item 
+typedef size\+\_\+t \mbox{\hyperlink{common_8h_a1a54ba10b899b068bfc47c57d50fec62}{ioopm\+\_\+hash\+\_\+function}}(\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} key)
+\begin{DoxyCompactList}\small\item\em Hash function for keys. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Types shared by the linked list and the hash table. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{common_8h_a6127d6dcc2af2f3baf84bd8b5aa17a8b}\label{common_8h_a6127d6dcc2af2f3baf84bd8b5aa17a8b} 
+\index{common.h@{common.h}!bool\_elem@{bool\_elem}}
+\index{bool\_elem@{bool\_elem}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{bool\_elem}{bool\_elem}}
+{\footnotesize\ttfamily \#define bool\+\_\+elem(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .b = (x)\})}
+
+\Hypertarget{common_8h_adb83363c7ab3edd06ac84ef11f7162ae}\label{common_8h_adb83363c7ab3edd06ac84ef11f7162ae} 
+\index{common.h@{common.h}!int\_elem@{int\_elem}}
+\index{int\_elem@{int\_elem}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{int\_elem}{int\_elem}}
+{\footnotesize\ttfamily \#define int\+\_\+elem(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .i = (x)\})}
+
+
+
+helpers for constructing an elem\+\_\+t and how to read it back 
+
+\Hypertarget{common_8h_a46ec5bd5546d86200acde79671ff130b}\label{common_8h_a46ec5bd5546d86200acde79671ff130b} 
+\index{common.h@{common.h}!ptr\_elem@{ptr\_elem}}
+\index{ptr\_elem@{ptr\_elem}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{ptr\_elem}{ptr\_elem}}
+{\footnotesize\ttfamily \#define ptr\+\_\+elem(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .p = (x)\})}
+
+\Hypertarget{common_8h_a2a65bf6bbd9c2af58f9f89f09c773d3a}\label{common_8h_a2a65bf6bbd9c2af58f9f89f09c773d3a} 
+\index{common.h@{common.h}!string\_elem@{string\_elem}}
+\index{string\_elem@{string\_elem}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{string\_elem}{string\_elem}}
+{\footnotesize\ttfamily \#define string\+\_\+elem(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .s = (x)\})}
+
+\Hypertarget{common_8h_a69ce03f1340d40df72b932d7ab295318}\label{common_8h_a69ce03f1340d40df72b932d7ab295318} 
+\index{common.h@{common.h}!unsigned\_elem@{unsigned\_elem}}
+\index{unsigned\_elem@{unsigned\_elem}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{unsigned\_elem}{unsigned\_elem}}
+{\footnotesize\ttfamily \#define unsigned\+\_\+elem(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}) \{ .u = (x)\})}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{common_8h_a833876c3875048ad46fcc53f1246835e}\label{common_8h_a833876c3875048ad46fcc53f1246835e} 
+\index{common.h@{common.h}!elem\_t@{elem\_t}}
+\index{elem\_t@{elem\_t}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{elem\_t}{elem\_t}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{unionelem}{elem}} \mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}}
+
+\Hypertarget{common_8h_afb1f6281cd1e403d010f433002b9d72f}\label{common_8h_afb1f6281cd1e403d010f433002b9d72f} 
+\index{common.h@{common.h}!ioopm\_eq\_function@{ioopm\_eq\_function}}
+\index{ioopm\_eq\_function@{ioopm\_eq\_function}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_eq\_function}{ioopm\_eq\_function}}
+{\footnotesize\ttfamily typedef bool ioopm\+\_\+eq\+\_\+function(\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} a, \mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} b)}
+
+
+
+Equality function for keys. 
+
+\begin{DoxyReturn}{Returns}
+true iff a and b are equal 
+\end{DoxyReturn}
+\Hypertarget{common_8h_a1a54ba10b899b068bfc47c57d50fec62}\label{common_8h_a1a54ba10b899b068bfc47c57d50fec62} 
+\index{common.h@{common.h}!ioopm\_hash\_function@{ioopm\_hash\_function}}
+\index{ioopm\_hash\_function@{ioopm\_hash\_function}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{ioopm\_hash\_function}{ioopm\_hash\_function}}
+{\footnotesize\ttfamily typedef size\+\_\+t ioopm\+\_\+hash\+\_\+function(\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} key)}
+
+
+
+Hash function for keys. 
+
+\begin{DoxyReturn}{Returns}
+A hash for a key. Keys who are equal according to ioopm\+\_\+eq\+\_\+function and used together with this function must have equal hashes 
+\end{DoxyReturn}

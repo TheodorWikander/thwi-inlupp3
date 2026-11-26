@@ -1,5 +1,12 @@
 package org.ioopm.calculator.ast;
 
 public class Cos extends Unary{
-    //Tom tills vi behöver lägga in en variabel
+    
+    public Cos(SymbolicExpression freakyMath) {
+        super(freakyMath);
+    }
+
+    public String getName() {
+        return "cos";
+    }
 }

@@ -10,16 +10,15 @@
 * @date 2026.09.28
 * @brief Simple hash table that maps string keys to integer values.
 *
-* Here typically goes a more extensive explanation of what the header
-* defines. Doxygens tags are words preceeded by either a backslash @\
-* or by an at symbol @@.
 * Violating a precondition will crash the program (assert)
 */ 
 
 typedef struct hash_table ioopm_hash_table_t;
 
 /// @brief Create a new hash table
-/// @param hash_fn
+/// @param hash_fn the hash function the ht shold use
+/// @param key_eq_fn the eq function the ht should use to compare keys
+/// @pre hash_fn and key_eq_fn cannot be null
 /// @return A new empty hash table
 ioopm_hash_table_t *ioopm_hash_table_create(ioopm_hash_function *hash_fn, ioopm_eq_function *key_eq_fn);
 

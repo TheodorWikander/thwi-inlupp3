@@ -1,0 +1,323 @@
+\doxysection{generic\+\_\+utils/utils.h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{generic\_utils/utils.h@{generic\_utils/utils.h}}
+
+
+Generic utilities\+: reading validated input from stdin, simple printing and hash/equality functions for use with the hash table.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}../generic\+\_\+structures/common.\+h"{}}\newline
+Include dependency graph for utils.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{utils_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{utils_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionanswer__t}{answer\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em The result of a question. Only the field matching the question type is valid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef bool \mbox{\hyperlink{utils_8h_a2235909df03e3eb655e7a0627d8e2565}{check\+\_\+func}}(char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em A check of a line of input. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{unionanswer__t}{answer\+\_\+t}} \mbox{\hyperlink{utils_8h_ac473788ca6748aada197469bac85aad8}{convert\+\_\+func}}(char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em A conversion of an accepted line of input into an \doxylink{unionanswer__t}{answer\+\_\+t}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{utils_8h_a18f59995e71d037e1fcef19531f6b840}{strdup}} (const char \texorpdfstring{$\ast$}{*})
+\item 
+\mbox{\hyperlink{unionanswer__t}{answer\+\_\+t}} \mbox{\hyperlink{utils_8h_a07a5ba49ed7796956c431de4821eb9d4}{to\+\_\+string}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Convers a stirng to an \doxylink{unionanswer__t}{answer\+\_\+t} by duplicating it. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils_8h_ac1a1309d385acff44647a826db4d2f75}{read\+\_\+string}} (char \texorpdfstring{$\ast$}{*}buf, int buf\+\_\+siz)
+\begin{DoxyCompactList}\small\item\em Reads one line from stdin into buf, without the newline. Always null-\/terminates. If the line is longer than buf\+\_\+siz -\/ 1 characters the rest of the line is read and thrown away. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8h_acb036bd509f16309b2d3ee1201d006cd}{is\+\_\+number}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Checks if a string is an integer\+: optional leading \textquotesingle{}-\/\textquotesingle{} followed by at least one digit and nothing else. Does not check for overflow. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8h_a11e7ddc1e420c97fc11f830222914d55}{not\+\_\+empty}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Checks that a string is not empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{unionanswer__t}{answer\+\_\+t}} \mbox{\hyperlink{utils_8h_a01fa008446fa390b5703c7c09516fad1}{ask\+\_\+question}} (char \texorpdfstring{$\ast$}{*}question, \mbox{\hyperlink{utils_8h_a2235909df03e3eb655e7a0627d8e2565}{check\+\_\+func}} \texorpdfstring{$\ast$}{*}check, \mbox{\hyperlink{utils_8h_ac473788ca6748aada197469bac85aad8}{convert\+\_\+func}} \texorpdfstring{$\ast$}{*}convert)
+\begin{DoxyCompactList}\small\item\em Asks a question and reads lines until check accepts one. The question is printed before every attempt. Lines are limited to 254 characters; longer input is cut. If input ends before an acceptable line was read, an error message is printed to stderr and the program exits, this will leak memory under valgrind. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils_8h_a968d3e8120a7d81ccac4e0ae50478446}{ask\+\_\+question\+\_\+int}} (char \texorpdfstring{$\ast$}{*}question)
+\begin{DoxyCompactList}\small\item\em Asks for an integer, repeating until is\+\_\+number accepts the input. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{utils_8h_a7e5974e35756c854a37cfe581384651e}{ask\+\_\+question\+\_\+string}} (char \texorpdfstring{$\ast$}{*}question)
+\begin{DoxyCompactList}\small\item\em Asks for a non-\/empty string. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{utils_8h_a26eb7e479c5f80c6610079d22c26cfe7}{ask\+\_\+question\+\_\+char}} (char \texorpdfstring{$\ast$}{*}question, \mbox{\hyperlink{utils_8h_a2235909df03e3eb655e7a0627d8e2565}{check\+\_\+func}} \texorpdfstring{$\ast$}{*}check)
+\begin{DoxyCompactList}\small\item\em Asks a question and returns the first character of the accepted line. The rest of the line is ignored. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8h_a7be975aa8720af6b652eaef5c574a2b0}{print}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Prints a string to stdout, without a trailing newline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8h_a4af5e92939d8f40e2b8e78719de70035}{println}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Prints a string to stdout followed by a newline. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{utils_8h_ae886ca897dc818f3eb146350901b29ca}{string\+\_\+hash}} (\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} key)
+\begin{DoxyCompactList}\small\item\em Hash funcqtion for string keys ( uses \doxylink{unionelem_a80e70f0dbf24a06ca391c5af77cb7518}{elem\+\_\+t.\+s}) depends only on the characters of the string, not on its adress. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8h_a9f7c24e35a0ed6a2a6111e8c61fba40f}{string\+\_\+eq}} (\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} a, \mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} b)
+\begin{DoxyCompactList}\small\item\em Equality for string keys (uses \doxylink{unionelem_a80e70f0dbf24a06ca391c5af77cb7518}{elem\+\_\+t.\+s}), compares the characters. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{utils_8h_abf0c8c547c77d56c93740176fdb852de}{int\+\_\+hash}} (\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} key)
+\begin{DoxyCompactList}\small\item\em Hash function for int keys (uses \doxylink{unionelem_a7c15caee0d28cddb6d42bc18ea93d0d1}{elem\+\_\+t.\+i}) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8h_affac546882d32492858bee2a78dd4f00}{int\+\_\+eq}} (\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} a, \mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}} b)
+\begin{DoxyCompactList}\small\item\em Equality for int keys (uses \doxylink{unionelem_a7c15caee0d28cddb6d42bc18ea93d0d1}{elem\+\_\+t.\+i}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Generic utilities\+: reading validated input from stdin, simple printing and hash/equality functions for use with the hash table. 
+
+Knows nothing about the webstore. Functions that read input print the question and ask again until the input passes a check function. 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{utils_8h_a2235909df03e3eb655e7a0627d8e2565}\label{utils_8h_a2235909df03e3eb655e7a0627d8e2565} 
+\index{utils.h@{utils.h}!check\_func@{check\_func}}
+\index{check\_func@{check\_func}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{check\_func}{check\_func}}
+{\footnotesize\ttfamily typedef bool check\+\_\+func(char \texorpdfstring{$\ast$}{*})}
+
+
+
+A check of a line of input. 
+
+\begin{DoxyReturn}{Returns}
+true if the input is acceptable 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_ac473788ca6748aada197469bac85aad8}\label{utils_8h_ac473788ca6748aada197469bac85aad8} 
+\index{utils.h@{utils.h}!convert\_func@{convert\_func}}
+\index{convert\_func@{convert\_func}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{convert\_func}{convert\_func}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{unionanswer__t}{answer\+\_\+t}} convert\+\_\+func(char \texorpdfstring{$\ast$}{*})}
+
+
+
+A conversion of an accepted line of input into an \doxylink{unionanswer__t}{answer\+\_\+t}. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8h_a01fa008446fa390b5703c7c09516fad1}\label{utils_8h_a01fa008446fa390b5703c7c09516fad1} 
+\index{utils.h@{utils.h}!ask\_question@{ask\_question}}
+\index{ask\_question@{ask\_question}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{ask\_question()}{ask\_question()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionanswer__t}{answer\+\_\+t}} ask\+\_\+question (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{question,  }\item[{\mbox{\hyperlink{utils_8h_a2235909df03e3eb655e7a0627d8e2565}{check\+\_\+func}} \texorpdfstring{$\ast$}{*}}]{check,  }\item[{\mbox{\hyperlink{utils_8h_ac473788ca6748aada197469bac85aad8}{convert\+\_\+func}} \texorpdfstring{$\ast$}{*}}]{convert }\end{DoxyParamCaption})}
+
+
+
+Asks a question and reads lines until check accepts one. The question is printed before every attempt. Lines are limited to 254 characters; longer input is cut. If input ends before an acceptable line was read, an error message is printed to stderr and the program exits, this will leak memory under valgrind. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & the text to print \\
+\hline
+{\em check} & decides if a line is acceptable \\
+\hline
+{\em convert} & turns the accepted line into the returned answer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the converted answer 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_a26eb7e479c5f80c6610079d22c26cfe7}\label{utils_8h_a26eb7e479c5f80c6610079d22c26cfe7} 
+\index{utils.h@{utils.h}!ask\_question\_char@{ask\_question\_char}}
+\index{ask\_question\_char@{ask\_question\_char}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{ask\_question\_char()}{ask\_question\_char()}}
+{\footnotesize\ttfamily char ask\+\_\+question\+\_\+char (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{question,  }\item[{\mbox{\hyperlink{utils_8h_a2235909df03e3eb655e7a0627d8e2565}{check\+\_\+func}} \texorpdfstring{$\ast$}{*}}]{check }\end{DoxyParamCaption})}
+
+
+
+Asks a question and returns the first character of the accepted line. The rest of the line is ignored. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & the text to print \\
+\hline
+{\em check} & decides if a line is acceptable (it receives the whole line) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the first character of the line 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+check never accepts an empty line (otherwise the result is \textquotesingle{}\textbackslash{}0\textquotesingle{}) 
+\end{DoxyPrecond}
+\Hypertarget{utils_8h_a968d3e8120a7d81ccac4e0ae50478446}\label{utils_8h_a968d3e8120a7d81ccac4e0ae50478446} 
+\index{utils.h@{utils.h}!ask\_question\_int@{ask\_question\_int}}
+\index{ask\_question\_int@{ask\_question\_int}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{ask\_question\_int()}{ask\_question\_int()}}
+{\footnotesize\ttfamily int ask\+\_\+question\+\_\+int (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{question }\end{DoxyParamCaption})}
+
+
+
+Asks for an integer, repeating until is\+\_\+number accepts the input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & the text to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the integer 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_a7e5974e35756c854a37cfe581384651e}\label{utils_8h_a7e5974e35756c854a37cfe581384651e} 
+\index{utils.h@{utils.h}!ask\_question\_string@{ask\_question\_string}}
+\index{ask\_question\_string@{ask\_question\_string}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{ask\_question\_string()}{ask\_question\_string()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} ask\+\_\+question\+\_\+string (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{question }\end{DoxyParamCaption})}
+
+
+
+Asks for a non-\/empty string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & the text to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated string (strdup). The caller must free it. 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_affac546882d32492858bee2a78dd4f00}\label{utils_8h_affac546882d32492858bee2a78dd4f00} 
+\index{utils.h@{utils.h}!int\_eq@{int\_eq}}
+\index{int\_eq@{int\_eq}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{int\_eq()}{int\_eq()}}
+{\footnotesize\ttfamily bool int\+\_\+eq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}}]{a,  }\item[{\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Equality for int keys (uses \doxylink{unionelem_a7c15caee0d28cddb6d42bc18ea93d0d1}{elem\+\_\+t.\+i}) 
+
+\begin{DoxyReturn}{Returns}
+true if the ints are equal 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_abf0c8c547c77d56c93740176fdb852de}\label{utils_8h_abf0c8c547c77d56c93740176fdb852de} 
+\index{utils.h@{utils.h}!int\_hash@{int\_hash}}
+\index{int\_hash@{int\_hash}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{int\_hash()}{int\_hash()}}
+{\footnotesize\ttfamily size\+\_\+t int\+\_\+hash (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}}]{key }\end{DoxyParamCaption})}
+
+
+
+Hash function for int keys (uses \doxylink{unionelem_a7c15caee0d28cddb6d42bc18ea93d0d1}{elem\+\_\+t.\+i}) 
+
+\Hypertarget{utils_8h_acb036bd509f16309b2d3ee1201d006cd}\label{utils_8h_acb036bd509f16309b2d3ee1201d006cd} 
+\index{utils.h@{utils.h}!is\_number@{is\_number}}
+\index{is\_number@{is\_number}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{is\_number()}{is\_number()}}
+{\footnotesize\ttfamily bool is\+\_\+number (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Checks if a string is an integer\+: optional leading \textquotesingle{}-\/\textquotesingle{} followed by at least one digit and nothing else. Does not check for overflow. 
+
+\begin{DoxyReturn}{Returns}
+true if str is an integer, false otherwise (also for "{}"{} and "{}-\/"{}) 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_a11e7ddc1e420c97fc11f830222914d55}\label{utils_8h_a11e7ddc1e420c97fc11f830222914d55} 
+\index{utils.h@{utils.h}!not\_empty@{not\_empty}}
+\index{not\_empty@{not\_empty}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{not\_empty()}{not\_empty()}}
+{\footnotesize\ttfamily bool not\+\_\+empty (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Checks that a string is not empty. 
+
+\begin{DoxyReturn}{Returns}
+true if str has at least one character 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_a7be975aa8720af6b652eaef5c574a2b0}\label{utils_8h_a7be975aa8720af6b652eaef5c574a2b0} 
+\index{utils.h@{utils.h}!print@{print}}
+\index{print@{print}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void print (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Prints a string to stdout, without a trailing newline. 
+
+\Hypertarget{utils_8h_a4af5e92939d8f40e2b8e78719de70035}\label{utils_8h_a4af5e92939d8f40e2b8e78719de70035} 
+\index{utils.h@{utils.h}!println@{println}}
+\index{println@{println}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}}
+{\footnotesize\ttfamily void println (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Prints a string to stdout followed by a newline. 
+
+\Hypertarget{utils_8h_ac1a1309d385acff44647a826db4d2f75}\label{utils_8h_ac1a1309d385acff44647a826db4d2f75} 
+\index{utils.h@{utils.h}!read\_string@{read\_string}}
+\index{read\_string@{read\_string}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{read\_string()}{read\_string()}}
+{\footnotesize\ttfamily int read\+\_\+string (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{int}]{buf\+\_\+siz }\end{DoxyParamCaption})}
+
+
+
+Reads one line from stdin into buf, without the newline. Always null-\/terminates. If the line is longer than buf\+\_\+siz -\/ 1 characters the rest of the line is read and thrown away. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & the buffer to fill \\
+\hline
+{\em buf\+\_\+siz} & size of buf in bytes, must be \texorpdfstring{$>$}{>}= 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of characters stored in buf (excluding the null terminator) 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_a18f59995e71d037e1fcef19531f6b840}\label{utils_8h_a18f59995e71d037e1fcef19531f6b840} 
+\index{utils.h@{utils.h}!strdup@{strdup}}
+\index{strdup@{strdup}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{strdup()}{strdup()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} strdup (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{utils_8h_a9f7c24e35a0ed6a2a6111e8c61fba40f}\label{utils_8h_a9f7c24e35a0ed6a2a6111e8c61fba40f} 
+\index{utils.h@{utils.h}!string\_eq@{string\_eq}}
+\index{string\_eq@{string\_eq}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{string\_eq()}{string\_eq()}}
+{\footnotesize\ttfamily bool string\+\_\+eq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}}]{a,  }\item[{\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Equality for string keys (uses \doxylink{unionelem_a80e70f0dbf24a06ca391c5af77cb7518}{elem\+\_\+t.\+s}), compares the characters. 
+
+\begin{DoxyPrecond}{Precondition}
+a.\+s and b.\+s are not NULL 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+true if the strings are equal 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_ae886ca897dc818f3eb146350901b29ca}\label{utils_8h_ae886ca897dc818f3eb146350901b29ca} 
+\index{utils.h@{utils.h}!string\_hash@{string\_hash}}
+\index{string\_hash@{string\_hash}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{string\_hash()}{string\_hash()}}
+{\footnotesize\ttfamily size\+\_\+t string\+\_\+hash (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{common_8h_a833876c3875048ad46fcc53f1246835e}{elem\+\_\+t}}}]{key }\end{DoxyParamCaption})}
+
+
+
+Hash funcqtion for string keys ( uses \doxylink{unionelem_a80e70f0dbf24a06ca391c5af77cb7518}{elem\+\_\+t.\+s}) depends only on the characters of the string, not on its adress. 
+
+\begin{DoxyPrecond}{Precondition}
+key.\+s is not NULL 
+\end{DoxyPrecond}
+\Hypertarget{utils_8h_a07a5ba49ed7796956c431de4821eb9d4}\label{utils_8h_a07a5ba49ed7796956c431de4821eb9d4} 
+\index{utils.h@{utils.h}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionanswer__t}{answer\+\_\+t}} to\+\_\+string (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Convers a stirng to an \doxylink{unionanswer__t}{answer\+\_\+t} by duplicating it. 
+
+\begin{DoxyReturn}{Returns}
+an \doxylink{unionanswer__t}{answer\+\_\+t} where .string\+\_\+value points to the string. Allocates memory by strdup and caller must free. ~\newline
+ 
+\end{DoxyReturn}

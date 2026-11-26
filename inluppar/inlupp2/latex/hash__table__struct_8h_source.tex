@@ -1,0 +1,25 @@
+\doxysection{hash\+\_\+table\+\_\+struct.\+h}
+\hypertarget{hash__table__struct_8h_source}{}\label{hash__table__struct_8h_source}\index{generic\_structures/hash\_table\_struct.h@{generic\_structures/hash\_table\_struct.h}}
+\mbox{\hyperlink{hash__table__struct_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{common_8h}{common.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ No\_buckets\ 17}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structentry}{entry}}\ \mbox{\hyperlink{structentry}{entry\_t}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structentry}{entry}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{unionelem}{elem\_t}}\ \mbox{\hyperlink{structentry_a41ec6df72acc05f97bc8f4af037956f0}{key}};\ \textcolor{comment}{//hold\ the\ key}}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{unionelem}{elem\_t}}\ \mbox{\hyperlink{structentry_a7771c45f0d063c6b7d9a4c16470d9e8c}{value}};\ \textcolor{comment}{//\ holds\ the\ value}}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{structentry}{entry\_t}}\ *\mbox{\hyperlink{structentry_a11510b7fbb399e411eb25023ab796ce9}{next}};\ \textcolor{comment}{//\ points\ to\ next\ entry\ (Can\ be\ NULL)}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhash__table}{hash\_table}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{structentry}{entry\_t}}\ \mbox{\hyperlink{structhash__table_a40c0cadadab02fa925b1567d53f6e8e9}{buckets}}[\mbox{\hyperlink{hash__table__struct_8h_a798cfe946e374b540e16dd81b6453bef}{No\_buckets}}];}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{common_8h_a1a54ba10b899b068bfc47c57d50fec62}{ioopm\_hash\_function}}\ *\mbox{\hyperlink{structhash__table_a080a73619f8f985343bca70c8f5a3ac8}{hash\_fn}};}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{common_8h_afb1f6281cd1e403d010f433002b9d72f}{ioopm\_eq\_function}}\ *\mbox{\hyperlink{structhash__table_a67d6fa15214f69d53ebd46916345d6e5}{key\_eq\_fn}};}
+\DoxyCodeLine{00019\ \};\ }
+
+\end{DoxyCode}

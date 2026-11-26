@@ -1,0 +1,481 @@
+--------------------------------------------------------------------------------
+Profile data file 'profiles/cg.10k-words.txt.out' (creator: callgrind-3.22.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 2535798
+Trigger: Program termination
+Profiled target:  ./freq_count_cg inputs/10k-words.txt (PID 450211, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                  
+--------------------------------------------------------------------------------
+12,509,974 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                  file:function
+--------------------------------------------------------------------------------
+3,216,248 (25.71%)  ./string/../sysdeps/x86_64/multiarch/strcmp-sse4_2.S:__strcmp_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+1,647,238 (13.17%)  ./string/../string/strcspn.c:__strcspn_generic [/usr/lib/x86_64-linux-gnu/libc.so.6]
+1,484,366 (11.87%)  hash_table.c:find_previous_entry [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+1,458,062 (11.66%)  ./string/../string/strspn.c:__strspn_generic [/usr/lib/x86_64-linux-gnu/libc.so.6]
+1,045,808 ( 8.36%)  freq_count.c:string_hash [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+  811,020 ( 6.48%)  freq_count.c:string_eq [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+  386,600 ( 3.09%)  ./string/./string/strtok_r.c:strtok_r [/usr/lib/x86_64-linux-gnu/libc.so.6]
+  270,398 ( 2.16%)  freq_count.c:process_word [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+  231,720 ( 1.85%)  ???:0x0000000000109180 [???]
+  183,960 ( 1.47%)  ./string/../string/bits/string_fortified.h:__strspn_generic
+  180,000 ( 1.44%)  ./string/../string/bits/string_fortified.h:__strcspn_generic
+  163,520 ( 1.31%)  ./string/../sysdeps/x86_64/multiarch/strspn-sse4.c:__strspn_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+  160,597 ( 1.28%)  hash_table.c:ioopm_hash_table_insert [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+  160,000 ( 1.28%)  ./string/../sysdeps/x86_64/multiarch/strcspn-sse4.c:__strcspn_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+  119,602 ( 0.96%)  hash_table.c:ioopm_hash_table_lookup [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+  102,903 ( 0.82%)  freq_count.c:process_file [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   81,760 ( 0.65%)  /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h:__strspn_sse42
+   80,000 ( 0.64%)  /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h:__strcspn_sse42
+   56,857 ( 0.45%)  ./malloc/./malloc/malloc.c:_int_malloc [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   36,432 ( 0.29%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:memcpy@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   33,989 ( 0.27%)  ./elf/./elf/dl-tunables.c:__GI___tunables_init [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   31,746 ( 0.25%)  ./stdlib/./stdlib/qsort.c:msort_with_tmp.part.0'2 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   31,641 ( 0.25%)  ./stdio-common/./stdio-common/Xprintf_buffer_write.c:__printf_buffer_write [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   31,641 ( 0.25%)  ./stdio-common/./stdio-common/vfprintf-internal.c:__printf_buffer [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   30,660 ( 0.25%)  ./string/./string/strtok.c:strtok [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   30,121 ( 0.24%)  ./malloc/./malloc/malloc.c:_int_free [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   27,705 ( 0.22%)  ./string/../sysdeps/x86_64/multiarch/memchr-sse2.S:__memchr_sse2 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   27,453 ( 0.22%)  ./elf/./elf/dl-lookup.c:do_lookup_x [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   26,865 ( 0.21%)  ./stdio-common/./stdio-common/vfprintf-process-arg.c:__printf_buffer
+   20,440 ( 0.16%)  ???:0x00000000001091d0 [???]
+   20,440 ( 0.16%)  ???:0x00000000048a1470 [???]
+   20,000 ( 0.16%)  ???:0x00000000048a15e0 [???]
+   18,633 ( 0.15%)  ./libio/./libio/iogetdelim.c:getdelim [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   17,712 ( 0.14%)  ./malloc/./malloc/malloc.c:malloc [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   16,497 ( 0.13%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:__mempcpy_sse2_unaligned [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   16,210 ( 0.13%)  ./elf/./elf/dl-reloc.c:_dl_relocate_object [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   12,537 ( 0.10%)  ./string/../sysdeps/x86_64/multiarch/strchr-sse2.S:__strchrnul_sse2 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   11,312 ( 0.09%)  ./malloc/./malloc/malloc.c:free [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   10,617 ( 0.08%)  ./elf/./elf/dl-lookup.c:_dl_lookup_symbol_x [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   10,152 ( 0.08%)  freq_count.c:cmp_freq_words [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+    9,952 ( 0.08%)  ./elf/../sysdeps/generic/dl-new-hash.h:_dl_lookup_symbol_x
+    9,949 ( 0.08%)  ./stdio-common/./stdio-common/vfprintf-internal.c:__vfprintf_internal [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    7,607 ( 0.06%)  ./stdio-common/./stdio-common/_itoa.c:_itoa_word [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    7,278 ( 0.06%)  ./string/../sysdeps/x86_64/multiarch/../multiarch/strcmp-sse2.S:strcmp [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    7,166 ( 0.06%)  ./stdio-common/./stdio-common/printf_buffer_to_file.c:__printf_buffer_to_file_done [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    6,830 ( 0.05%)  ./string/../sysdeps/x86_64/multiarch/strlen-sse2.S:__strlen_sse2 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    6,379 ( 0.05%)  ./elf/./elf/dl-lookup.c:check_match [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    6,368 ( 0.05%)  ./debug/./debug/printf_chk.c:__printf_chk [/usr/lib/x86_64-linux-gnu/libc.so.6]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h
+--------------------------------------------------------------------------------
+Ir               
+
+-- line 1333 ----------------------------------------
+      .           _mm_xor_si128 (__m128i __A, __m128i __B)
+      .           {
+      .             return (__m128i) ((__v2du)__A ^ (__v2du)__B);
+      .           }
+      .           
+      .           extern __inline __m128i __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+      .           _mm_cmpeq_epi8 (__m128i __A, __m128i __B)
+      .           {
+121,320 ( 0.97%)    return (__m128i) ((__v16qi)__A == (__v16qi)__B);
+      .           }
+      .           
+      .           extern __inline __m128i __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+      .           _mm_cmpeq_epi16 (__m128i __A, __m128i __B)
+      .           {
+      .             return (__m128i) ((__v8hi)__A == (__v8hi)__B);
+      .           }
+      .           
+-- line 1349 ----------------------------------------
+-- line 1431 ----------------------------------------
+      .           _mm_min_epu8 (__m128i __A, __m128i __B)
+      .           {
+      .             return (__m128i)__builtin_ia32_pminub128 ((__v16qi)__A, (__v16qi)__B);
+      .           }
+      .           
+      .           extern __inline int __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+      .           _mm_movemask_epi8 (__m128i __A)
+      .           {
+ 40,440 ( 0.32%)    return __builtin_ia32_pmovmskb128 ((__v16qi)__A);
+      .           }
+      .           
+      .           extern __inline __m128i __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+      .           _mm_mulhi_epu16 (__m128i __A, __m128i __B)
+      .           {
+      .             return (__m128i)__builtin_ia32_pmulhuw128 ((__v8hi)__A, (__v8hi)__B);
+      .           }
+      .           
+-- line 1447 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: freq_count.c
+--------------------------------------------------------------------------------
+Ir               
+
+-- line 6 ----------------------------------------
+      .           #include "common.h"
+      .           #include "hash_table.h"
+      .           #include "iterator.h"
+      .           
+      .           #define Delimiters "+-#@()[]{}.,:;!? \t\n\r"
+      .           
+      .           /// @brief Compares the string elements a and b 
+      .           /// @return true if  a.s == b.s, false otherwise
+231,720 ( 1.85%)  static bool string_eq(elem_t a, elem_t b) {
+347,580 ( 2.78%)    return strcmp(a.s, b.s) == 0;
+3,447,968 (27.56%)  => ???:0x0000000000109180 (115,860x)
+231,720 ( 1.85%)  }
+      .           
+ 20,000 ( 0.16%)  static size_t string_hash(elem_t key) {
+ 20,000 ( 0.16%)    size_t result = 0;
+522,904 ( 4.18%)    for (const char *s = key.s; *s != '\0'; ++s) {
+442,904 ( 3.54%)      result = result *31 +(unsigned char) *s;
+      .             }
+      .             return result;
+ 40,000 ( 0.32%)  }
+      .           
+      .           /// @brief Process a single word, updating its frequency
+      .           /// @param ht a hash table containgccing the frequencies of the words found so far
+      .           /// @param word the word to process
+      .           void process_word(char *word, ioopm_hash_table_t *ht)
+ 90,000 ( 0.72%)  {
+      .             elem_t result;
+ 60,000 ( 0.48%)    if (ioopm_hash_table_lookup(ht, string_elem(word), &result))
+3,516,483 (28.11%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_lookup (10,000x)
+      .             {
+ 49,005 ( 0.39%)      ioopm_hash_table_insert(ht, string_elem(word), int_elem(result.i + 1));
+3,486,021 (27.87%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_insert (9,801x)
+      .             }
+      .             else
+      .             {
+  1,194 ( 0.01%)      ioopm_hash_table_insert(ht, string_elem(strdup(word)), int_elem(1));
+107,851 ( 0.86%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_insert (199x)
+ 49,183 ( 0.39%)  => ???:0x00000000001091f0 (199x)
+      .             }
+ 70,199 ( 0.56%)  }
+      .           
+      .           /// @brief Process a single file, updating the frequencies of its words
+      .           /// @param filename the name of the file to process
+      .           /// @param ht a hash table containing the frequencies of the words found so far
+      .           void process_file(char *filename, ioopm_hash_table_t *ht)
+     12 ( 0.00%)  {
+      2 ( 0.00%)    FILE *f = fopen(filename, "r");
+    610 ( 0.00%)  => ???:0x00000000001091b0 (1x)
+      3 ( 0.00%)    if (f == NULL)
+      .             {
+      .               perror(filename);
+      .               return;
+      .             }
+      .           
+      2 ( 0.00%)    char *buf = NULL;
+      2 ( 0.00%)    size_t len = 0;
+  1,326 ( 0.01%)    while (getline(&buf, &len, f) != -1)
+ 72,605 ( 0.58%)  => ???:0x00000000001091e0 (221x)
+      .             {
+    882 ( 0.01%)      for (char *word = strtok(buf, Delimiters);
+ 72,317 ( 0.58%)  => ???:0x00000000001091d0 (220x)
+ 40,660 ( 0.33%)           word && *word;
+ 40,000 ( 0.32%)           word = strtok(NULL, Delimiters))
+4,360,363 (34.86%)  => ???:0x00000000001091d0 (10,000x)
+      .               {
+ 20,000 ( 0.16%)        process_word(word, ht);
+7,429,936 (59.39%)  => freq_count.c:process_word (10,000x)
+      .               }
+      .             }
+      2 ( 0.00%)    free(buf);
+    170 ( 0.00%)  => ???:0x0000000000109120 (1x)
+      2 ( 0.00%)    fclose(f);
+    588 ( 0.00%)  => ???:0x0000000000109140 (1x)
+     10 ( 0.00%)  }
+      .           
+      .           /// @brief A word together with its frequency
+      .           struct freq_word
+      .           {
+      .             char *word;
+      .             size_t freq;
+      .           };
+      .           
+-- line 75 ----------------------------------------
+-- line 80 ----------------------------------------
+      .           ///     @n@ > 0  if @p1@'s frequency is higher than @p2@'s
+      .           ///     @n@ < 0  if @p1@'s frequency is lower than @p2@'s
+      .           ///     @n@ == 0 if @p1@'s frequency is equal to @p2@'s
+      .           static int cmp_freq_words(const void *p1, const void *p2)
+      .           {
+      .             const struct freq_word *w1 = p1;
+      .             const struct freq_word *w2 = p2;
+      .           
+  8,883 ( 0.07%)    return (w1->freq > w2->freq) - (w1->freq < w2->freq);
+  1,269 ( 0.01%)  }
+      .           
+      .           /// @brief Like @cmp_freq_words@ but with the comparison result reversed
+      .           static int cmp_freq_words_reverse(const void *p1, const void *p2)
+  1,269 ( 0.01%)  {
+  2,538 ( 0.02%)    return -cmp_freq_words(p1, p2);
+ 10,152 ( 0.08%)  => freq_count.c:cmp_freq_words (1,269x)
+  1,269 ( 0.01%)  }
+      .           
+      .           /// @brief Sort an array of @freq_word@s in descending frequency order
+      .           /// @param words the array to be sorted
+      .           /// @param no_words the number of elements in the array
+      .           void sort_freq_words(struct freq_word words[], size_t no_words)
+      1 ( 0.00%)  {
+      3 ( 0.00%)    qsort(words, no_words, sizeof(struct freq_word), cmp_freq_words_reverse);
+ 79,081 ( 0.63%)  => ???:0x0000000000109130 (1x)
+      .           }
+      .           
+      .           int main(int argc, char *argv[]) 
+     14 ( 0.00%)  {
+      3 ( 0.00%)    if (argc < 2)
+      .             {
+      .               printf("Usage: %s file1 ... filen\n", argv[0]);
+      .               return 1;
+      .             }
+      .           
+      5 ( 0.00%)    ioopm_hash_table_t *ht = ioopm_hash_table_create(string_hash, string_eq);
+  1,928 ( 0.02%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_create (1x)
+      .           
+      6 ( 0.00%)    for (int i = 1; i < argc; ++i)
+      .             {
+      3 ( 0.00%)      process_file(argv[i], ht);
+12,039,492 (96.24%)  => freq_count.c:process_file (1x)
+      .             }
+      .           
+      3 ( 0.00%)    size_t size = ioopm_hash_table_size(ht);
+    990 ( 0.01%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_size (1x)
+      .             
+     15 ( 0.00%)    struct freq_word freq_words[size];
+      .           
+      .             size_t i = 0;
+      .           
+      4 ( 0.00%)    ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
+    515 ( 0.00%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_create (1x)
+      .           
+    801 ( 0.01%)    while (!ioopm_hash_table_iterator_at_end(it))
+    800 ( 0.01%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_at_end (200x)
+      .             {
+    598 ( 0.00%)      elem_t key = ioopm_hash_table_iterator_current_key(it);
+  1,194 ( 0.01%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_current_key (199x)
+    597 ( 0.00%)      elem_t value = ioopm_hash_table_iterator_current_value(it);
+  1,194 ( 0.01%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_current_value (199x)
+      .           
+    199 ( 0.00%)      freq_words[i].word = key.s;
+    398 ( 0.00%)      freq_words[i].freq = value.i;
+      .               ++i;
+      .           
+    398 ( 0.00%)      ioopm_hash_table_iterator_advance(it);
+  4,546 ( 0.04%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_advance (199x)
+      .             }
+      .           
+      1 ( 0.00%)    ioopm_hash_table_iterator_destroy(it);
+     89 ( 0.00%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_destroy (1x)
+      .           
+      4 ( 0.00%)    sort_freq_words(freq_words, size);
+ 79,085 ( 0.63%)  => freq_count.c:sort_freq_words (1x)
+      .           
+    801 ( 0.01%)    for (size_t i = 0; i < size; ++i)
+      .             {
+      .               printf("%s: %zu\n", freq_words[i].word, freq_words[i].freq);
+      .             }
+      .           
+      .           
+    798 ( 0.01%)    for (size_t i = 0; i < size; ++i)
+      .             {
+    995 ( 0.01%)      free(freq_words[i].word);
+ 21,364 ( 0.17%)  => ???:0x0000000000109120 (199x)
+      .             }
+      .           
+      5 ( 0.00%)    ioopm_hash_table_destroy(ht);
+ 22,909 ( 0.18%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_destroy (1x)
+     11 ( 0.00%)  }
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: hash_table.c
+--------------------------------------------------------------------------------
+Ir               
+
+-- line 6 ----------------------------------------
+      .           #include <string.h>
+      .           #include <assert.h>
+      .           
+      .           /// @brief creates a new ht entry
+      .           /// @param key the key to map to value in ht
+      .           /// @param value the value to be found at key in ht
+      .           /// @param next the next entry in ht
+      .           /// @return the new entry
+    995 ( 0.01%)  static entry_t *entry_create(elem_t key, elem_t value, entry_t *next) {
+    398 ( 0.00%)      entry_t *entry = malloc(sizeof(entry_t));
+ 38,208 ( 0.31%)  => ???:0x0000000000109190 (199x)
+    199 ( 0.00%)      entry->key = key;
+    199 ( 0.00%)      entry->value = value;
+    199 ( 0.00%)      entry->next = next;
+      .               return entry;
+    796 ( 0.01%)  }
+      .           /// @brief destroys an entry
+      .           /// @param entry the entry to be destroyed
+      .           static void entry_destroy(entry_t *entry) {
+    199 ( 0.00%)      free(entry);
+ 21,492 ( 0.17%)  => ???:0x0000000000109120 (199x)
+      .           }
+      .           
+      .           /// @brief counts the number of entries in a bucket
+      .           /// @param bucket the bucket to count entries in
+      .           /// @return the number of entries in the provided bucket 
+      .           static size_t bucket_size(entry_t *bucket) {
+     17 ( 0.00%)      size_t i = 0;
+      .               entry_t *current = bucket;
+    466 ( 0.00%)      while (current != NULL) {
+    199 ( 0.00%)          ++i;
+    199 ( 0.00%)          current = current->next;
+      .               } 
+      .               return i; 
+      .           }
+      .           
+      4 ( 0.00%)  ioopm_hash_table_t *ioopm_hash_table_create(ioopm_hash_function *hash_fn, ioopm_eq_function *key_eq_fn) {
+      6 ( 0.00%)      assert(hash_fn != NULL && key_eq_fn != NULL);
+      .           
+      3 ( 0.00%)      ioopm_hash_table_t *ht = calloc(1, sizeof(ioopm_hash_table_t));
+  1,909 ( 0.02%)  => ???:0x0000000000109170 (1x)
+      .           
+      1 ( 0.00%)      ht->hash_fn = hash_fn;
+      1 ( 0.00%)      ht->key_eq_fn = key_eq_fn;
+      .               return ht;
+      4 ( 0.00%)  }
+      .           
+     10 ( 0.00%)  void ioopm_hash_table_destroy(ioopm_hash_table_t *ht) {
+     51 ( 0.00%)      for (size_t i = 0; i < No_buckets; ++i) {
+     17 ( 0.00%)          entry_t *current = ht->buckets[i].next;
+    449 ( 0.00%)          while (current != NULL) {
+    398 ( 0.00%)              entry_t *next = current->next; // save before free
+    199 ( 0.00%)              entry_destroy(current);
+ 21,691 ( 0.17%)  => hash_table.c:entry_destroy (199x)
+      .                       current = next;
+      .                   }
+      .               }
+      2 ( 0.00%)      free(ht);
+     87 ( 0.00%)  => ???:0x0000000000109120 (1x)
+      5 ( 0.00%)  }
+      .           
+      .           /// @return returns the netry before key in ht
+100,000 ( 0.80%)  static entry_t *find_previous_entry(ioopm_hash_table_t *ht, elem_t key) {
+      .               //find bucket
+220,000 ( 1.76%)      size_t bucket = ht->hash_fn(key) % No_buckets;
+1,045,808 ( 8.36%)  => /home/noed5571/ioopm/inluppar/inlupp1/freq_count.c:string_hash (20,000x)
+      .           
+      .               //create a pointer to the first element in each bucket (sentinel node)
+ 40,000 ( 0.32%)      entry_t *previous = &ht->buckets[bucket];
+      .           
+      .               //look for the element where the next element is either NULL or has the .key == key
+928,108 ( 7.42%)      while (previous->next != NULL && !ht->key_eq_fn(previous->next->key, key))
+4,258,988 (34.04%)  => /home/noed5571/ioopm/inluppar/inlupp1/freq_count.c:string_eq (115,860x)
+      .                   { 
+ 96,258 ( 0.77%)          previous = previous->next;
+      .                   } 
+      .               return previous;
+100,000 ( 0.80%)  }
+      .           
+ 60,000 ( 0.48%)  void ioopm_hash_table_insert(ioopm_hash_table_t *ht, elem_t key, elem_t value) {
+      .               //find the previous entry, or the last entry if the key does not exist
+ 20,000 ( 0.16%)      entry_t *previous = find_previous_entry(ht, key);
+3,392,281 (27.12%)  => hash_table.c:find_previous_entry (10,000x)
+      .           
+      .               //if the key exists, update the value, otherwise create a new entry
+ 30,000 ( 0.24%)      if (previous->next != NULL) {
+  9,801 ( 0.08%)          previous->next->value = value;
+      .               } else {
+    796 ( 0.01%)          previous->next = entry_create(key, value, NULL);
+ 40,994 ( 0.33%)  => hash_table.c:entry_create.constprop.0 (199x)
+      .               }
+ 40,000 ( 0.32%)  }
+      .           
+ 30,000 ( 0.24%)  bool ioopm_hash_table_lookup(ioopm_hash_table_t *ht, elem_t key, elem_t *result) {
+      .               
+ 10,000 ( 0.08%)      entry_t *previous = find_previous_entry(ht, key);
+3,396,881 (27.15%)  => hash_table.c:find_previous_entry (10,000x)
+      .           
+ 30,000 ( 0.24%)      if (previous->next == NULL) {
+    199 ( 0.00%)          return false;
+      .               }
+ 19,602 ( 0.16%)      *result = previous->next->value;
+  9,801 ( 0.08%)      return true;
+ 20,000 ( 0.16%)  }
+      .           
+      .           bool ioopm_hash_table_remove(ioopm_hash_table_t *ht, elem_t key, elem_t *result) {
+      .              
+      .               entry_t *previous = find_previous_entry(ht, key);
+      .           
+      .               if (previous->next == NULL) {
+      .                   return false;
+      .               } else {
+-- line 107 ----------------------------------------
+-- line 118 ----------------------------------------
+      .               //if next element is null, key was not in ht 
+      .                if (prevoius->next == NULL) {
+      .                   return false;
+      .                } else {
+      .                   return true;
+      .                }
+      .           }
+      .           
+      1 ( 0.00%)  size_t ioopm_hash_table_size(ioopm_hash_table_t *ht) {
+      2 ( 0.00%)      size_t size = 0;
+     53 ( 0.00%)      for (size_t i = 0; i < No_buckets; ++i) {
+     51 ( 0.00%)          size += bucket_size(ht->buckets[i].next);
+    881 ( 0.01%)  => hash_table.c:bucket_size (17x)
+      .               }
+      .               return size;
+      2 ( 0.00%)  }
+      .           
+      .           bool ioopm_hash_table_is_empty(ioopm_hash_table_t *ht) {
+      .               //if node after sentinel node in any bucket is not NULL, ht is not empty
+      .               for (size_t i = 0; i < No_buckets; ++i) {
+      .                   if (ht->buckets[i].next != NULL) {
+      .                       return false;
+      .                   }
+      .               }
+-- line 140 ----------------------------------------
+
+--------------------------------------------------------------------------------
+The following files chosen for auto-annotation could not be found:
+--------------------------------------------------------------------------------
+  ./debug/./debug/printf_chk.c
+  ./elf/../sysdeps/generic/dl-new-hash.h
+  ./elf/./elf/dl-lookup.c
+  ./elf/./elf/dl-reloc.c
+  ./elf/./elf/dl-tunables.c
+  ./libio/./libio/iogetdelim.c
+  ./malloc/./malloc/malloc.c
+  ./stdio-common/./stdio-common/Xprintf_buffer_write.c
+  ./stdio-common/./stdio-common/_itoa.c
+  ./stdio-common/./stdio-common/printf_buffer_to_file.c
+  ./stdio-common/./stdio-common/vfprintf-internal.c
+  ./stdio-common/./stdio-common/vfprintf-process-arg.c
+  ./stdlib/./stdlib/qsort.c
+  ./string/../string/bits/string_fortified.h
+  ./string/../string/strcspn.c
+  ./string/../string/strspn.c
+  ./string/../sysdeps/x86_64/multiarch/../multiarch/strcmp-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/memchr-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
+  ./string/../sysdeps/x86_64/multiarch/strchr-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/strcmp-sse4_2.S
+  ./string/../sysdeps/x86_64/multiarch/strcspn-sse4.c
+  ./string/../sysdeps/x86_64/multiarch/strlen-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/strspn-sse4.c
+  ./string/./string/strtok.c
+  ./string/./string/strtok_r.c
+
+--------------------------------------------------------------------------------
+Ir                 
+--------------------------------------------------------------------------------
+4,182,470 (33.43%)  events annotated
+

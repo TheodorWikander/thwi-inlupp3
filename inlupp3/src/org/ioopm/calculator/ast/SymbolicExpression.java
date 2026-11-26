@@ -1,5 +1,9 @@
 package org.ioopm.calculator.ast;
 
-public class SymbolicExpression {
+public abstract class SymbolicExpression {
     
+
+    public boolean isConstant() {
+        return false;
+    }
 }

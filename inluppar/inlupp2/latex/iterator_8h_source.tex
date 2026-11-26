@@ -1,0 +1,26 @@
+\doxysection{iterator.\+h}
+\hypertarget{iterator_8h_source}{}\label{iterator_8h_source}\index{generic\_structures/iterator.h@{generic\_structures/iterator.h}}
+\mbox{\hyperlink{iterator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__table_8h}{hash\_table.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__table__struct_8h}{hash\_table\_struct.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{common_8h}{common.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhash__table__iterator}{hash\_table\_iterator}}\ \mbox{\hyperlink{structhash__table__iterator}{ioopm\_hash\_table\_iterator\_t}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \mbox{\hyperlink{structhash__table__iterator}{ioopm\_hash\_table\_iterator\_t}}\ *\mbox{\hyperlink{iterator_8h_a32f5f63d5f3b5b76fc635804bb39737e}{ioopm\_hash\_table\_iterator\_create}}(\mbox{\hyperlink{structhash__table}{ioopm\_hash\_table\_t}}\ *\mbox{\hyperlink{structhash__table__iterator_a0c6586284c69f60858cb45ab292f2d92}{ht}});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{iterator_8h_aaa0ecf384eb95d0b982f92f585c0129d}{ioopm\_hash\_table\_iterator\_destroy}}(\mbox{\hyperlink{structhash__table__iterator}{ioopm\_hash\_table\_iterator\_t}}\ *it);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{iterator_8h_a0b3c2df95ad3a018ef4ecfd4c8bc932d}{ioopm\_hash\_table\_iterator\_at\_end}}(\mbox{\hyperlink{structhash__table__iterator}{ioopm\_hash\_table\_iterator\_t}}\ *it);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{iterator_8h_a59c47702ee12e7bc0f14c7a3bf794d12}{ioopm\_hash\_table\_iterator\_advance}}(\mbox{\hyperlink{structhash__table__iterator}{ioopm\_hash\_table\_iterator\_t}}\ *it);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \mbox{\hyperlink{unionelem}{elem\_t}}\ \mbox{\hyperlink{iterator_8h_a4eebf839a361e8871e32a7aaa0a11fe5}{ioopm\_hash\_table\_iterator\_current\_key}}(\mbox{\hyperlink{structhash__table__iterator}{ioopm\_hash\_table\_iterator\_t}}\ *it);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \mbox{\hyperlink{unionelem}{elem\_t}}\ \mbox{\hyperlink{iterator_8h_a207fa226f0d9f5e2f48ea78a6ce5b559}{ioopm\_hash\_table\_iterator\_current\_value}}(\mbox{\hyperlink{structhash__table__iterator}{ioopm\_hash\_table\_iterator\_t}}\ *it);}
+
+\end{DoxyCode}

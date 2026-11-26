@@ -1,0 +1,850 @@
+--------------------------------------------------------------------------------
+Profile data file 'profiles/cg.small.txt.out' (creator: callgrind-3.22.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 51219
+Trigger: Program termination
+Profiled target:  ./freq_count_cg inputs/small.txt (PID 450350, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir               
+--------------------------------------------------------------------------------
+236,232 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir               file:function
+--------------------------------------------------------------------------------
+33,989 (14.39%)  ./elf/./elf/dl-tunables.c:__GI___tunables_init [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+27,453 (11.62%)  ./elf/./elf/dl-lookup.c:do_lookup_x [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+16,210 ( 6.86%)  ./elf/./elf/dl-reloc.c:_dl_relocate_object [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+10,617 ( 4.49%)  ./elf/./elf/dl-lookup.c:_dl_lookup_symbol_x [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+ 9,952 ( 4.21%)  ./elf/../sysdeps/generic/dl-new-hash.h:_dl_lookup_symbol_x
+ 8,952 ( 3.79%)  ./malloc/./malloc/malloc.c:_int_malloc [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 7,278 ( 3.08%)  ./string/../sysdeps/x86_64/multiarch/../multiarch/strcmp-sse2.S:strcmp [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+ 6,379 ( 2.70%)  ./elf/./elf/dl-lookup.c:check_match [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+ 6,048 ( 2.56%)  ./elf/./elf/do-rel.h:_dl_relocate_object
+ 4,536 ( 1.92%)  ./elf/../bits/stdlib-bsearch.h:intel_check_word.constprop.0
+ 4,465 ( 1.89%)  ./string/../string/strcspn.c:__strcspn_generic [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 4,399 ( 1.86%)  ./elf/../sysdeps/x86/dl-cacheinfo.h:intel_check_word.constprop.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+ 4,293 ( 1.82%)  ./stdio-common/./stdio-common/Xprintf_buffer_write.c:__printf_buffer_write [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 4,293 ( 1.82%)  ./stdio-common/./stdio-common/vfprintf-internal.c:__printf_buffer [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 4,235 ( 1.79%)  ./malloc/./malloc/malloc.c:_int_free [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 4,230 ( 1.79%)  ./elf/../sysdeps/x86_64/dl-machine.h:_dl_relocate_object
+ 4,001 ( 1.69%)  ./string/../string/strspn.c:__strspn_generic [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 3,645 ( 1.54%)  ./stdio-common/./stdio-common/vfprintf-process-arg.c:__printf_buffer
+ 3,270 ( 1.38%)  ./elf/./elf/dl-tunables.h:__GI___tunables_init
+ 3,040 ( 1.29%)  freq_count.c:string_hash [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+ 2,785 ( 1.18%)  ./elf/./elf/dl-version.c:_dl_check_map_versions [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+ 2,553 ( 1.08%)  ./malloc/./malloc/malloc.c:malloc [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 2,281 ( 0.97%)  ./stdlib/./stdlib/qsort.c:msort_with_tmp.part.0'2 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 2,020 ( 0.86%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:memcpy@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 1,848 ( 0.78%)  hash_table.c:find_previous_entry [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+ 1,701 ( 0.72%)  ./string/../sysdeps/x86_64/multiarch/strchr-sse2.S:__strchrnul_sse2 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 1,652 ( 0.70%)  ./malloc/./malloc/malloc.c:free [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 1,558 ( 0.66%)  ./elf/./elf/dl-load.c:_dl_map_object_from_fd [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+ 1,349 ( 0.57%)  ./stdio-common/./stdio-common/vfprintf-internal.c:__vfprintf_internal [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 1,218 ( 0.52%)  ./string/../sysdeps/x86_64/multiarch/strcmp-sse4_2.S:__strcmp_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 1,148 ( 0.49%)  ./elf/./elf/rtld.c:dl_main [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+ 1,056 ( 0.45%)  ./string/./string/strtok_r.c:strtok_r [/usr/lib/x86_64-linux-gnu/libc.so.6]
+ 1,003 ( 0.42%)  ./elf/./elf/dl-deps.c:_dl_map_object_deps [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   974 ( 0.41%)  ./stdio-common/./stdio-common/printf_buffer_to_file.c:__printf_buffer_to_file_done [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   918 ( 0.39%)  ./string/../sysdeps/x86_64/multiarch/strlen-sse2.S:__strlen_sse2 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   864 ( 0.37%)  ./debug/./debug/printf_chk.c:__printf_chk [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   843 ( 0.36%)  freq_count.c:main [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   839 ( 0.36%)  ./elf/./elf/dl-tunables.c:__tunable_get_val [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   783 ( 0.33%)  freq_count.c:process_word [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   780 ( 0.33%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:__mempcpy_sse2_unaligned [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   774 ( 0.33%)  ./elf/./elf/dl-minimal-malloc.c:__minimal_malloc [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   771 ( 0.33%)  ./malloc/./malloc/malloc.c:ptmalloc_init.part.0
+   675 ( 0.29%)  ./stdio-common/./stdio-common/_itoa.c:_itoa_word [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   650 ( 0.28%)  ./elf/./elf/get-dynamic-info.h:_dl_map_object_from_fd
+   645 ( 0.27%)  ./elf/../sysdeps/x86/dl-cacheinfo.h:handle_intel.constprop.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   601 ( 0.25%)  ./elf/./elf/dl-cache.c:_dl_cache_libcmp [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   566 ( 0.24%)  ./elf/./elf/dl-object.c:_dl_new_object [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   515 ( 0.22%)  ./elf/../sysdeps/generic/ldsodefs.h:do_lookup_x
+   513 ( 0.22%)  ./stdio-common/./stdio-common/Xprintf_buffer_done.c:__printf_buffer_done [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   513 ( 0.22%)  hash_table.c:ioopm_hash_table_insert [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   504 ( 0.21%)  ./string/../string/bits/string_fortified.h:__strspn_generic
+   486 ( 0.21%)  ./string/../string/bits/string_fortified.h:__strcspn_generic
+   483 ( 0.20%)  ./string/./string/strdup.c:strdup [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   480 ( 0.20%)  freq_count.c:cmp_freq_words [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   469 ( 0.20%)  ./elf/./elf/dl-load.c:_dl_map_object [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   466 ( 0.20%)  ./elf/./elf/dl-hwcaps_split.c:_dl_hwcaps_split_masked [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   448 ( 0.19%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:__memcpy_chk_sse2_unaligned [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   448 ( 0.19%)  ./string/../sysdeps/x86_64/multiarch/strspn-sse4.c:__strspn_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   432 ( 0.18%)  ./string/../sysdeps/x86_64/multiarch/strcspn-sse4.c:__strcspn_sse42 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   414 ( 0.18%)  ./elf/./elf/dl-environ.c:_dl_next_ld_env_entry [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   413 ( 0.17%)  iterator.c:advance_iterator_state [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   412 ( 0.17%)  ./elf/../sysdeps/generic/dl-protected.h:do_lookup_x
+   410 ( 0.17%)  iterator.c:skip_sentinel_nodes [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   408 ( 0.17%)  ./string/../sysdeps/x86_64/multiarch/../multiarch/strchr-sse2.S:index [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   401 ( 0.17%)  ./elf/./elf/dl-misc.c:_dl_name_match_p [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   379 ( 0.16%)  ./string/../sysdeps/x86_64/multiarch/../multiarch/strlen-sse2.S:strlen [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   378 ( 0.16%)  hash_table.c:entry_create.constprop.0 [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   374 ( 0.16%)  ./elf/../sysdeps/generic/ldsodefs.h:_dl_relocate_object
+   372 ( 0.16%)  ./elf/./get-dynamic-info.h:dl_main
+   368 ( 0.16%)  ./string/../sysdeps/x86_64/multiarch/../multiarch/memset-vec-unaligned-erms.S:memset [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   351 ( 0.15%)  ./stdio-common/./stdio-common/printf-parse.h:__printf_buffer
+   340 ( 0.14%)  ./elf/../elf/dl-tls.c:_dl_allocate_tls_storage [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   327 ( 0.14%)  freq_count.c:process_file [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   324 ( 0.14%)  ./stdio-common/../string/bits/string_fortified.h:__printf_buffer_write
+   322 ( 0.14%)  freq_count.c:string_eq [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   318 ( 0.13%)  ./elf/./elf/dl-load.c:_dl_init_paths [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   310 ( 0.13%)  ./stdio-common/./stdio-common/printf_buffer_to_file.c:__printf_buffer_to_file_switch [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   306 ( 0.13%)  ./stdlib/./stdlib/qsort.c:msort_with_tmp.part.0 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   292 ( 0.12%)  ./elf/./elf/dl-sort-maps.c:dfs_traversal.part.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   284 ( 0.12%)  ./elf/./elf/dl-cache.c:_dl_load_cache_lookup [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   281 ( 0.12%)  ./misc/../sysdeps/unix/sysv/linux/mmap64.c:mmap [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   280 ( 0.12%)  ./elf/./dl-map-segments.h:_dl_map_object_from_fd
+   280 ( 0.12%)  ./elf/./elf/dl-sort-maps.c:_dl_sort_maps [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   280 ( 0.12%)  ./elf/./elf/dl-tunables.c:__GI___tunable_set_val [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   274 ( 0.12%)  ./elf/./elf/dl-lookup-direct.c:_dl_lookup_direct [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   272 ( 0.12%)  ???:0x00000000048a16b0 [???]
+   271 ( 0.11%)  ./elf/../sysdeps/unix/sysv/linux/dl-sysdep.c:_dl_sysdep_parse_arguments [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   270 ( 0.11%)  hash_table.c:ioopm_hash_table_lookup [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   269 ( 0.11%)  hash_table.c:ioopm_hash_table_destroy [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   268 ( 0.11%)  ./elf/./get-dynamic-info.h:_dl_start
+   257 ( 0.11%)  ./elf/./dl-find_object.h:_dl_find_object_from_map [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   250 ( 0.11%)  ./elf/./elf/dl-load.c:open_verify.constprop.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   248 ( 0.10%)  ./elf/./elf/dl-minimal.c:strsep [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   247 ( 0.10%)  ./elf/./elf/rtld.c:_dl_start [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   240 ( 0.10%)  ./malloc/./malloc/malloc.c:alloc_perturb [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   240 ( 0.10%)  ./string/../string/strcspn.c:strcspn [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   240 ( 0.10%)  freq_count.c:cmp_freq_words_reverse [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   225 ( 0.10%)  ./elf/../sysdeps/x86/dl-cacheinfo.h:init_cpu_features.constprop.0
+   224 ( 0.09%)  /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h:__strspn_sse42
+   223 ( 0.09%)  ./elf/../sysdeps/x86/dl-cacheinfo.h:get_common_cache_info.constprop.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   220 ( 0.09%)  ./elf/./elf/dl-load.c:open_path [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   216 ( 0.09%)  ./elf/./elf/dl-fini.c:_dl_fini [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   216 ( 0.09%)  /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h:__strcspn_sse42
+   203 ( 0.09%)  ./elf/../sysdeps/unix/sysv/linux/dl-parse_auxv.h:_dl_sysdep_parse_arguments
+   203 ( 0.09%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:memcpy [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   191 ( 0.08%)  hash_table.c:bucket_size [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   189 ( 0.08%)  /usr/include/x86_64-linux-gnu/bits/stdio2.h:main
+   180 ( 0.08%)  ./elf/./elf/dl-init.c:call_init.part.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   177 ( 0.07%)  ./malloc/./malloc/arena.c:free
+   174 ( 0.07%)  ./elf/./elf/dl-find_object.c:_dlfo_process_initial [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   170 ( 0.07%)  ./libio/./libio/genops.c:_IO_cleanup [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   169 ( 0.07%)  ./libio/./libio/iogetdelim.c:getdelim [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   165 ( 0.07%)  ./libio/./libio/genops.c:_IO_flush_all [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   162 ( 0.07%)  ./stdio-common/../include/printf_buffer.h:__printf_buffer_to_file_init
+   162 ( 0.07%)  ???:0x00000000048a1590 [???]
+   162 ( 0.07%)  iterator.c:ioopm_hash_table_iterator_current_key [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   162 ( 0.07%)  iterator.c:ioopm_hash_table_iterator_current_value [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   160 ( 0.07%)  ./elf/../sysdeps/x86/cpu-features.c:init_cpu_features.constprop.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   158 ( 0.07%)  ./elf/./elf/dl-load.c:_dl_process_pt_gnu_property [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   152 ( 0.06%)  ./elf/./elf/dl-minimal.c:lookup_malloc_symbol [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   143 ( 0.06%)  ./malloc/./malloc/malloc.c:calloc [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   138 ( 0.06%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:mempcpy [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   137 ( 0.06%)  ./elf/./elf/dl-load.c:fillin_rpath.isra.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   136 ( 0.06%)  ./elf/./elf/dl-hwcaps.c:_dl_important_hwcaps [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   135 ( 0.06%)  ./stdio-common/./stdio-common/printf_buffer_to_file.c:__printf_buffer_to_file_init [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   135 ( 0.06%)  iterator.c:ioopm_hash_table_iterator_advance [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   130 ( 0.06%)  ./elf/./elf/dl-object.c:_dl_add_to_namespace_list [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   126 ( 0.05%)  ./elf/./elf/dl-catch.c:_dl_catch_exception [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   124 ( 0.05%)  ./elf/./elf/dl-call_fini.c:_dl_call_fini [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   120 ( 0.05%)  ???:0x00000000048a1430 [???]
+   116 ( 0.05%)  ./malloc/./malloc/arena.c:malloc
+   116 ( 0.05%)  ./stdlib/./stdlib/cxa_finalize.c:__cxa_finalize [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   114 ( 0.05%)  ???:0x0000000000109120 [???]
+   113 ( 0.05%)  ./libio/./libio/fileops.c:_IO_file_underflow@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   112 ( 0.05%)  iterator.c:ioopm_hash_table_iterator_at_end [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   110 ( 0.05%)  ./elf/./elf/dl-init.c:_dl_init [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   109 ( 0.05%)  hash_table.c:ioopm_hash_table_size [/home/noed5571/ioopm/inluppar/inlupp1/freq_count_cg]
+   108 ( 0.05%)  ./elf/./elf/dl-setup_hash.c:_dl_setup_hash [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   108 ( 0.05%)  ./stdio-common/../include/printf_buffer.h:__printf_buffer
+   108 ( 0.05%)  ./string/../string/bits/string_fortified.h:strdup
+   108 ( 0.05%)  ???:0x00000000048a1500 [???]
+   107 ( 0.05%)  ./libio/./libio/filedoalloc.c:_IO_file_doallocate [/usr/lib/x86_64-linux-gnu/libc.so.6]
+   106 ( 0.04%)  ./io/../sysdeps/unix/sysv/linux/open64_nocancel.c:__open_nocancel [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   105 ( 0.04%)  ./elf/../elf/dl-tls.c:_dl_allocate_tls_init [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   100 ( 0.04%)  ./stdlib/../string/bits/string_fortified.h:msort_with_tmp.part.0'2
+    95 ( 0.04%)  ./string/../sysdeps/x86_64/multiarch/memchr-sse2.S:__memchr_sse2 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    94 ( 0.04%)  ./setjmp/../sysdeps/x86_64/setjmp.S:__sigsetjmp [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    92 ( 0.04%)  ./elf/../sysdeps/x86/cpu-features.c:update_active.constprop.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    92 ( 0.04%)  ./libio/./libio/genops.c:_IO_setb [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    92 ( 0.04%)  ???:0x0000000000109180 [???]
+    88 ( 0.04%)  ./libio/./libio/genops.c:_IO_link_in [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    88 ( 0.04%)  ./malloc/../string/bits/string_fortified.h:tcache_init.part.0
+    86 ( 0.04%)  ./elf/../sysdeps/x86/dl-prop.h:_dl_process_pt_gnu_property
+    84 ( 0.04%)  ./libio/./libio/fileops.c:_IO_file_overflow@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    84 ( 0.04%)  ./string/./string/strtok.c:strtok [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    80 ( 0.03%)  ./elf/./elf/dl-find_object.c:_dlfo_sort_mappings [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    80 ( 0.03%)  ./elf/./elf/dl-minimal-malloc.c:__minimal_calloc [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    79 ( 0.03%)  ./elf/../elf/dl-tls.c:_dl_determine_tlsoffset [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    79 ( 0.03%)  ./stdlib/./stdlib/exit.c:__run_exit_handlers [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    78 ( 0.03%)  ./libio/./libio/genops.c:__GI__IO_un_link.part.0 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    76 ( 0.03%)  ./elf/../sysdeps/x86/dl-prop.h:dl_main
+    73 ( 0.03%)  ./malloc/./malloc/malloc.c:realloc [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    72 ( 0.03%)  ./csu/../csu/libc-start.c:__libc_start_main@@GLIBC_2.34 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    72 ( 0.03%)  ./elf/./elf/dl-version.c:_dl_check_all_versions [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    72 ( 0.03%)  ./malloc/./malloc/arena.c:ptmalloc_init.part.0 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    72 ( 0.03%)  ./malloc/./malloc/malloc.c:_int_realloc [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    71 ( 0.03%)  ./elf/./elf/rtld.c:handle_preload_list [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    70 ( 0.03%)  ./malloc/./malloc/malloc.c:_int_free_merge_chunk [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    66 ( 0.03%)  ./elf/./elf/rtld.c:init_tls [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    66 ( 0.03%)  ./libio/./libio/genops.c:_IO_default_xsputn [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    66 ( 0.03%)  ./malloc/./malloc/malloc.c:unlink_chunk.isra.0 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    65 ( 0.03%)  ./elf/../sysdeps/generic/dl-hash.h:__rtld_malloc_init_real
+    63 ( 0.03%)  ./libio/./libio/genops.c:__underflow [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    63 ( 0.03%)  ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S:__memset_sse2_unaligned [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    62 ( 0.03%)  ???:0x00000000048a13f0 [???]
+    61 ( 0.03%)  ./libio/./libio/fileops.c:_IO_do_write@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    61 ( 0.03%)  ./libio/./libio/fileops.c:_IO_file_fopen@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    59 ( 0.02%)  ./elf/../sysdeps/x86_64/dl-machine.h:_dl_start
+    59 ( 0.02%)  ./misc/./misc/sbrk.c:sbrk [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    59 ( 0.02%)  ./stdlib/./stdlib/qsort.c:qsort_r [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    58 ( 0.02%)  ./libio/./libio/fileops.c:_IO_file_xsputn@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    56 ( 0.02%)  ./elf/./elf/do-rel.h:_dl_start
+    56 ( 0.02%)  ???:0x00000000001091d0 [???]
+    56 ( 0.02%)  ???:0x00000000048a1470 [???]
+    55 ( 0.02%)  ./elf/../sysdeps/x86_64/dl-cet.c:_dl_cet_check [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    54 ( 0.02%)  ./elf/../sysdeps/x86/cpu-features.c:get_common_indices.constprop.0 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    54 ( 0.02%)  ???:0x0000000000109190 [???]
+    54 ( 0.02%)  ???:0x00000000001091a0 [???]
+    54 ( 0.02%)  ???:0x00000000001091f0 [???]
+    54 ( 0.02%)  ???:0x00000000048a15e0 [???]
+    54 ( 0.02%)  ???:0x00000000048a16f0 [???]
+    52 ( 0.02%)  ./libio/./libio/genops.c:_IO_switch_to_get_mode [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    52 ( 0.02%)  ./nptl/./nptl/libc-cleanup.c:__libc_cleanup_push_defer [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    51 ( 0.02%)  ./libio/./libio/fileops.c:_IO_file_close_it@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    50 ( 0.02%)  ./malloc/./malloc/scratch_buffer_set_array_size.c:__libc_scratch_buffer_set_array_size [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    48 ( 0.02%)  ./elf/./elf/dl-load.c:expand_dynamic_string_token [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    48 ( 0.02%)  ./libio/./libio/genops.c:_IO_doallocbuf [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    47 ( 0.02%)  ./elf/../sysdeps/nptl/dl-mutex.c:__rtld_mutex_init [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    46 ( 0.02%)  ./elf/./elf/dl-load.c:_dl_dst_count [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    46 ( 0.02%)  ./elf/./elf/dl-minimal.c:__rtld_malloc_init_real [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    46 ( 0.02%)  ./libio/./libio/iofclose.c:fclose@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    45 ( 0.02%)  ./elf/./elf/dl-misc.c:_dl_sysdep_read_whole_file [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    44 ( 0.02%)  ./elf/./elf/dl-deps.c:openaux [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    44 ( 0.02%)  ./nptl/./nptl/pthread_mutex_lock.c:pthread_mutex_lock@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    43 ( 0.02%)  ./libio/./libio/genops.c:_IO_default_setbuf [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    43 ( 0.02%)  ./libio/./libio/iofopen.c:fopen@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    40 ( 0.02%)  ./elf/../elf/dl-tls.c:_dl_tls_static_surplus_init [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    40 ( 0.02%)  ???:0x00000000048a1720 [???]
+    39 ( 0.02%)  ./elf/./dl-hwcaps.h:_dl_important_hwcaps
+    39 ( 0.02%)  ./nptl/../sysdeps/unix/sysv/linux/x86/elision-conf.c:__lll_elision_init [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    39 ( 0.02%)  ./stdlib/./stdlib/cxa_atexit.c:__cxa_atexit [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    38 ( 0.02%)  ./elf/./elf/dl-find_object.c:_dl_find_object_init [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    38 ( 0.02%)  ./libio/./libio/fileops.c:_IO_file_open [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    38 ( 0.02%)  ./libio/./libio/fileops.c:_IO_file_write@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    38 ( 0.02%)  ./posix/./posix/register-atfork.c:__unregister_atfork [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    36 ( 0.02%)  ./elf/../sysdeps/nptl/dl-tls_init_tp.c:__tls_init_tp [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    36 ( 0.02%)  ./elf/../sysdeps/unix/sysv/linux/dl-sysdep.c:_dl_sysdep_start [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    36 ( 0.02%)  ./io/../sysdeps/unix/sysv/linux/open64.c:open [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    36 ( 0.02%)  ./nptl/./nptl/libc-cleanup.c:__libc_cleanup_pop_restore [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    36 ( 0.02%)  ./string/../string/strstr.c:__GI_strstr [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    34 ( 0.01%)  ./elf/./elf/dl-debug.c:_dl_debug_initialize [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    34 ( 0.01%)  ./nptl/./nptl/pthread_mutex_unlock.c:pthread_mutex_unlock@@GLIBC_2.2.5 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    33 ( 0.01%)  ./elf/./dl-load.h:_dl_map_object_from_fd
+    33 ( 0.01%)  ./elf/./elf/dl-audit.c:_dl_audit_activity_nsid [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    33 ( 0.01%)  ./stdlib/./stdlib/cxa_atexit.c:__new_exitfn [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    32 ( 0.01%)  ./misc/../sysdeps/unix/sysv/linux/setvmaname.c:__set_vma_name [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    32 ( 0.01%)  ./string/../sysdeps/x86_64/multiarch/../multiarch/strcmp-sse2.S:strncmp [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    31 ( 0.01%)  ./libio/./libio/genops.c:_IO_no_init [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    30 ( 0.01%)  ./io/../sysdeps/unix/sysv/linux/fstat64.c:fstat [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+    28 ( 0.01%)  ./csu/../sysdeps/nptl/libc_start_call_main.h:(below main) [/usr/lib/x86_64-linux-gnu/libc.so.6]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: iterator.c
+--------------------------------------------------------------------------------
+Ir           
+
+-- line 10 ----------------------------------------
+  .               size_t current_bucket;
+  .               entry_t *current_entry;
+  .           }; 
+  .           
+  .           /// @brief advance the iterator one step foward in the ht
+  .           /// @param it the iterator to be advanced
+  .           static void advance_iterator_state(ioopm_hash_table_iterator_t *it) {
+  .               //advnce to the next entry in the bucket
+132 ( 0.06%)      it->current_entry = it->current_entry->next;
+  .           
+  .               //if it was null advance to the next bucket
+ 88 ( 0.04%)      if (it->current_entry == NULL) {
+ 51 ( 0.02%)          it->current_bucket += 1;
+  .                   
+  .                   //if the next bucket existed, update the current entry
+ 34 ( 0.01%)          if (it->current_bucket != No_buckets) {
+ 64 ( 0.03%)              it->current_entry = &it->ht->buckets[it->current_bucket];
+  .                   }
+  .               }
+ 44 ( 0.02%)  }
+  .           
+  .           /// @brief if it is pointing to a sentinel node and is not at the end of ht, skip to the next node. 
+  .           /// @param it the iterator to be advanced 
+  .           static void skip_sentinel_nodes(ioopm_hash_table_iterator_t *it) {
+223 ( 0.09%)      while (it->current_bucket != No_buckets &&
+142 ( 0.06%)      it->current_entry == &it->ht->buckets[it->current_bucket])
+  .               {
+ 17 ( 0.01%)          advance_iterator_state(it); 
+120 ( 0.05%)  => iterator.c:advance_iterator_state (17x)
+  .               } 
+ 28 ( 0.01%)  }
+  .           
+  3 ( 0.00%)  ioopm_hash_table_iterator_t *ioopm_hash_table_iterator_create(ioopm_hash_table_t *ht) {
+  4 ( 0.00%)      ioopm_hash_table_iterator_t *it = calloc(1, sizeof(ioopm_hash_table_iterator_t));
+419 ( 0.18%)  => ???:0x0000000000109170 (1x)
+  1 ( 0.00%)      it->ht = ht;
+  1 ( 0.00%)      it->current_bucket = 0;
+  1 ( 0.00%)      it->current_entry = &ht->buckets[0];
+  2 ( 0.00%)      skip_sentinel_nodes(it);
+ 47 ( 0.02%)  => iterator.c:skip_sentinel_nodes (1x)
+  .               return it;
+  3 ( 0.00%)  }
+  .           
+  1 ( 0.00%)  void ioopm_hash_table_iterator_destroy(ioopm_hash_table_iterator_t *it) {
+  1 ( 0.00%)      free(it);
+ 87 ( 0.04%)  => ???:0x0000000000109120 (1x)
+  .           }
+  .           
+ 28 ( 0.01%)  bool ioopm_hash_table_iterator_at_end(ioopm_hash_table_iterator_t *it) {
+ 56 ( 0.02%)      return it->current_bucket == No_buckets;
+ 28 ( 0.01%)  }
+  .           
+ 27 ( 0.01%)  void ioopm_hash_table_iterator_advance(ioopm_hash_table_iterator_t *it) {
+ 54 ( 0.02%)      if (it->current_entry == NULL) {
+  .                   return; 
+  .               }
+ 27 ( 0.01%)          advance_iterator_state(it);
+293 ( 0.12%)  => iterator.c:advance_iterator_state (27x)
+ 27 ( 0.01%)          skip_sentinel_nodes(it);
+483 ( 0.20%)  => iterator.c:skip_sentinel_nodes (27x)
+  .           }
+  .           
+ 27 ( 0.01%)  elem_t ioopm_hash_table_iterator_current_key(ioopm_hash_table_iterator_t *it) {
+  .               //craches program if current_entry == NULL
+ 81 ( 0.03%)      assert(it->current_entry != NULL);
+  .           
+ 27 ( 0.01%)      return it->current_entry->key;
+ 27 ( 0.01%)  }
+  .           
+ 27 ( 0.01%)  elem_t ioopm_hash_table_iterator_current_value(ioopm_hash_table_iterator_t *it) {
+  .               //crashes program if curretn key == NULL
+ 81 ( 0.03%)      assert(it->current_entry != NULL);
+  .           
+ 27 ( 0.01%)      return it->current_entry->value;
+ 27 ( 0.01%)  }
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: freq_count.c
+--------------------------------------------------------------------------------
+Ir             
+
+-- line 6 ----------------------------------------
+    .           #include "common.h"
+    .           #include "hash_table.h"
+    .           #include "iterator.h"
+    .           
+    .           #define Delimiters "+-#@()[]{}.,:;!? \t\n\r"
+    .           
+    .           /// @brief Compares the string elements a and b 
+    .           /// @return true if  a.s == b.s, false otherwise
+   92 ( 0.04%)  static bool string_eq(elem_t a, elem_t b) {
+  138 ( 0.06%)    return strcmp(a.s, b.s) == 0;
+1,310 ( 0.55%)  => ???:0x0000000000109180 (46x)
+   92 ( 0.04%)  }
+    .           
+   54 ( 0.02%)  static size_t string_hash(elem_t key) {
+   54 ( 0.02%)    size_t result = 0;
+1,520 ( 0.64%)    for (const char *s = key.s; *s != '\0'; ++s) {
+1,304 ( 0.55%)      result = result *31 +(unsigned char) *s;
+    .             }
+    .             return result;
+  108 ( 0.05%)  }
+    .           
+    .           /// @brief Process a single word, updating its frequency
+    .           /// @param ht a hash table containgccing the frequencies of the words found so far
+    .           /// @param word the word to process
+    .           void process_word(char *word, ioopm_hash_table_t *ht)
+  243 ( 0.10%)  {
+    .             elem_t result;
+  162 ( 0.07%)    if (ioopm_hash_table_lookup(ht, string_elem(word), &result))
+3,610 ( 1.53%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_lookup (27x)
+    .             {
+    .               ioopm_hash_table_insert(ht, string_elem(word), int_elem(result.i + 1));
+    .             }
+    .             else
+    .             {
+  162 ( 0.07%)      ioopm_hash_table_insert(ht, string_elem(strdup(word)), int_elem(1));
+9,255 ( 3.92%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_insert (27x)
+6,691 ( 2.83%)  => ???:0x00000000001091f0 (27x)
+    .             }
+  216 ( 0.09%)  }
+    .           
+    .           /// @brief Process a single file, updating the frequencies of its words
+    .           /// @param filename the name of the file to process
+    .           /// @param ht a hash table containing the frequencies of the words found so far
+    .           void process_file(char *filename, ioopm_hash_table_t *ht)
+   12 ( 0.01%)  {
+    2 ( 0.00%)    FILE *f = fopen(filename, "r");
+  610 ( 0.26%)  => ???:0x00000000001091b0 (1x)
+    3 ( 0.00%)    if (f == NULL)
+    .             {
+    .               perror(filename);
+    .               return;
+    .             }
+    .           
+    2 ( 0.00%)    char *buf = NULL;
+    2 ( 0.00%)    size_t len = 0;
+   12 ( 0.01%)    while (getline(&buf, &len, f) != -1)
+1,510 ( 0.64%)  => ???:0x00000000001091e0 (2x)
+    .             {
+    6 ( 0.00%)      for (char *word = strtok(buf, Delimiters);
+  435 ( 0.18%)  => ???:0x00000000001091d0 (1x)
+  112 ( 0.05%)           word && *word;
+  108 ( 0.05%)           word = strtok(NULL, Delimiters))
+11,647 ( 4.93%)  => ???:0x00000000001091d0 (27x)
+    .               {
+   54 ( 0.02%)        process_word(word, ht);
+20,339 ( 8.61%)  => freq_count.c:process_word (27x)
+    .               }
+    .             }
+    2 ( 0.00%)    free(buf);
+   87 ( 0.04%)  => ???:0x0000000000109120 (1x)
+    2 ( 0.00%)    fclose(f);
+  588 ( 0.25%)  => ???:0x0000000000109140 (1x)
+   10 ( 0.00%)  }
+    .           
+    .           /// @brief A word together with its frequency
+    .           struct freq_word
+    .           {
+    .             char *word;
+    .             size_t freq;
+    .           };
+    .           
+-- line 75 ----------------------------------------
+-- line 80 ----------------------------------------
+    .           ///     @n@ > 0  if @p1@'s frequency is higher than @p2@'s
+    .           ///     @n@ < 0  if @p1@'s frequency is lower than @p2@'s
+    .           ///     @n@ == 0 if @p1@'s frequency is equal to @p2@'s
+    .           static int cmp_freq_words(const void *p1, const void *p2)
+    .           {
+    .             const struct freq_word *w1 = p1;
+    .             const struct freq_word *w2 = p2;
+    .           
+  420 ( 0.18%)    return (w1->freq > w2->freq) - (w1->freq < w2->freq);
+   60 ( 0.03%)  }
+    .           
+    .           /// @brief Like @cmp_freq_words@ but with the comparison result reversed
+    .           static int cmp_freq_words_reverse(const void *p1, const void *p2)
+   60 ( 0.03%)  {
+  120 ( 0.05%)    return -cmp_freq_words(p1, p2);
+  480 ( 0.20%)  => freq_count.c:cmp_freq_words (60x)
+   60 ( 0.03%)  }
+    .           
+    .           /// @brief Sort an array of @freq_word@s in descending frequency order
+    .           /// @param words the array to be sorted
+    .           /// @param no_words the number of elements in the array
+    .           void sort_freq_words(struct freq_word words[], size_t no_words)
+    1 ( 0.00%)  {
+    3 ( 0.00%)    qsort(words, no_words, sizeof(struct freq_word), cmp_freq_words_reverse);
+4,828 ( 2.04%)  => ???:0x0000000000109130 (1x)
+    .           }
+    .           
+    .           int main(int argc, char *argv[]) 
+   14 ( 0.01%)  {
+    3 ( 0.00%)    if (argc < 2)
+    .             {
+    .               printf("Usage: %s file1 ... filen\n", argv[0]);
+    .               return 1;
+    .             }
+    .           
+    5 ( 0.00%)    ioopm_hash_table_t *ht = ioopm_hash_table_create(string_hash, string_eq);
+1,928 ( 0.82%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_create (1x)
+    .           
+    6 ( 0.00%)    for (int i = 1; i < argc; ++i)
+    .             {
+    3 ( 0.00%)      process_file(argv[i], ht);
+35,543 (15.05%)  => freq_count.c:process_file (1x)
+    .             }
+    .           
+    3 ( 0.00%)    size_t size = ioopm_hash_table_size(ht);
+  300 ( 0.13%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_size (1x)
+    .             
+   15 ( 0.01%)    struct freq_word freq_words[size];
+    .           
+    .             size_t i = 0;
+    .           
+    4 ( 0.00%)    ioopm_hash_table_iterator_t *it = ioopm_hash_table_iterator_create(ht);
+  481 ( 0.20%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_create (1x)
+    .           
+  113 ( 0.05%)    while (!ioopm_hash_table_iterator_at_end(it))
+  112 ( 0.05%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_at_end (28x)
+    .             {
+   82 ( 0.03%)      elem_t key = ioopm_hash_table_iterator_current_key(it);
+  162 ( 0.07%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_current_key (27x)
+   81 ( 0.03%)      elem_t value = ioopm_hash_table_iterator_current_value(it);
+  162 ( 0.07%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_current_value (27x)
+    .           
+   27 ( 0.01%)      freq_words[i].word = key.s;
+   54 ( 0.02%)      freq_words[i].freq = value.i;
+    .               ++i;
+    .           
+   54 ( 0.02%)      ioopm_hash_table_iterator_advance(it);
+  911 ( 0.39%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_advance (27x)
+    .             }
+    .           
+    1 ( 0.00%)    ioopm_hash_table_iterator_destroy(it);
+   89 ( 0.04%)  => /home/noed5571/ioopm/inluppar/inlupp1/iterator.c:ioopm_hash_table_iterator_destroy (1x)
+    .           
+    4 ( 0.00%)    sort_freq_words(freq_words, size);
+4,832 ( 2.05%)  => freq_count.c:sort_freq_words (1x)
+    .           
+  113 ( 0.05%)    for (size_t i = 0; i < size; ++i)
+    .             {
+    .               printf("%s: %zu\n", freq_words[i].word, freq_words[i].freq);
+    .             }
+    .           
+    .           
+  110 ( 0.05%)    for (size_t i = 0; i < size; ++i)
+    .             {
+  135 ( 0.06%)      free(freq_words[i].word);
+2,788 ( 1.18%)  => ???:0x0000000000109120 (27x)
+    .             }
+    .           
+    5 ( 0.00%)    ioopm_hash_table_destroy(ht);
+3,299 ( 1.40%)  => /home/noed5571/ioopm/inluppar/inlupp1/hash_table.c:ioopm_hash_table_destroy (1x)
+   11 ( 0.00%)  }
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/x86_64-linux-gnu/bits/stdio2.h
+--------------------------------------------------------------------------------
+Ir           
+
+-- line 78 ----------------------------------------
+  .           {
+  .             return __fprintf_chk (__stream, __USE_FORTIFY_LEVEL - 1, __fmt,
+  .           			__va_arg_pack ());
+  .           }
+  .           
+  .           __fortify_function int
+  .           printf (const char *__restrict __fmt, ...)
+  .           {
+189 ( 0.08%)    return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+22,886 ( 9.69%)  => ???:0x00000000001091a0 (27x)
+  .           }
+  .           # elif !defined __cplusplus
+  .           #  define printf(...) \
+  .             __printf_chk (__USE_FORTIFY_LEVEL - 1, __VA_ARGS__)
+  .           #  define fprintf(stream, ...) \
+  .             __fprintf_chk (stream, __USE_FORTIFY_LEVEL - 1, __VA_ARGS__)
+  .           # endif
+  .           
+-- line 94 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: hash_table.c
+--------------------------------------------------------------------------------
+Ir           
+
+-- line 6 ----------------------------------------
+  .           #include <string.h>
+  .           #include <assert.h>
+  .           
+  .           /// @brief creates a new ht entry
+  .           /// @param key the key to map to value in ht
+  .           /// @param value the value to be found at key in ht
+  .           /// @param next the next entry in ht
+  .           /// @return the new entry
+135 ( 0.06%)  static entry_t *entry_create(elem_t key, elem_t value, entry_t *next) {
+ 54 ( 0.02%)      entry_t *entry = malloc(sizeof(entry_t));
+5,184 ( 2.19%)  => ???:0x0000000000109190 (27x)
+ 27 ( 0.01%)      entry->key = key;
+ 27 ( 0.01%)      entry->value = value;
+ 27 ( 0.01%)      entry->next = next;
+  .               return entry;
+108 ( 0.05%)  }
+  .           /// @brief destroys an entry
+  .           /// @param entry the entry to be destroyed
+  .           static void entry_destroy(entry_t *entry) {
+ 27 ( 0.01%)      free(entry);
+2,916 ( 1.23%)  => ???:0x0000000000109120 (27x)
+  .           }
+  .           
+  .           /// @brief counts the number of entries in a bucket
+  .           /// @param bucket the bucket to count entries in
+  .           /// @return the number of entries in the provided bucket 
+  .           static size_t bucket_size(entry_t *bucket) {
+ 17 ( 0.01%)      size_t i = 0;
+  .               entry_t *current = bucket;
+118 ( 0.05%)      while (current != NULL) {
+ 27 ( 0.01%)          ++i;
+ 27 ( 0.01%)          current = current->next;
+  .               } 
+  .               return i; 
+  2 ( 0.00%)  }
+  .           
+  4 ( 0.00%)  ioopm_hash_table_t *ioopm_hash_table_create(ioopm_hash_function *hash_fn, ioopm_eq_function *key_eq_fn) {
+  6 ( 0.00%)      assert(hash_fn != NULL && key_eq_fn != NULL);
+  .           
+  3 ( 0.00%)      ioopm_hash_table_t *ht = calloc(1, sizeof(ioopm_hash_table_t));
+1,909 ( 0.81%)  => ???:0x0000000000109170 (1x)
+  .           
+  1 ( 0.00%)      ht->hash_fn = hash_fn;
+  1 ( 0.00%)      ht->key_eq_fn = key_eq_fn;
+  .               return ht;
+  4 ( 0.00%)  }
+  .           
+ 10 ( 0.00%)  void ioopm_hash_table_destroy(ioopm_hash_table_t *ht) {
+ 51 ( 0.02%)      for (size_t i = 0; i < No_buckets; ++i) {
+ 17 ( 0.01%)          entry_t *current = ht->buckets[i].next;
+103 ( 0.04%)          while (current != NULL) {
+ 54 ( 0.02%)              entry_t *next = current->next; // save before free
+ 27 ( 0.01%)              entry_destroy(current);
+2,943 ( 1.25%)  => hash_table.c:entry_destroy (27x)
+  .                       current = next;
+  .                   }
+  .               }
+  2 ( 0.00%)      free(ht);
+ 87 ( 0.04%)  => ???:0x0000000000109120 (1x)
+  5 ( 0.00%)  }
+  .           
+  .           /// @return returns the netry before key in ht
+270 ( 0.11%)  static entry_t *find_previous_entry(ioopm_hash_table_t *ht, elem_t key) {
+  .               //find bucket
+594 ( 0.25%)      size_t bucket = ht->hash_fn(key) % No_buckets;
+3,040 ( 1.29%)  => /home/noed5571/ioopm/inluppar/inlupp1/freq_count.c:string_hash (54x)
+  .           
+  .               //create a pointer to the first element in each bucket (sentinel node)
+108 ( 0.05%)      entry_t *previous = &ht->buckets[bucket];
+  .           
+  .               //look for the element where the next element is either NULL or has the .key == key
+560 ( 0.24%)      while (previous->next != NULL && !ht->key_eq_fn(previous->next->key, key))
+1,632 ( 0.69%)  => /home/noed5571/ioopm/inluppar/inlupp1/freq_count.c:string_eq (46x)
+  .                   { 
+ 46 ( 0.02%)          previous = previous->next;
+  .                   } 
+  .               return previous;
+270 ( 0.11%)  }
+  .           
+162 ( 0.07%)  void ioopm_hash_table_insert(ioopm_hash_table_t *ht, elem_t key, elem_t value) {
+  .               //find the previous entry, or the last entry if the key does not exist
+ 54 ( 0.02%)      entry_t *previous = find_previous_entry(ht, key);
+3,180 ( 1.35%)  => hash_table.c:find_previous_entry (27x)
+  .           
+  .               //if the key exists, update the value, otherwise create a new entry
+ 81 ( 0.03%)      if (previous->next != NULL) {
+  .                   previous->next->value = value;
+  .               } else {
+108 ( 0.05%)          previous->next = entry_create(key, value, NULL);
+5,562 ( 2.35%)  => hash_table.c:entry_create.constprop.0 (27x)
+  .               }
+108 ( 0.05%)  }
+  .           
+ 81 ( 0.03%)  bool ioopm_hash_table_lookup(ioopm_hash_table_t *ht, elem_t key, elem_t *result) {
+  .               
+ 27 ( 0.01%)      entry_t *previous = find_previous_entry(ht, key);
+3,340 ( 1.41%)  => hash_table.c:find_previous_entry (27x)
+  .           
+ 81 ( 0.03%)      if (previous->next == NULL) {
+ 27 ( 0.01%)          return false;
+  .               }
+  .               *result = previous->next->value;
+  .               return true;
+ 54 ( 0.02%)  }
+  .           
+  .           bool ioopm_hash_table_remove(ioopm_hash_table_t *ht, elem_t key, elem_t *result) {
+  .              
+  .               entry_t *previous = find_previous_entry(ht, key);
+  .           
+  .               if (previous->next == NULL) {
+  .                   return false;
+  .               } else {
+-- line 107 ----------------------------------------
+-- line 118 ----------------------------------------
+  .               //if next element is null, key was not in ht 
+  .                if (prevoius->next == NULL) {
+  .                   return false;
+  .                } else {
+  .                   return true;
+  .                }
+  .           }
+  .           
+  1 ( 0.00%)  size_t ioopm_hash_table_size(ioopm_hash_table_t *ht) {
+  2 ( 0.00%)      size_t size = 0;
+ 53 ( 0.02%)      for (size_t i = 0; i < No_buckets; ++i) {
+ 51 ( 0.02%)          size += bucket_size(ht->buckets[i].next);
+191 ( 0.08%)  => hash_table.c:bucket_size (17x)
+  .               }
+  .               return size;
+  2 ( 0.00%)  }
+  .           
+  .           bool ioopm_hash_table_is_empty(ioopm_hash_table_t *ht) {
+  .               //if node after sentinel node in any bucket is not NULL, ht is not empty
+  .               for (size_t i = 0; i < No_buckets; ++i) {
+  .                   if (ht->buckets[i].next != NULL) {
+  .                       return false;
+  .                   }
+  .               }
+-- line 140 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h
+--------------------------------------------------------------------------------
+Ir           
+
+-- line 1333 ----------------------------------------
+  .           _mm_xor_si128 (__m128i __A, __m128i __B)
+  .           {
+  .             return (__m128i) ((__v2du)__A ^ (__v2du)__B);
+  .           }
+  .           
+  .           extern __inline __m128i __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+  .           _mm_cmpeq_epi8 (__m128i __A, __m128i __B)
+  .           {
+330 ( 0.14%)    return (__m128i) ((__v16qi)__A == (__v16qi)__B);
+  .           }
+  .           
+  .           extern __inline __m128i __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+  .           _mm_cmpeq_epi16 (__m128i __A, __m128i __B)
+  .           {
+  .             return (__m128i) ((__v8hi)__A == (__v8hi)__B);
+  .           }
+  .           
+-- line 1349 ----------------------------------------
+-- line 1431 ----------------------------------------
+  .           _mm_min_epu8 (__m128i __A, __m128i __B)
+  .           {
+  .             return (__m128i)__builtin_ia32_pminub128 ((__v16qi)__A, (__v16qi)__B);
+  .           }
+  .           
+  .           extern __inline int __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+  .           _mm_movemask_epi8 (__m128i __A)
+  .           {
+110 ( 0.05%)    return __builtin_ia32_pmovmskb128 ((__v16qi)__A);
+  .           }
+  .           
+  .           extern __inline __m128i __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+  .           _mm_mulhi_epu16 (__m128i __A, __m128i __B)
+  .           {
+  .             return (__m128i)__builtin_ia32_pmulhuw128 ((__v8hi)__A, (__v8hi)__B);
+  .           }
+  .           
+-- line 1447 ----------------------------------------
+
+--------------------------------------------------------------------------------
+The following files chosen for auto-annotation could not be found:
+--------------------------------------------------------------------------------
+  ./csu/../csu/libc-start.c
+  ./csu/../sysdeps/nptl/libc_start_call_main.h
+  ./debug/./debug/printf_chk.c
+  ./elf/../bits/stdlib-bsearch.h
+  ./elf/../elf/dl-tls.c
+  ./elf/../sysdeps/generic/dl-hash.h
+  ./elf/../sysdeps/generic/dl-new-hash.h
+  ./elf/../sysdeps/generic/dl-protected.h
+  ./elf/../sysdeps/generic/ldsodefs.h
+  ./elf/../sysdeps/nptl/dl-mutex.c
+  ./elf/../sysdeps/nptl/dl-tls_init_tp.c
+  ./elf/../sysdeps/unix/sysv/linux/dl-parse_auxv.h
+  ./elf/../sysdeps/unix/sysv/linux/dl-sysdep.c
+  ./elf/../sysdeps/x86/cpu-features.c
+  ./elf/../sysdeps/x86/dl-cacheinfo.h
+  ./elf/../sysdeps/x86/dl-prop.h
+  ./elf/../sysdeps/x86_64/dl-cet.c
+  ./elf/../sysdeps/x86_64/dl-machine.h
+  ./elf/./dl-find_object.h
+  ./elf/./dl-hwcaps.h
+  ./elf/./dl-load.h
+  ./elf/./dl-map-segments.h
+  ./elf/./elf/dl-audit.c
+  ./elf/./elf/dl-cache.c
+  ./elf/./elf/dl-call_fini.c
+  ./elf/./elf/dl-catch.c
+  ./elf/./elf/dl-debug.c
+  ./elf/./elf/dl-deps.c
+  ./elf/./elf/dl-environ.c
+  ./elf/./elf/dl-find_object.c
+  ./elf/./elf/dl-fini.c
+  ./elf/./elf/dl-hwcaps.c
+  ./elf/./elf/dl-hwcaps_split.c
+  ./elf/./elf/dl-init.c
+  ./elf/./elf/dl-load.c
+  ./elf/./elf/dl-lookup-direct.c
+  ./elf/./elf/dl-lookup.c
+  ./elf/./elf/dl-minimal-malloc.c
+  ./elf/./elf/dl-minimal.c
+  ./elf/./elf/dl-misc.c
+  ./elf/./elf/dl-object.c
+  ./elf/./elf/dl-reloc.c
+  ./elf/./elf/dl-setup_hash.c
+  ./elf/./elf/dl-sort-maps.c
+  ./elf/./elf/dl-tunables.c
+  ./elf/./elf/dl-tunables.h
+  ./elf/./elf/dl-version.c
+  ./elf/./elf/do-rel.h
+  ./elf/./elf/get-dynamic-info.h
+  ./elf/./elf/rtld.c
+  ./elf/./get-dynamic-info.h
+  ./io/../sysdeps/unix/sysv/linux/fstat64.c
+  ./io/../sysdeps/unix/sysv/linux/open64.c
+  ./io/../sysdeps/unix/sysv/linux/open64_nocancel.c
+  ./libio/./libio/filedoalloc.c
+  ./libio/./libio/fileops.c
+  ./libio/./libio/genops.c
+  ./libio/./libio/iofclose.c
+  ./libio/./libio/iofopen.c
+  ./libio/./libio/iogetdelim.c
+  ./malloc/../string/bits/string_fortified.h
+  ./malloc/./malloc/arena.c
+  ./malloc/./malloc/malloc.c
+  ./malloc/./malloc/scratch_buffer_set_array_size.c
+  ./misc/../sysdeps/unix/sysv/linux/mmap64.c
+  ./misc/../sysdeps/unix/sysv/linux/setvmaname.c
+  ./misc/./misc/sbrk.c
+  ./nptl/../sysdeps/unix/sysv/linux/x86/elision-conf.c
+  ./nptl/./nptl/libc-cleanup.c
+  ./nptl/./nptl/pthread_mutex_lock.c
+  ./nptl/./nptl/pthread_mutex_unlock.c
+  ./posix/./posix/register-atfork.c
+  ./setjmp/../sysdeps/x86_64/setjmp.S
+  ./stdio-common/../include/printf_buffer.h
+  ./stdio-common/../string/bits/string_fortified.h
+  ./stdio-common/./stdio-common/Xprintf_buffer_done.c
+  ./stdio-common/./stdio-common/Xprintf_buffer_write.c
+  ./stdio-common/./stdio-common/_itoa.c
+  ./stdio-common/./stdio-common/printf-parse.h
+  ./stdio-common/./stdio-common/printf_buffer_to_file.c
+  ./stdio-common/./stdio-common/vfprintf-internal.c
+  ./stdio-common/./stdio-common/vfprintf-process-arg.c
+  ./stdlib/../string/bits/string_fortified.h
+  ./stdlib/./stdlib/cxa_atexit.c
+  ./stdlib/./stdlib/cxa_finalize.c
+  ./stdlib/./stdlib/exit.c
+  ./stdlib/./stdlib/qsort.c
+  ./string/../string/bits/string_fortified.h
+  ./string/../string/strcspn.c
+  ./string/../string/strspn.c
+  ./string/../string/strstr.c
+  ./string/../sysdeps/x86_64/multiarch/../multiarch/memset-vec-unaligned-erms.S
+  ./string/../sysdeps/x86_64/multiarch/../multiarch/strchr-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/../multiarch/strcmp-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/../multiarch/strlen-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/memchr-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
+  ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S
+  ./string/../sysdeps/x86_64/multiarch/strchr-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/strcmp-sse4_2.S
+  ./string/../sysdeps/x86_64/multiarch/strcspn-sse4.c
+  ./string/../sysdeps/x86_64/multiarch/strlen-sse2.S
+  ./string/../sysdeps/x86_64/multiarch/strspn-sse4.c
+  ./string/./string/strdup.c
+  ./string/./string/strtok.c
+  ./string/./string/strtok_r.c
+
+--------------------------------------------------------------------------------
+Ir              
+--------------------------------------------------------------------------------
+11,703 ( 4.95%)  events annotated
+
