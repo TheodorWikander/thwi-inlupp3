@@ -1,5 +1,5 @@
 import org.ioopm.calculator.ast.*;
-import org.ioopm.calculator.parser.CalculatorParser;
+import org.ioopm.calculator.parser.*;
 
 import java.io.IOException;
 
@@ -138,5 +138,64 @@ public class Test {
         testEvaluating(new Constant(2), g, new Environment());
 
         testEvaluating(new Constant(5), c1, new Environment());
+        testEvaluating(new Variable("x"), vX, new Environment());
+
+        // ---- Named constants ----
+        NamedConstant pi = new NamedConstant("pi", Math.PI);
+        NamedConstant answer = new NamedConstant("Answer", 42);
+
+        testPrinting("pi", pi);
+        testPrinting("Answer + x", new Addition(answer, vX));
+
+        testEvaluating(new Constant(42), answer, new Environment());
+        testEvaluating(new Constant(Math.PI), pi, new Environment());
+        testEvaluating(new Constant(84), new Addition(answer, answer), new Environment());
+        testEvaluating(new Addition(new Constant(42), vX),
+                       new Addition(answer, vX),
+                       new Environment());
+
+        // Otillåten omtilldelning
+        testIllegalAssignment(new Assignment(new Constant(43), answer), new Environment());
+        testIllegalAssignment(new Assignment(new Constant(3), pi), new Environment());
+
+        // Miljön orörd efter misslyckad tilldelning
+        Environment envFail = new Environment();
+        testIllegalAssignment(new Assignment(new Constant(43), answer), envFail);
+        if (envFail.isEmpty()) {
+            System.out.println("Passed: environment unchanged after illegal assignment");
+        } else {
+            System.out.println("Error: environment was modified: " + envFail);
+        }
+
+        // Answer = x
+        Environment envA = new Environment();
+        testEvaluating(new Constant(42), new Assignment(answer, vX), envA);
+        if (new Constant(42).equals(envA.get(new Variable("x")))) {
+            System.out.println("Passed: x = 42 stored");
+        } else {
+            System.out.println("Error: x not stored");
+        }
+
+        // ---- Via parsern ----
+        CalculatorParser parser = new CalculatorParser();
+
+        testPrinting("Answer + x", parser.parse("Answer + x", new Environment()));
+        testEvaluating(new Constant(84), parser.parse("Answer + Answer", new Environment()), new Environment());
+        testIllegalAssignment(parser.parse("43 = Answer", new Environment()), new Environment());
+        testIllegalAssignment(parser.parse("3 = pi", new Environment()), new Environment());
+
+        testEvaluating(new Variable("answer"), parser.parse("answer", new Environment()), new Environment());
+
+        testParseFails("3 + ", parser);
+        testParseFails("(3 + 4", parser);
+        testParseFails("3 = 4", parser);
+
+        if (parser.parse("quit", new Environment()).isCommand()) {
+            System.out.println("Passed: quit is a command");
+        } else {
+            System.out.println("Error: quit should be a command");
+        }
+    }
+}
 
 

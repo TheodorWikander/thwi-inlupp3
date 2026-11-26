@@ -20,7 +20,7 @@ public class Negation extends Unary{
 
     @Override
     public String getName() {
-        return "neg";
+        return "-";
     }
 
     public boolean equals(Negation other) {

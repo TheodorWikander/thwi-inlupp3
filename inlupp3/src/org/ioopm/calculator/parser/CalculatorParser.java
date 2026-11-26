@@ -29,9 +29,9 @@ public class CalculatorParser {
     // unallowerdVars is used to check if variabel name that we
     // want to assign new meaning to is a valid name eg 3 = Quit
     // or 10 + x = L is not allowed
-    private final ArrayList < String > unallowedVars = new ArrayList < String > (Arrays.asList("Quit",
-        "Vars",
-        "Clear"));
+    private final ArrayList < String > unallowedVars = new ArrayList < String > (Arrays.asList("quit",
+        "vars",
+        "clear"));
 
     /**
      * Used to parse the inputted string by the Calculator program
@@ -64,7 +64,7 @@ public class CalculatorParser {
         }
 
         if (this.st.ttype == this.st.TT_WORD) { // vilken typ det senaste tecken vi lÃ¤ste in hade.
-            if (this.st.sval.equals("Quit") || this.st.sval.equals("Vars") || this.st.sval.equals("Clear")) { // sval = string Variable
+            if (this.st.sval.equals("quit") || this.st.sval.equals("vars") || this.st.sval.equals("clear")) { // sval = string Variable
                 result = command();
             } else {
                 result = assignment(); // gÃ¥r vidare med uttrycket.
@@ -90,9 +90,9 @@ public class CalculatorParser {
      * @throws IOException by nextToken() if it reads invalid input
      */
     private SymbolicExpression command() throws IOException {
-        if (this.st.sval.equals("Quit")) {
+        if (this.st.sval.equals("quit")) {
             return Quit.instance();
-        } else if (this.st.sval.equals("Clear")) {
+        } else if (this.st.sval.equals("clear")) {
             return Clear.instance();
         } else {
             return Vars.instance();
