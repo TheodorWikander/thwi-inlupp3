@@ -25,7 +25,7 @@ Valid commands are "vars" (lists variables currenty in the program), "clear" (re
 
 # Decisions and known limitations
 
-- Exceptions: "IllegalAssignmentException", "SyntaxErrorException", "IllegalExpressionException" all extend "RuntimeException". Theese are errors that can be caused by the user and are caught by the event loop. We  to extend RuntimeExceptions ... //TODO:
+- IllegalAssignmentException, SyntaxErrorException and IllegalExpressionException all extend RuntimeException. They represent errors caused by invalid user input, and they are all caught in one place: the main event loop, which prints the message and restores the environment. We chose unchecked exceptions because they are thrown deep inside the recursive eval() calls (and in the parser), where no method can handle them locally. Had we extended Exception, every eval() implementation and everything calling it would need a throws clause, adding bloat without benefit. With RuntimeException the compiler does not force us to catch or declare them, so we can throw where the error is detected and handle it centrally. The trade-off is that the compiler no longer reminds us to handle them, so we must make sure the event loop catches them. IOException is still checked, since it comes from outside our program's control.
 
 - Commands: "quit", "vars" and "clear" are singeltons. The event loop 
 
