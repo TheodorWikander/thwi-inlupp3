@@ -17,11 +17,6 @@ public class Assignment extends Binary {
         return 25;
     }
 
-
-    public boolean equals(Assignment other) {
-        return this.sameOperands(other);
-    }
-
     @Override
     public SymbolicExpression eval(Environment vars) {
         SymbolicExpression lhs = this.getLeft().eval(vars);

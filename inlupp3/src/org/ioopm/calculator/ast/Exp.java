@@ -19,11 +19,7 @@ public class Exp extends Unary{
         return 150;
     }
 
-    public boolean equals(Exp other) {
-        return this.sameOperands(other);
-    }
-
-        @Override
+    @Override
     public SymbolicExpression eval(Environment vars) {
     SymbolicExpression arg = this.getArgument().eval(vars);
     if (arg.isConstant()) {

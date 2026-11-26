@@ -22,10 +22,4 @@ public class Negation extends Unary{
     public String getName() {
         return "-";
     }
-
-    public boolean equals(Negation other) {
-        return this.sameOperands(other);
-    }
-
-
 }

@@ -15,10 +15,6 @@ public class Subtraction extends Binary{
         return 50;
     }
 
-    public boolean equals(Subtraction other) {
-        return this.sameOperands(other);
-    }
-
     @Override
     public SymbolicExpression eval(Environment vars) {
         SymbolicExpression lhs = this.getLeft().eval(vars);

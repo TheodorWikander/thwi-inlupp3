@@ -12,11 +12,6 @@ public class Sin extends Unary{
         return "sin";
     }
 
-
-    public boolean equals(Sin other) {
-        return this.sameOperands(other);
-    }
-
     @Override
     public SymbolicExpression eval(Environment vars) {
     SymbolicExpression arg = this.getArgument().eval(vars);

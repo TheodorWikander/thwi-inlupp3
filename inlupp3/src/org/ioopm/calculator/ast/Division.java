@@ -11,10 +11,6 @@ public class Division extends Binary{
         return "/";
     }
 
-    public boolean equals(Division other) {
-        return this.sameOperands(other);
-    }
-
     @Override
     public int getPriority () {
     return 75;

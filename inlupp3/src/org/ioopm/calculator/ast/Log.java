@@ -13,11 +13,6 @@ public class Log extends Unary{
         return "log";
     }
 
-
-    public boolean equals(Log other) {
-        return this.sameOperands(other);
-    }
-
     @Override
     public SymbolicExpression eval(Environment vars) {
     SymbolicExpression arg = this.getArgument().eval(vars);

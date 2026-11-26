@@ -1,8 +1,6 @@
 package org.ioopm.calculator;
 
 import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 import org.ioopm.calculator.ast.Clear;
 import org.ioopm.calculator.ast.Environment;
@@ -22,31 +20,63 @@ public class Calculator {
 
     public static void main(String [] args) {
         final CalculatorParser parser = new CalculatorParser();
-        final Environment e = new Environment();
+        final Environment env = new Environment();
+
+        //for statistics over entered commands
+        int entered = 0;
+        int sucesfullyEvaluated = 0; 
+        int fullyEvaluated = 0;
+
+        System.out.println("Welcome to the Symbolic Calculator!");
 
         while(run) {
+            System.out.print("\n");
+            System.out.print("? ");
             String input = System.console().readLine();
+
+            Environment backup = new Environment();
+            backup.putAll(env);
+
             try {
-                SymbolicExpression currentOp = parser.parse(input, e);
+                SymbolicExpression currentOp = parser.parse(input, env);
                 
                 if(currentOp instanceof Clear) {
-                        e.clear();
+                    env.clear();
                 } else if (currentOp instanceof Vars) {
-                    System.out.println(e);
+                    System.out.println(env.size() + " " + env);
                 } else if (currentOp instanceof Quit) {
                     run = false;
                 } else {
-                    SymbolicExpression result = currentOp.eval(e);
-                    e.put(new Variable("ans"), result);
+                    entered++;
+                    SymbolicExpression result = currentOp.eval(env);
+                    sucesfullyEvaluated++;
+                    if (result.isConstant()) {
+                        fullyEvaluated++;
+                    }
+                    env.put(new Variable("ans"), result);
                     System.out.println(result);
                 }
 
             } catch (IOException ex) {
+                restore(env,backup);
                 System.out.println("Error: could not read input");
             } catch (SyntaxErrorException | IllegalExpressionException | IllegalAssignmentException ex) {
+                restore(env, backup);
                 System.out.println(ex.getMessage());
+            } catch (RuntimeException ex) {
+                restore(env, backup);
+                System.out.println("Error: " + ex.getMessage());
             }
         }
+        System.out.println("Goodbye!");
+        System.out.println("Expressions entered: " + entered);
+        System.out.println("Sucesfully evaluated: " + sucesfullyEvaluated);
+        System.out.println("Fully evaluated: " + fullyEvaluated);
 
+
+    }
+    private static void restore(Environment env, Environment backup) {
+        env.clear();
+        env.putAll(backup);
     }
 }

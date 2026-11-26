@@ -8,8 +8,4 @@ public class Quit extends Command{
         return theInstance;
     }
 
-    @Override
-    public boolean isCommand() {
-    return true;
-    }
 }

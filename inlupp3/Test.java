@@ -195,6 +195,18 @@ public class Test {
         } else {
             System.out.println("Error: quit should be a command");
         }
+
+        if (parser.parse("clear", new Environment()).isCommand()) {
+            System.out.println("Passed: clear is a command");
+        } else {
+            System.out.println("Error: clear should be a command");
+        }
+
+        if (parser.parse("vars", new Environment()).isCommand()) {
+            System.out.println("Passed: vars is a command");
+        } else {
+            System.out.println("Error: vars should be a command");
+        }
     }
 }
 

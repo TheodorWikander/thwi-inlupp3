@@ -12,10 +12,6 @@ public class Cos extends Unary{
         return "cos";
     }
 
-    public boolean equals(Cos other) {
-        return this.sameOperands(other);
-    }
-
     @Override
     public SymbolicExpression eval(Environment vars) {
     SymbolicExpression arg = this.getArgument().eval(vars);
