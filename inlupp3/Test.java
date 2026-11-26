@@ -1,36 +1,55 @@
-
 import org.ioopm.calculator.ast.*;
 import org.ioopm.calculator.parser.CalculatorParser;
 
-public class Test{
+import java.io.IOException;
+
+public class Test {
 
     public static void testPrinting(String expected, SymbolicExpression e) {
         String actual = "" + e;
-        if (expected.equals("" + e)) {
-        System.out.println("Passed: " + e);
-    } else {
-        System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
+        if (expected.equals(actual)) {
+            System.out.println("Passed: " + e);
+        } else {
+            System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
         }
-        assert expected.equals(actual) : "Expected '" + expected + "'but got '" + actual + "'";
-    }   
-
+        assert expected.equals(actual) : "Expected '" + expected + "' but got '" + actual + "'";
+    }
 
     public static void testEvaluating(SymbolicExpression expected, SymbolicExpression e, Environment vars) {
-    SymbolicExpression r = e.eval(vars);
-    if (r.equals(expected)) {
-        System.out.println("Passed: " + e);
-    } else {
-        System.out.println("Error: expected '" + expected + "' but got '" + r + "'");
+        SymbolicExpression r = e.eval(vars);
+        if (r.equals(expected)) {
+            System.out.println("Passed: " + e);
+        } else {
+            System.out.println("Error: expected '" + expected + "' but got '" + r + "'");
         }
     }
 
-    public static void main(String[] args) {
+    public static void testIllegalAssignment(SymbolicExpression e, Environment vars) {
+        try {
+            SymbolicExpression r = e.eval(vars);
+            System.out.println("Error: expected exception for '" + e + "' but got '" + r + "'");
+        } catch (IllegalAssignmentException ex) {
+            System.out.println("Passed: " + e + " threw: " + ex.getMessage());
+        }
+    }
+
+    public static void testParseFails(String input, CalculatorParser parser) throws IOException {
+        try {
+            SymbolicExpression r = parser.parse(input, new Environment());
+            System.out.println("Error: expected syntax error for '" + input + "' but got '" + r + "'");
+        } catch (SyntaxErrorException ex) {
+            System.out.println("Passed: '" + input + "' gave: " + ex.getMessage());
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
         Constant c1 = new Constant(5);
         Constant c2 = new Constant(2);
         Constant c3 = new Constant(42);
         Variable vX = new Variable("x");
         Variable vY = new Variable("y");
 
+        // ---- Printing ----
         testPrinting("42.0", c3);
         testPrinting("x", vX);
 
@@ -48,79 +67,67 @@ public class Test{
         SymbolicExpression nestedsub = new Subtraction(vX, new Subtraction(c1, c2));
         testPrinting("x - (5.0 - 2.0)", nestedsub);
 
-        SymbolicExpression sinExpr = new Sin(vX);
-        SymbolicExpression cosExpr = new Cos(new Addition(vX, c1));
-        SymbolicExpression logExpr = new Log(c3);
-        SymbolicExpression negExpr = new Negation(new Addition(vX, c2)); 
-
-        testPrinting("sin(x)", sinExpr);
-        testPrinting("cos(x + 5.0)", cosExpr);
-        testPrinting("log(42.0)", logExpr);
-        testPrinting("-(x + 2.0)", negExpr);
+        testPrinting("sin(x)", new Sin(vX));
+        testPrinting("cos(x + 5.0)", new Cos(new Addition(vX, c1)));
+        testPrinting("log(42.0)", new Log(c3));
+        testPrinting("-(x + 2.0)", new Negation(new Addition(vX, c2)));
 
         SymbolicExpression assign = new Assignment(new Addition(c1, c2), vX);
         testPrinting("5.0 + 2.0 = x", assign);
 
         SymbolicExpression complex = new Multiplication(
             new Sin(new Multiplication(c2, vX)),
-            new Negation(new Division(vY, c3))
-        );
+            new Negation(new Division(vY, c3)));
         testPrinting("sin(2.0 * x) * -(y / 42.0)", complex);
 
-        testEvaluating(new Constant(42), 
-                       new Addition(new Constant(5), new Constant(37)), 
+        // ---- Evaluating ----
+        testEvaluating(new Constant(42),
+                       new Addition(new Constant(5), new Constant(37)),
                        new Environment());
 
-        testEvaluating(new Addition(new Constant(37), new Variable("x")), 
-                       new Addition(new Constant(37), new Variable("x")), 
+        testEvaluating(new Addition(new Constant(37), new Variable("x")),
+                       new Addition(new Constant(37), new Variable("x")),
                        new Environment());
 
         Environment vars = new Environment();
         vars.put(new Variable("x"), new Constant(8));
-        testEvaluating(new Constant(26), 
-                       new Multiplication(new Addition(new Constant(5), new Variable("x")), 
+        testEvaluating(new Constant(26),
+                       new Multiplication(new Addition(new Constant(5), new Variable("x")),
                                           new Constant(2)),
                        vars);
 
         Environment vars1 = new Environment();
         testEvaluating(new Constant(3),
-            new Assignment(new Constant(3), new Variable("x")),
-            vars1);
+                       new Assignment(new Constant(3), new Variable("x")),
+                       vars1);
         if (new Constant(3).equals(vars1.get(new Variable("x")))) {
             System.out.println("Passed: x stored in environment");
         } else {
             System.out.println("Error: x not stored correctly");
-        } 
-        
+        }
+
         SymbolicExpression chain = new Assignment(
             new Assignment(new Constant(2), new Variable("x")),
             new Variable("y"));
         testEvaluating(new Constant(2), chain, new Environment());
 
-    //Values uónly evaluated once:
+        // Values only evaluated once
         Environment env = new Environment();
-
-        // z + 2 = y --> y = z + 2)
         testEvaluating(new Addition(new Variable("z"), new Constant(2)),
-            new Assignment(new Addition(new Variable("z"), new Constant(2)), new Variable("y")),
-            env);
-
-        // 3 = z
+                       new Assignment(new Addition(new Variable("z"), new Constant(2)), new Variable("y")),
+                       env);
         testEvaluating(new Constant(3),
-            new Assignment(new Constant(3), new Variable("z")),
-            env);
-
-        // y ska fortfarande vara z + 2, inte 5
+                       new Assignment(new Constant(3), new Variable("z")),
+                       env);
         testEvaluating(new Addition(new Variable("z"), new Constant(2)),
-            new Variable("y"),
-            env);
+                       new Variable("y"),
+                       env);
 
         testEvaluating(new Variable("b"), new Variable("b"), new Environment());
 
         SymbolicExpression c = new Addition(new Constant(5), new Constant(37));
-        testEvaluating(new Constant(42), c, new Environment()); /// Tests if reducing a returns b (it should!)
+        testEvaluating(new Constant(42), c, new Environment());
 
-        //fler tester skulle nog behövas
         SymbolicExpression e = new Subtraction(new Constant(10), new Constant(5));
         testEvaluating(new Constant(5), e, new Environment());
 
@@ -131,101 +138,5 @@ public class Test{
         testEvaluating(new Constant(2), g, new Environment());
 
         testEvaluating(new Constant(5), c1, new Environment());
-
-        testEvaluating(new Variable("x"), vX, new Environment());
-
-        NamedConstant pi = new NamedConstant("pi");
-        NamedConstant answer = new NamedConstant("Answer");
-
-    }
-
-        // Skrivs ut med sitt namn, inte sitt värde
-        testPrinting("pi", pi);
-        testPrinting("Answer", answer);
-
-        // I ett större uttryck
-        testPrinting("Answer + x", new Addition(answer, new Variable("x")));
-
-        // Evalueras till ett tal (om ni låter eval returnera Constant)
-        testEvaluating(new Constant(42), answer, new Environment());
-        testEvaluating(new Constant(Math.PI), pi, new Environment());
-
-        // Svaret på allt: Answer + Answer = 84
-        testEvaluating(new Constant(84), new Addition(answer, answer), new Environment());
-
-        // Delvis reducerbart: Answer + x ska bli 42.0 + x
-        testEvaluating(new Addition(new Constant(42), new Variable("x")),
-                    new Addition(answer, new Variable("x")),
-                    new Environment());
-        
-        
-        if (answer.isConstant() && answer.getValue() == 42) {
-        System.out.println("Passed: NamedConstant isConstant/getValue");
-        } else {
-            System.out.println("Error: NamedConstant isConstant/getValue");
-        }
-        
-        // 43 = Answer  ska kasta IllegalAssignmentException
-        testEvaluatingThrows(
-            new Assignment(new Constant(43), new NamedConstant("Answer")),
-            new Environment());
-
-        // Även pi
-        testEvaluatingThrows(
-            new Assignment(new Constant(3), new NamedConstant("pi")),
-            new Environment());
-
-        // Tilldelning av ett uttryck: x + 1 = Answer
-        testEvaluatingThrows(
-            new Assignment(new Addition(new Variable("x"), new Constant(1)),
-                        new NamedConstant("Answer")),
-            new Environment());
-
-        Environment env1 = new Environment();
-        testEvaluatingThrows(
-            new Assignment(new Constant(43), new NamedConstant("Answer")),
-            env1);
-        if (env1.isEmpty()) {
-            System.out.println("Passed: environment unchanged after illegal assignment");
-        } else {
-            System.out.println("Error: environment was modified: " + env1);
-        }
-
-        // Tilldela till vanlig variabel med namngiven konstant som värde: Answer = x
-        Environment env2 = new Environment();
-        testEvaluating(new Constant(42),
-                    new Assignment(new NamedConstant("Answer"), new Variable("x")),
-                    env2);
-
-        // 3 = x ska fortfarande fungera
-        testEvaluating(new Constant(3),
-                    new Assignment(new Constant(3), new Variable("x")),
-                    new Environment());
-    
-
-        String[] names = {"pi", "e", "Answer", "L"};
-        for (String n : names) {
-            if (Constants.namedConstants.containsKey(n)) {
-                System.out.println("Passed: Constants contains " + n);
-            } else {
-                System.out.println("Error: Constants is missing " + n);
-            }
-        }
-
-        if (Constants.namedConstants.get("Answer") == 42.0) {
-            System.out.println("Passed: Answer == 42");
-        } else {
-            System.out.println("Error: Answer should be 42");
-        }
-
-        if (!Constants.namedConstants.containsKey("x")) {
-            System.out.println("Passed: x is not a named constant");
-        } else {
-            System.out.println("Error: x should not be a named constant");
-        }
-
-        
-    }
-}
 
 

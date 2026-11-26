@@ -27,7 +27,7 @@ public class Assignment extends Binary {
         SymbolicExpression lhs = this.getLeft().eval(vars);
         SymbolicExpression rhs = this.getRight();
 
-        if (rhs instanceof NamedConstants) {
+        if (rhs instanceof NamedConstant) {
         throw new IllegalAssignmentException("Error: cannot redefine named constant '" + rhs + "'");
     }
 

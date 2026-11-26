@@ -8,7 +8,7 @@ public class Negation extends Unary{
     public SymbolicExpression eval(Environment vars) {
     SymbolicExpression arg = this.getArgument().eval(vars);
     if (arg.isConstant()) {
-        return new Constant(Math.negateExact((int)arg.getValue()));
+        return new Constant(-arg.getValue());
     } else {
         return new Negation(arg);
     }
@@ -20,13 +20,12 @@ public class Negation extends Unary{
 
     @Override
     public String getName() {
-        return "-";
+        return "neg";
     }
-
 
     public boolean equals(Negation other) {
         return this.sameOperands(other);
     }
 
-    //Kanske sätta en priority för just den här, om det är typ -10 * -10.
+
 }

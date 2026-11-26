@@ -6,6 +6,7 @@ import org.ioopm.calculator.ast.Clear;
 import org.ioopm.calculator.ast.Environment;
 import org.ioopm.calculator.ast.SymbolicExpression;
 import org.ioopm.calculator.ast.SyntaxErrorException;
+import org.ioopm.calculator.ast.Variable;
 import org.ioopm.calculator.ast.Vars;
 import org.ioopm.calculator.parser.CalculatorParser;
 import org.ioopm.calculator.ast.IllegalAssignmentException;
@@ -25,7 +26,6 @@ public static void main(String [] args) {
             String input = System.console().readLine();
             try {
                 SymbolicExpression currentOp = parser.parse(input, e);
-                SymbolicExpression result = currentOp.eval(e);
                 
                 if(currentOp instanceof Clear) {
                         e.clear();
@@ -34,7 +34,9 @@ public static void main(String [] args) {
                 } else if (currentOp instanceof Quit) {
                     run = false;
                 } else {
-                    System.out.println(currentOp.eval(e));
+                    SymbolicExpression result = currentOp.eval(e);
+                    e.put(new Variable("ans"), result);
+                    System.out.println(result);
                 }
 
             } catch (IOException ex) {
